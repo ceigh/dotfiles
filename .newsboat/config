@@ -1,0 +1,4 @@
+show-read-feeds no
+
+macro y set browser "celluloid %u" ; open-in-browser ; set browser "elinks %u"
+macro f set browser "firefox --new-tab %u" ; open-in-browser ; set browser "elinks %u"
