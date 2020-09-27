@@ -29,7 +29,7 @@ bindkey '\e[6~' end-of-history #PageDown
 # prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%F{185}⎇  %b%f '
+zstyle ':vcs_info:git:*' formats '%F{185}:%b%f '
 setopt PROMPT_SUBST
 PROMPT='%F{6}%n%f%F{6}@%f%F{6}%m%f %F{69}%~%f ${vcs_info_msg_0_}$ '
 
