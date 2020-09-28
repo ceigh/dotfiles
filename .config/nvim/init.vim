@@ -1,5 +1,5 @@
-" PLUGIN
 call plug#begin('~/.vim/plugged')
+
 " AUTOCOMPLETION
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " c/c++
@@ -8,29 +8,45 @@ Plug 'zchee/deoplete-clang'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " ts
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+
 " LINTER
 Plug 'dense-analysis/ale'
+
 " DIRECTORY TREE
 Plug 'scrooloose/nerdtree'
+
 " GIT CHANGES
 Plug 'airblade/vim-gitgutter'
+
 " AUTO SAVE
 Plug '907th/vim-auto-save'
+
 " AUTO PAIRS
 Plug 'jiangmiao/auto-pairs'
+
 " INDENT LINE
 Plug 'Yggdroot/indentLine'
+
 " BOTTOM BAR
 Plug 'itchyny/lightline.vim'
 " linters info
 Plug 'maximbaz/lightline-ale'
 " branch name
 Plug 'itchyny/vim-gitbranch'
+
+" CLOSETAG AUTOCLOSE HTML TAGS
+Plug 'alvan/vim-closetag'
+
+" MATCHING TAGS HIGHLIGHT
+Plug 'gregsexton/MatchTag'
+
 " CSS COLORS
 Plug 'ap/vim-css-color'
+
 " THEME
 " Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'bluz71/vim-moonfly-colors'
+
 " SYNTAX
 " vue
 Plug 'posva/vim-vue'
@@ -39,16 +55,19 @@ Plug 'digitaltoad/vim-pug'
 " Plug 'evanleck/vim-svelte'
 " Plug 'purescript-contrib/purescript-vim'
 " Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 
 " HOT KEYS
 " tree
-noremap <F2> :NERDTreeToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
 " fix lint issues
 " noremap <F3> :ALEFix<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" show under cursor regions
+" nnoremap zS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 
 
 " COMMON
@@ -135,3 +154,11 @@ let g:lightline.active = {
 
 " ALE
 let g:ale_fix_on_save = 1
+
+
+" CLOSETAG
+let g:closetag_filetypes = 'html,vue'
+" remove autoclose outside vue's <template> section
+let g:closetag_regions = {
+\  'vue': 'htmlTag'
+\}
