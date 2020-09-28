@@ -1,3 +1,3 @@
 " ALE
-" linters
+" fixers
 let b:ale_fixers = ['eslint', 'importjs']

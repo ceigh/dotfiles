@@ -63,7 +63,7 @@ call plug#end()
 " tree
 nnoremap <F2> :NERDTreeToggle<CR>
 " fix lint issues
-" noremap <F3> :ALEFix<CR>
+noremap <F3> :ALEFix<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
@@ -153,7 +153,7 @@ let g:lightline.active = {
 
 
 " ALE
-let g:ale_fix_on_save = 1
+" let g:ale_fix_on_save = 1
 
 
 " CLOSETAG
