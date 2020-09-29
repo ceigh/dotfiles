@@ -29,7 +29,7 @@ bindkey '\e[6~' end-of-history #PageDown
 # prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%F{185}:%b%f '
+zstyle ':vcs_info:git:*' formats '%F{185}(%b)%f '
 setopt PROMPT_SUBST
 PROMPT='%F{6}%n%f%F{6}@%f%F{6}%m%f %F{69}%~%f ${vcs_info_msg_0_}$ '
 
@@ -41,6 +41,9 @@ alias node-bind='sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\
 alias my-name='echo "Artjom Löbsack"'
 alias page='git --no-pager log --oneline -n 20'
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# to complete filenames on aliases
+setopt completealiases
 
 # remember directory on new tab
 . /etc/profile.d/vte.sh
