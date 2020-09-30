@@ -25,7 +25,7 @@ Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
 
 " INDENT LINE
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 " BOTTOM BAR
 Plug 'itchyny/lightline.vim'
@@ -62,8 +62,10 @@ call plug#end()
 " HOT KEYS
 " tree
 nnoremap <F2> :NERDTreeToggle<CR>
+" show full lint message
+nnoremap <F3> :ALEDetail<CR>
 " fix lint issues
-noremap <F3> :ALEFix<CR>
+noremap <C-F3> :ALEFix<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
@@ -113,7 +115,7 @@ let g:auto_save_presave_hook = '%s/\s\+$//e'
 
 " INDENTLINE
 " remove color highlight
-let g:indentLine_setColors = 0
+" let g:indentLine_setColors = 0
 
 
 " LIGHTLINE
