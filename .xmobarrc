@@ -1,0 +1,52 @@
+Config {
+  -- appearance
+  font = "xft:Iosevka:size=12:bold:antialias=true:hinting=true",
+  bgColor = "#080808",
+  fgColor = "#B2B2B2",
+
+  commands = [
+    -- xmonad info
+    Run StdinReader,
+
+    -- cpu activity
+    Run Cpu [
+      "--template", "<total>",
+      "--suffix", "true",
+      "--low", "#8CC85F",
+      "--normal", "#E3C78A",
+      "--high", "#FF5454"
+    ] 20,
+    -- ram monitor
+    Run Memory [
+      "--template", "<usedratio>",
+      "--suffix", "true",
+      "--low", "#8CC85F",
+      "--normal", "#E3C78A",
+      "--high", "#FF5454"
+    ] 50,
+    -- swap monitor
+    Run Swap [
+      "--template", "<usedratio>",
+      "--suffix", "true",
+      "--Low", "25",
+      "--High", "50",
+      "--low", "#8CC85F",
+      "--normal", "#E3C78A",
+      "--high", "#FF5454"
+    ] 50,
+
+    -- keyboard layout
+    Run Kbd [
+      ("us", "US"),
+      ("ru", "RU")
+    ],
+
+    -- date
+    Run Date "%^a %d/%m %I:%M" "date" 10
+
+    -- weather
+  	-- Run Weather "KNYC" ["-t", "KNYC: <tempC>C/<skyCondition>"] 36000,
+  ],
+
+  template = "%StdinReader% }{ <action=`st -e htop`>%cpu% %memory% %swap%</action> | %kbd% | <action=`st -e sh -c 'cal; read junk'`>%date%</action>"
+}
