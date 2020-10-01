@@ -1,6 +1,7 @@
 -- IMPORTS
 import XMonad
 import XMonad.Util.SpawnOnce -- for start hook
+import XMonad.Util.EZConfig -- to configure keys
 import XMonad.Hooks.DynamicLog -- for bar
 import XMonad.Hooks.EwmhDesktops -- for chromium fullscreen
 import XMonad.Layout.Spacing -- for layout spacing
@@ -43,6 +44,6 @@ myConfig = def {
   startupHook = myStartupHook,
   layoutHook = myLayoutHook,
   handleEventHook = myHandleEventHook
-}
+} `additionalKeys` [((mod4Mask, xK_p), spawn "dmenu_run -fn 'Iosevka Semibold-12' -nb '#080808' -nf '#B2B2B2' -sb '#8CC85F'")]
 
 main = xmonad =<< xmobar myConfig
