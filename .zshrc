@@ -1,4 +1,3 @@
-# COMPINSTALL
 zstyle :compinstall filename '/home/ceigh/.zshrc'
 autoload -Uz compinit
 compinit
@@ -10,6 +9,7 @@ autoload -U colors && colors
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
+setopt HIST_IGNORE_DUPS
 
 # tab complete
 autoload -U compinit
@@ -35,12 +35,17 @@ PROMPT='%F{6}%n%f%F{6}@%f%F{6}%m%f %F{69}%~%f ${vcs_info_msg_0_}$ '
 
 # aliases
 alias ls='ls --color=auto'
+alias l='ls -la'
 alias swap-clean='sudo swapoff -a && sudo swapon -a'
 alias wifi-monitor='nmcli d wifi'
 alias node-bind='sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``'
 alias my-name='echo "Artjom Löbsack"'
 alias page='git --no-pager log --oneline -n 20'
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias v=nvim
+
+# default editor
+export EDITOR=nvim
 
 # to complete filenames on aliases
 setopt completealiases
