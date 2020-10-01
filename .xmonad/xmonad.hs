@@ -1,9 +1,9 @@
 -- IMPORTS
 import XMonad
-import XMonad.Hooks.DynamicLog -- for bar
 import XMonad.Util.SpawnOnce -- for start hook
-import XMonad.Layout.Spacing -- for layout spacing
+import XMonad.Hooks.DynamicLog -- for bar
 import XMonad.Hooks.EwmhDesktops -- for chromium fullscreen
+import XMonad.Layout.Spacing -- for layout spacing
 import XMonad.Layout.NoBorders -- to hide lonely window border
 
 -- COMMON
@@ -18,7 +18,7 @@ myModMask = mod4Mask -- mod key
 -- HOOKS
 myStartupHook = do
   spawnOnce "nitrogen --restore &"
-  spawnOnce "picom &"
+  -- spawnOnce "picom &"
 
 myLayoutHook =
   smartBorders (
@@ -27,6 +27,7 @@ myLayoutHook =
   )
 
 myHandleEventHook = fullscreenEventHook
+
 
 -- SUMMARY
 myConfig = def {
