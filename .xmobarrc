@@ -42,11 +42,18 @@ Config {
     ],
 
     -- date
-    Run Date "%^a %d/%m %I:%M" "date" 10
+    Run Date "%^a %d/%m %I:%M" "date" 10,
+
+    -- uptime
+    Run Uptime [
+      "--template", "<hours>H"
+    ] 36000,
 
     -- weather
-  	-- Run Weather "KNYC" ["-t", "KNYC: <tempC>C/<skyCondition>"] 36000,
+    Run Weather "USSS" [
+      "--template", "<tempC>°C <windMs>M/S"
+    ] 36000
   ],
 
-  template = "%StdinReader% }{ <action=`st -e htop`>%cpu% %memory% %swap%</action> | %kbd% | <action=`st -e sh -c 'cal; read junk'`>%date%</action>"
+  template = " %StdinReader% }{ %kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read junk'`>%date%</action> "
 }
