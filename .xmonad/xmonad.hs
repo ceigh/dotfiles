@@ -8,22 +8,33 @@ import XMonad.Layout.Spacing -- for layout spacing
 import XMonad.Layout.NoBorders -- to hide lonely window border
 
 -- CONST
-font_default = "'Iosevka Semibold-12'"
-color_white = "#B2B2B2"
+fontDefault = "'Iosevka Semibold-12'"
+colorWhite = "#B2B2B2"
+colorRed = "#FF5454"
 
 run_dmenu = "dmenu_run" ++
-  " -fn " ++ font_default ++
-  " -nf " ++ "'" ++ color_white ++ "'" ++
+  " -fn " ++ fontDefault ++
+  " -nf " ++ "'" ++ colorWhite ++ "'" ++
   " -nb '#080808' -sb '#8CC85F'"
 
 -- COMMON
 myTerminal = "st"
 
-myBorderWidth = 5
-myNormalBorderColor = color_white
-myFocusedBorderColor = "#FF5454"
+myBar = "xmobar"
+myPP = xmobarPP {
+  ppCurrent = xmobarColor colorRed "" . wrap "<" ">",
+  ppLayout = xmobarColor "#E3C78A" "",
+  ppTitle = xmobarColor "#8CC85F" "" . shorten 100,
+  ppSep = " | "
+}
 
+myBorderWidth = 5
+myNormalBorderColor = colorWhite
+myFocusedBorderColor = colorRed
+
+-- KEYS
 myModMask = mod4Mask -- mod key
+myToggleStruts XConfig { XMonad.modMask = myModMask } = (myModMask, xK_b)
 
 -- HOOKS
 myStartupHook = do
@@ -60,4 +71,4 @@ myConfig = def {
   handleEventHook = myHandleEventHook
 } `additionalKeys` myAdditionalKeys
 
-main = xmonad =<< xmobar myConfig
+main = xmonad =<< statusBar myBar myPP myToggleStruts myConfig
