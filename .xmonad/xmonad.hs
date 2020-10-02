@@ -10,12 +10,16 @@ import XMonad.Layout.NoBorders -- to hide lonely window border
 -- CONST
 fontDefault = "'Iosevka Semibold-12'"
 colorWhite = "#B2B2B2"
+colorBlack = "#080808"
 colorRed = "#FF5454"
+colorYellow = "#E3C78A"
+colorGreen = "#8CC85F"
 
 run_dmenu = "dmenu_run" ++
   " -fn " ++ fontDefault ++
   " -nf " ++ "'" ++ colorWhite ++ "'" ++
-  " -nb '#080808' -sb '#8CC85F'"
+  " -nb " ++ "'" ++ colorBlack ++ "'" ++
+  " -sb " ++ "'" ++ colorRed ++ "'"
 
 -- COMMON
 myTerminal = "st"
@@ -23,8 +27,8 @@ myTerminal = "st"
 myBar = "xmobar"
 myPP = xmobarPP {
   ppCurrent = xmobarColor colorRed "" . wrap "<" ">",
-  ppLayout = xmobarColor "#E3C78A" "",
-  ppTitle = xmobarColor "#8CC85F" "" . shorten 100,
+  ppLayout = xmobarColor colorYellow "",
+  ppTitle = xmobarColor colorGreen "" . shorten 100,
   ppSep = " | "
 }
 
