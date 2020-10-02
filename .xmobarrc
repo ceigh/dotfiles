@@ -55,5 +55,5 @@ Config {
     ] 36000
   ],
 
-  template = " %StdinReader% }{ %kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read junk'`>%date%</action> "
+  template = " %StdinReader% }{ %kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read junk'`>%date%</action> | <action=`st -e sh -c 'sudo shutdown now'`>S</action> | <action=`st -e sh -c 'sudo reboot'`>R</action> "
 }
