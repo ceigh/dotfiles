@@ -7,11 +7,20 @@ import XMonad.Hooks.EwmhDesktops -- for chromium fullscreen
 import XMonad.Layout.Spacing -- for layout spacing
 import XMonad.Layout.NoBorders -- to hide lonely window border
 
+-- CONST
+font_default = "'Iosevka Semibold-12'"
+color_white = "#B2B2B2"
+
+run_dmenu = "dmenu_run" ++
+  " -fn " ++ font_default ++
+  " -nf " ++ "'" ++ color_white ++ "'" ++
+  " -nb '#080808' -sb '#8CC85F'"
+
 -- COMMON
 myTerminal = "st"
 
 myBorderWidth = 5
-myNormalBorderColor = "#B2B2B2"
+myNormalBorderColor = color_white
 myFocusedBorderColor = "#FF5454"
 
 myModMask = mod4Mask -- mod key
@@ -29,6 +38,11 @@ myLayoutHook =
 
 myHandleEventHook = fullscreenEventHook
 
+-- ADDITIONAL KEYS
+myAdditionalKeys =
+  [
+    ((myModMask, xK_p), spawn run_dmenu)
+  ]
 
 -- SUMMARY
 myConfig = def {
@@ -44,6 +58,6 @@ myConfig = def {
   startupHook = myStartupHook,
   layoutHook = myLayoutHook,
   handleEventHook = myHandleEventHook
-} `additionalKeys` [((mod4Mask, xK_p), spawn "dmenu_run -fn 'Iosevka Semibold-12' -nb '#080808' -nf '#B2B2B2' -sb '#8CC85F'")]
+} `additionalKeys` myAdditionalKeys
 
 main = xmonad =<< xmobar myConfig
