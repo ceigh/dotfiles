@@ -56,7 +56,11 @@ myHandleEventHook = fullscreenEventHook
 -- ADDITIONAL KEYS
 myAdditionalKeys =
   [
-    ((myModMask, xK_p), spawn run_dmenu)
+    ((myModMask, xK_p), spawn run_dmenu),
+    -- play radio
+    ((myModMask, xK_r), spawn "nts run"),
+    ((myModMask .|. shiftMask, xK_r), spawn "nts run 2"),
+    ((myModMask, xK_e), spawn "nts end")
   ]
 
 -- SUMMARY
