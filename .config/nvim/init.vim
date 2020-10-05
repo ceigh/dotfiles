@@ -99,6 +99,8 @@ set completeopt-=preview
 " NERDTREE
 " hide swap files
 let NERDTreeIgnore = ['\.swp$']
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
 
 
 " DEOPLETE
