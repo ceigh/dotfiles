@@ -75,7 +75,10 @@ myAdditionalKeys =
     -- firefox
     ((m, xK_f), spawn "firefox"),
     -- newsboat
-    ((m, xK_a), spawn "st -e sh -c 'newsboat -r'")
+    ((m, xK_a), spawn "st -e sh -c 'newsboat -r'"),
+    -- power
+    ((m, xK_End), spawn "st -e sh -c 'sudo shutdown now'"),
+    ((m .|. shiftMask, xK_End), spawn "st -e sh -c 'sudo reboot'")
   ]
 
 -- SUMMARY
