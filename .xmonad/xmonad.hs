@@ -53,6 +53,9 @@ myLayoutHook =
 
 myHandleEventHook = fullscreenEventHook
 
+myManageHook = do
+  className =? "mpv" --> doFloat
+
 -- ADDITIONAL KEYS
 myAdditionalKeys =
   [
@@ -76,7 +79,8 @@ myConfig = def {
   -- hooks
   startupHook = myStartupHook,
   layoutHook = myLayoutHook,
-  handleEventHook = myHandleEventHook
+  handleEventHook = myHandleEventHook,
+  manageHook = myManageHook
 } `additionalKeys` myAdditionalKeys
 
 main = xmonad =<< statusBar myBar myPP myToggleStruts myConfig
