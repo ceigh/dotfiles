@@ -42,7 +42,8 @@ Config {
     ],
 
     -- date
-    Run Date "%^a %d/%m %I:%M" "date" 10,
+    Run Date "%^a %d/%m" "date" 10,
+    Run Date "%I:%M" "date:time" 10,
 
     -- uptime
     Run Uptime [
@@ -52,8 +53,18 @@ Config {
     -- weather
     Run Weather "USSS" [
       "--template", "<tempC>°C <windMs>M/S"
-    ] 36000
+    ] 36000,
+
+    -- volume
+    Run Alsa "default" "Master" [
+      "--template", "<volume>% <status>",
+      "--",
+      "--on", "ON",
+      "--off", "OFF",
+      "--onc", "#8CC85F",
+      "--offc", "#FF5454"
+    ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read junk'`>%date%</action> | <action=`st -e sh -c 'sudo shutdown now'`>S</action> | <action=`st -e sh -c 'sudo reboot'`>R</action> "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read junk'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% | <action=`st -e sh -c 'sudo shutdown now'`>S</action> | <action=`st -e sh -c 'sudo reboot'`>R</action> "
 }
