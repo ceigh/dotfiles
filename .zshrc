@@ -45,6 +45,10 @@ alias node-bind='sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\
 alias my-name='echo "Artjom Löbsack"'
 alias page='git --no-pager log --oneline -n 20'
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias cs='config status'
+alias cf='config diff'
+alias ca='config add'
+alias cc='config commit'
 alias v=nvim
 
 # default editor
