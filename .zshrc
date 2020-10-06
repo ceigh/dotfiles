@@ -49,6 +49,8 @@ alias cs='config status'
 alias cf='config diff'
 alias ca='config add'
 alias cc='config commit -m'
+alias cl='config log --oneline'
+alias cp='config push'
 alias v=nvim
 
 # default editor
