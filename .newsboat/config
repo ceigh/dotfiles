@@ -1,4 +1,21 @@
+# COMMON
+# hide read
 show-read-feeds no
 
+# remove old articles
+keep-articles-days 7
+
+# colorsheme
+include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
+# include /usr/share/doc/newsboat/contrib/colorschemes/plain
+# include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
+
+# reload multiple
+reload-threads 100
+
+# MACROS
+# open in mpv
 macro y set browser "devour mpv '%u'"; open-in-browser; set browser "w3m %u"
+
+# open in firefox
 macro f set browser "firefox --new-tab %u"; open-in-browser; set browser "w3m %u"
