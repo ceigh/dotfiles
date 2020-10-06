@@ -48,7 +48,7 @@ alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cs='config status'
 alias cf='config diff'
 alias ca='config add'
-alias cc='config commit'
+alias cc='config commit -m'
 alias v=nvim
 
 # default editor
