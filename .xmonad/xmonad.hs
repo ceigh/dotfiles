@@ -37,7 +37,8 @@ myNormalBorderColor = colorWhite
 myFocusedBorderColor = colorRed
 
 -- KEYS
-myModMask = mod4Mask -- mod key
+m = mod4Mask -- mod key
+myModMask = m
 myToggleStruts XConfig { XMonad.modMask = myModMask } = (myModMask, xK_b)
 
 -- HOOKS
@@ -53,17 +54,28 @@ myLayoutHook =
 
 myHandleEventHook = fullscreenEventHook
 
-myManageHook = do
-  className =? "mpv" --> doFloat
+myManageHook = composeAll
+  [
+    className =? "mpv" --> doFloat
+  ]
 
 -- ADDITIONAL KEYS
 myAdditionalKeys =
   [
-    ((myModMask, xK_p), spawn run_dmenu),
+    -- dmenu
+    ((m, xK_p), spawn run_dmenu),
+    -- volume
+    ((m, xK_equal), spawn "pulsemixer --change-volume +10"),
+    ((m, xK_minus), spawn "pulsemixer --change-volume -10"),
+    ((m, xK_0), spawn "pulsemixer --toggle-mute"),
     -- play radio
-    ((myModMask, xK_r), spawn "nts run"),
-    ((myModMask .|. shiftMask, xK_r), spawn "nts run 2"),
-    ((myModMask, xK_e), spawn "nts end")
+    ((m, xK_r), spawn "nts run"),
+    ((m .|. shiftMask, xK_r), spawn "nts run 2"),
+    ((m, xK_e), spawn "nts end"),
+    -- firefox
+    ((m, xK_f), spawn "firefox"),
+    -- newsboat
+    ((m, xK_a), spawn "st -e sh -c 'newsboat -r'")
   ]
 
 -- SUMMARY
