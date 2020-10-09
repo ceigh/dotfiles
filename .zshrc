@@ -70,6 +70,9 @@ unsetopt nomatch
 # local
 path+=~/.local/bin
 
+# personal
+path+=~/.bin
+
 # npm
 path+=~/.node_modules/bin
 export npm_config_prefix=~/.node_modules
