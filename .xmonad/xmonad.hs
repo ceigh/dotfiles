@@ -78,7 +78,9 @@ myAdditionalKeys =
     ((m, xK_a), spawn "st -e sh -c 'newsboat -r'"),
     -- power
     ((m, xK_End), spawn "st -e sh -c 'sudo shutdown now'"),
-    ((m .|. shiftMask, xK_End), spawn "st -e sh -c 'sudo reboot'")
+    ((m .|. shiftMask, xK_End), spawn "st -e sh -c 'sudo reboot'"),
+    -- screenshots
+    ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png")
   ]
 
 -- SUMMARY
