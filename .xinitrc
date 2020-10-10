@@ -42,4 +42,5 @@ numlockx &
 xinput set-prop 12 285 1 &
 # change freq
 xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98
-exec xmonad # run wm
+# run wm
+exec xmonad

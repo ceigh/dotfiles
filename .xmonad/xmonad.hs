@@ -69,9 +69,9 @@ myAdditionalKeys =
     ((m, xK_minus), spawn "pulsemixer --change-volume -10"),
     ((m, xK_0), spawn "pulsemixer --toggle-mute"),
     -- play radio
-    ((m, xK_r), spawn "nts run"),
-    ((m .|. shiftMask, xK_r), spawn "nts run 2"),
-    ((m, xK_e), spawn "nts end"),
+    ((m, xK_r), spawn "~/.bin/nts run"),
+    ((m .|. shiftMask, xK_r), spawn "~/.bin/nts run 2"),
+    ((m, xK_e), spawn "~/.bin/nts end"),
     -- firefox
     ((m, xK_f), spawn "firefox"),
     -- newsboat
