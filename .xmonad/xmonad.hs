@@ -8,7 +8,7 @@ import XMonad.Layout.Spacing -- for layout spacing
 import XMonad.Layout.NoBorders -- to hide lonely window border
 
 -- CONST
-fontDefault = "'Iosevka Semibold-12'"
+fontDefault = "'Iosevka Semibold-13'"
 colorWhite = "#B2B2B2"
 colorBlack = "#080808"
 colorRed = "#FF5454"
@@ -39,17 +39,16 @@ myFocusedBorderColor = colorRed
 -- KEYS
 m = mod4Mask -- mod key
 myModMask = m
-myToggleStruts XConfig { XMonad.modMask = myModMask } = (myModMask, xK_b)
+myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
-{-
 myStartupHook = do
+  spawn "~/.bin/nts run"
   -- spawnOnce "picom &"
--}
 
 myLayoutHook =
   smartBorders (
-    spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
+    spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $
       layoutHook def
   )
 
@@ -95,7 +94,7 @@ myConfig = def {
   modMask = myModMask,
 
   -- hooks
-  -- startupHook = myStartupHook,
+  startupHook = myStartupHook,
   layoutHook = myLayoutHook,
   handleEventHook = myHandleEventHook,
   manageHook = myManageHook
