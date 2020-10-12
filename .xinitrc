@@ -41,6 +41,8 @@ numlockx &
 # enable natural scrolling
 xinput set-prop 12 285 1 &
 # change freq
-xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98
+xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98 &
+# set bg
+sh ~/.bin/wallpaper &
 # run wm
 exec xmonad

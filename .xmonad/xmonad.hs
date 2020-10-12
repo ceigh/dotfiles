@@ -42,9 +42,10 @@ myModMask = m
 myToggleStruts XConfig { XMonad.modMask = myModMask } = (myModMask, xK_b)
 
 -- HOOKS
+{-
 myStartupHook = do
-  spawnOnce "nitrogen --restore &"
   -- spawnOnce "picom &"
+-}
 
 myLayoutHook =
   smartBorders (
@@ -94,7 +95,7 @@ myConfig = def {
   modMask = myModMask,
 
   -- hooks
-  startupHook = myStartupHook,
+  -- startupHook = myStartupHook,
   layoutHook = myLayoutHook,
   handleEventHook = myHandleEventHook,
   manageHook = myManageHook
