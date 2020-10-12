@@ -56,6 +56,9 @@ alias v=nvim
 # default editor
 export EDITOR=nvim
 
+# default pager
+export PAGER=less
+
 # to complete filenames on aliases
 setopt completealiases
 
