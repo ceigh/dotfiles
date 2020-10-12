@@ -65,7 +65,7 @@ nnoremap <F2> :NERDTreeToggle<CR>
 " show full lint message
 nnoremap <F3> :ALEDetail<CR>
 " fix lint issues
-noremap <C-F3> :ALEFix<CR>
+noremap <F4> :ALEFix<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
