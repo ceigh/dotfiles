@@ -80,6 +80,8 @@ set termguicolors
 " scheme
 " colorscheme dracula
 colorscheme moonfly
+" transparency
+highlight Normal guibg=NONE ctermbg=NONE
 " line numbers
 set number
 set relativenumber
