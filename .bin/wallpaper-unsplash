@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+while true; do
+  feh --bg-fill https://source.unsplash.com/1920x1080/?nature
+  sleep 10m
+done

@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-
 shopt -s nullglob
 cd ~/pictures/wallpapers
 
