@@ -43,7 +43,7 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawn "~/.bin/nts end && ~/.bin/nts run"
+  spawnOnce "~/.bin/nts end && ~/.bin/nts run &"
   spawnOnce "picom &"
 
 myLayoutHook =
@@ -82,7 +82,9 @@ myAdditionalKeys =
     -- screenshots
     ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png"),
     -- ranger
-    ((m, xK_z), spawn "st -e sh -c 'ranger'")
+    ((m, xK_z), spawn "st -e sh -c 'ranger'"),
+    -- change wallpaper
+    ((m, xK_d), spawn "~/.bin/wallpaper-unsplash once")
   ]
 
 -- SUMMARY

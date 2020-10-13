@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
+# image resolution
+readonly RESOLUTION=1920x1080
+# tags comma-separated
+readonly TAGS=nature,desert,mountains,forest
+readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
+# echo "Fetching image from $URL"
+
+set_bg() {
+  feh --bg-fill $URL
+}
+
+# set bg one time
+[ "$1" = once ] && set_bg && exit 0
+
+# set bg every 10 minutes
 while true; do
-  feh --bg-fill https://source.unsplash.com/1920x1080/?nature
+  set_bg
   sleep 10m
 done
