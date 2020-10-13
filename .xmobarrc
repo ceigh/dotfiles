@@ -15,7 +15,7 @@ Config {
       "--low", "#8CC85F",
       "--normal", "#E3C78A",
       "--high", "#FF5454"
-    ] 20,
+    ] 10,
     -- ram monitor
     Run Memory [
       "--template", "<usedratio>",
@@ -23,7 +23,7 @@ Config {
       "--low", "#8CC85F",
       "--normal", "#E3C78A",
       "--high", "#FF5454"
-    ] 50,
+    ] 20,
     -- swap monitor
     Run Swap [
       "--template", "<usedratio>",
