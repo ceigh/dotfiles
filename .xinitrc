@@ -32,6 +32,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# add personal path
+export PATH="$HOME/.bin:$PATH"
+
 # normal pointer
 xsetroot -cursor_name left_ptr &
 # add ru keyboard and alt+shift toggle
@@ -40,11 +43,15 @@ setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' &
 numlockx &
 # enable natural scrolling
 xinput set-prop 12 285 1 &
+
 # change freq
 xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98 &
+
 # set bg
-sh ~/.bin/wallpaper-unsplash &
+sh wallpaper-unsplash &
+
 # autorun
 firefox &
+
 # run wm
 exec xmonad

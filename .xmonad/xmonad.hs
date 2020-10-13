@@ -43,7 +43,7 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "~/.bin/nts end && ~/.bin/nts run &"
+  spawn "nts end && nts run &"
   spawnOnce "picom &"
 
 myLayoutHook =
@@ -69,9 +69,9 @@ myAdditionalKeys =
     ((m, xK_minus), spawn "pulsemixer --change-volume -10"),
     ((m, xK_0), spawn "pulsemixer --toggle-mute"),
     -- play radio
-    ((m, xK_r), spawn "~/.bin/nts run"),
-    ((m .|. shiftMask, xK_r), spawn "~/.bin/nts run 2"),
-    ((m, xK_e), spawn "~/.bin/nts end"),
+    ((m, xK_r), spawn "nts run"),
+    ((m .|. shiftMask, xK_r), spawn "nts run 2"),
+    ((m, xK_e), spawn "nts end"),
     -- firefox
     ((m, xK_f), spawn "firefox"),
     -- newsboat
@@ -84,7 +84,7 @@ myAdditionalKeys =
     -- ranger
     ((m, xK_z), spawn "st -e sh -c 'ranger'"),
     -- change wallpaper
-    ((m, xK_d), spawn "~/.bin/wallpaper-unsplash once")
+    ((m, xK_d), spawn "wallpaper-unsplash once")
   ]
 
 -- SUMMARY
