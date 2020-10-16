@@ -20,9 +20,9 @@ _comp_options+=(globdots) # hidden files
 
 # keys
 bindkey '\e[H' beginning-of-line # Home
-bindkey '\e[F' end-of-line # End
-bindkey '\e[2~' overwrite-mode # Insert
-bindkey '\e[3~' delete-char # Delete
+bindkey '\e[4~' end-of-line # End
+bindkey '\e[4h' overwrite-mode # Insert
+bindkey '\e[P' delete-char # Delete
 bindkey '\e[5~' beginning-of-history #PageUp
 bindkey '\e[6~' end-of-history #PageDown
 
