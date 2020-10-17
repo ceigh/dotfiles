@@ -47,6 +47,16 @@ xinput set-prop 12 285 1 &
 # change freq
 xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98 &
 
+# wait for network
+readonly WIRELESS_DEV=$(ip link show | rg --only-matching wl[^:]*)
+tries=0
+while true; do
+  [ "$tries" -eq 10 ] && break # timeout
+  [ $(ip add sh dev $WIRELESS_DEV | rg inet | wc -l) -ne 0 ] && break
+  sleep 1
+  ((tries++))
+done
+
 # set bg
 sh wallpaper-unsplash &
 
