@@ -61,7 +61,8 @@ done
 sh wallpaper-unsplash &
 
 # autorun
-firefox &
+# firefox &
+st -e sh -c 'newsboat -r' &
 
 # run wm
 exec xmonad
