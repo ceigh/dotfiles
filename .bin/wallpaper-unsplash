@@ -7,7 +7,7 @@ readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
 # echo "Fetching image from $URL"
 
 set_bg() {
-  feh --bg-fill $URL
+  feh --bg-fill $URL || feh --bg-fill --randomize ~/pictures/wallpapers
 }
 
 # set bg one time
