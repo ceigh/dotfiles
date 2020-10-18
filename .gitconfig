@@ -1,8 +1,8 @@
 [user]
   email = me@ceigh.com
   name = Artjom Löbsack
-	signingkey = 7AEAD1C36F87BBE6
+  signingkey = 7AEAD1C36F87BBE6
 [pull]
   rebase = false
 [commit]
-	gpgsign = true
+  gpgsign = true
