@@ -53,11 +53,10 @@ alias cl='config log --oneline'
 alias cp='config push'
 alias v=nvim
 
-# default editor
+# defaults
 export EDITOR=nvim
-
-# default pager
 export PAGER=less
+export EMAIL='me@ceigh.com'
 
 # to complete filenames on aliases
 setopt completealiases
