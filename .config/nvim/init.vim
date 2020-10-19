@@ -82,6 +82,8 @@ set termguicolors
 colorscheme moonfly
 " transparency
 highlight Normal guibg=NONE ctermbg=NONE
+" todo
+highlight Todo ctermbg=DarkYellow ctermfg=Black guibg=DarkYellow guifg=Black
 " line numbers
 set number
 set relativenumber
