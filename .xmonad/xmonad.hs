@@ -43,7 +43,7 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "picom &"
+  spawnOnce "picom --experimental-backends &"
   spawn "nts end && nts run &"
 
 myLayoutHook =
