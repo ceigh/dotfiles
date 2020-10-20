@@ -97,7 +97,10 @@ myAdditionalKeys =
     ((m, xK_z), spawn (term "ranger")),
 
     -- change wallpaper
-    ((m, xK_d), spawn "wallpaper-unsplash once &")
+    ((m, xK_d), spawn "wallpaper-unsplash once &"),
+
+    -- lock screen
+    ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &")
   ]
 
 -- SUMMARY

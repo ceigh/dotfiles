@@ -32,6 +32,9 @@ numlockx &
 # enable natural scrolling
 xinput set-prop 12 285 1 &
 
+# screensaver
+xscreensaver -no-splash &
+
 # change freq
 OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
   sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
