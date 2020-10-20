@@ -33,7 +33,11 @@ numlockx &
 xinput set-prop 12 285 1 &
 
 # change freq
-xrandr --output DVI-I-2 --mode 1440x900 --rate 74.98
+OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
+  sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
+MODE=1440x900
+RATE=74.98
+xrandr --output $OUTPUT --mode $MODE --rate $RATE
 
 # wait for network
 nm-online --timeout 15
