@@ -24,6 +24,9 @@ run_dmenu = "dmenu_run" ++
 -- COMMON
 myTerminal = "st"
 
+term :: String -> String
+term command = myTerminal ++ " -e sh -c \"" ++ command ++ "\" &"
+
 myBar = "xmobar"
 myPP = xmobarPP {
   ppCurrent = xmobarColor colorRed "" . wrap "<" ">",
@@ -44,7 +47,8 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 -- HOOKS
 myStartupHook = do
   spawnOnce "picom --experimental-backends &"
-  spawn "nts end && nts run &"
+  spawnOnce "wallpaper-unsplash &"
+  spawnOnce "nts run &"
 
 myLayoutHook =
   smartBorders (
@@ -64,27 +68,36 @@ myAdditionalKeys =
   [
     -- dmenu
     ((m, xK_p), spawn run_dmenu),
+
     -- volume
-    ((m, xK_equal), spawn "pulsemixer --change-volume +10"),
-    ((m, xK_minus), spawn "pulsemixer --change-volume -10"),
-    ((m, xK_0), spawn "pulsemixer --toggle-mute"),
+    ((m, xK_equal), spawn "pulsemixer --change-volume +10 &"),
+    ((m, xK_minus), spawn "pulsemixer --change-volume -10 &"),
+    ((m, xK_0), spawn "pulsemixer --toggle-mute &"),
+
     -- play radio
-    ((m, xK_r), spawn "nts run"),
-    ((m .|. shiftMask, xK_r), spawn "nts run 2"),
-    ((m, xK_e), spawn "nts end"),
+    ((m, xK_r), spawn "nts run &"),
+    ((m .|. shiftMask, xK_r), spawn "nts run 2 &"),
+    ((m, xK_e), spawn "nts end &"),
+
     -- firefox
-    ((m, xK_f), spawn "firefox"),
+    ((m, xK_f), spawn "firefox &"),
+
     -- newsboat
-    ((m, xK_a), spawn "st -e sh -c 'newsboat -r'"),
+    ((m, xK_a), spawn (term "newsboat --refresh-on-start")),
+
     -- power
-    ((m, xK_End), spawn "st -e sh -c 'sudo shutdown now'"),
-    ((m .|. shiftMask, xK_End), spawn "st -e sh -c 'sudo reboot'"),
+    ((m, xK_End), spawn (term "sudo shutdown now")),
+    ((m .|. shiftMask, xK_End), spawn (term "sudo reboot")),
+
     -- screenshots
-    ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png"),
+    ((m, xK_Print),
+      spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png &"),
+
     -- ranger
-    ((m, xK_z), spawn "st -e sh -c 'ranger'"),
+    ((m, xK_z), spawn (term "ranger")),
+
     -- change wallpaper
-    ((m, xK_d), spawn "wallpaper-unsplash once")
+    ((m, xK_d), spawn "wallpaper-unsplash once &")
   ]
 
 -- SUMMARY
