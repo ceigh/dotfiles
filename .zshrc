@@ -50,7 +50,7 @@ alias cf='config diff'
 alias ca='config add'
 alias cm='config commit -m'
 alias cl='config log --oneline'
-alias cp='config push'
+alias ch='config push'
 alias v=nvim
 
 # defaults
