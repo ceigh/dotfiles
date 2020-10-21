@@ -8,4 +8,3 @@ git push \
   && git merge master \
   && git push \
   && git push github \
-  && page
