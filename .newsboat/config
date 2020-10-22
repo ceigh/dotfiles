@@ -18,4 +18,4 @@ reload-threads 100
 macro y set browser "devour mpv '%u'"; open-in-browser; set browser "w3m %u"
 
 # open in firefox
-macro f set browser "firefox --new-tab %u"; open-in-browser; set browser "w3m %u"
+macro f set browser "firefox --new-tab %u &"; open-in-browser; set browser "w3m %u"
