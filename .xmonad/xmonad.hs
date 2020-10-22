@@ -1,21 +1,22 @@
 -- IMPORTS
 import XMonad
-import XMonad.Util.SpawnOnce -- for start hook
-import XMonad.Actions.SpawnOn -- pin windows to workspaces
-import XMonad.Util.EZConfig -- to configure keys
-import XMonad.Hooks.DynamicLog -- for bar
-import XMonad.Hooks.EwmhDesktops -- for chromium fullscreen
-import XMonad.Layout.Spacing -- for layout spacing
-import XMonad.Layout.NoBorders -- to hide lonely window border
+import XMonad.Util.SpawnOnce          -- start hook
+import XMonad.Actions.SpawnOn         -- pin windows to workspaces
+import XMonad.Util.EZConfig           -- configure keys
+import XMonad.Hooks.DynamicLog        -- bar
+import XMonad.Hooks.EwmhDesktops      -- chromium fullscreen
+import XMonad.Layout.Spacing          -- layout spacing
+import XMonad.Layout.NoBorders        -- hide lonely window border
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
 fontDefault = "'Iosevka Semibold-13'"
-colorWhite = "#B2B2B2"
-colorBlack = "#080808"
-colorRed = "#FF5454"
+
+colorWhite  = "#B2B2B2"
+colorBlack  = "#080808"
+colorRed    = "#FF5454"
 colorYellow = "#E3C78A"
-colorGreen = "#8CC85F"
+colorGreen  = "#8CC85F"
 
 -- COMMON
 -- terminal
@@ -44,41 +45,39 @@ myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 
 -- bar
 myBar = "xmobar"
-myPP = xmobarPP {
-  ppCurrent = xmobarColor colorRed "" . wrap "<" ">",
-  ppLayout = xmobarColor colorYellow "",
-  ppTitle = xmobarColor colorGreen "" . shorten 70,
-  ppSep = " | "
-}
+myPP  = xmobarPP
+  { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
+  , ppLayout  = xmobarColor colorYellow ""
+  , ppTitle   = xmobarColor colorGreen  "" . shorten 70
+  , ppSep     = " | "
+  }
 
 -- border
-myBorderWidth = 5
-myNormalBorderColor = colorWhite
+myBorderWidth        = 5
+myNormalBorderColor  = colorWhite
 myFocusedBorderColor = colorRed
 
 -- KEYS
-m = mod4Mask -- mod key
+m = mod4Mask
 myModMask = m
 myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "picom --experimental-backends &"
-  spawnOnce "dunst &"
-  spawnOnce "wallpaper-unsplash &"
-  spawnOnce "nts run &"
-  spawnOnce "firefox &"
-  spawnOnce runNewsboat
-  spawnOnce runMutt
+  spawnOnce       "picom --experimental-backends &"
+  spawnOnce       "dunst &"
+  spawnOnce       "wallpaper-unsplash &"
+  spawnOnce       "nts run &"
+  spawnOnce       "firefox &"
+  spawnOnce       runNewsboat
+  spawnOnce       runMutt
   spawnOnOnce ws2 runUpgrade
   spawnOnOnce ws3 "ripcord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
-myLayoutHook =
-  smartBorders (
-    spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $
-      layoutHook def
-  )
+myLayoutHook = smartBorders $
+  spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True
+    $ layoutHook def
 
 myHandleEventHook = fullscreenEventHook
 
@@ -91,59 +90,52 @@ myManageHook = manageSpawn <+> composeAll
 
 -- ADDITIONAL KEYS
 myAdditionalKeys =
-  [
-    -- dmenu
-    ((m, xK_p), spawn runDmenu),
-    -- newsboat
-    ((m, xK_a), spawn runNewsboat),
-    -- firefox
-    ((m, xK_f), spawn "firefox &"),
-    -- ranger
-    ((m, xK_z), spawn (term "ranger")),
-    -- upgrade
-    ((m .|. shiftMask, xK_y), spawn runUpgrade),
+  [ ((m, xK_p),               spawn runDmenu)        -- dmenu
+  , ((m, xK_a),               spawn runNewsboat)     -- newsboat
+  , ((m, xK_f),               spawn "firefox &")     -- firefox
+  , ((m, xK_z),               spawn (term "ranger")) -- ranger
+  , ((m .|. shiftMask, xK_y), spawn runUpgrade)      -- upgrade
 
-    -- play radio
-    ((m, xK_r), spawn "nts run &"),
-    ((m .|. shiftMask, xK_r), spawn "nts run 2 &"),
-    ((m, xK_e), spawn "nts end &"),
+  -- radio
+  , ((m, xK_r),               spawn "nts run &")
+  , ((m .|. shiftMask, xK_r), spawn "nts run 2 &")
+  , ((m, xK_e),               spawn "nts end &")
 
-    -- volume
-    ((m, xK_equal), spawn "pulsemixer --change-volume +10 &"),
-    ((m, xK_minus), spawn "pulsemixer --change-volume -10 &"),
-    ((m, xK_0), spawn "pulsemixer --toggle-mute &"),
+  -- volume
+  , ((m, xK_equal), spawn "pulsemixer --change-volume +10 &")
+  , ((m, xK_minus), spawn "pulsemixer --change-volume -10 &")
+  , ((m, xK_0),     spawn "pulsemixer --toggle-mute &")
 
-    -- lock screen
-    ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &"),
+   -- lock screen
+  , ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &")
 
-    -- power
-    ((m, xK_End), spawn (term "sudo shutdown now")),
-    ((m .|. shiftMask, xK_End), spawn (term "sudo reboot")),
+  -- power
+  , ((m, xK_End),               spawn (term "sudo shutdown now"))
+  , ((m .|. shiftMask, xK_End), spawn (term "sudo reboot"))
 
-    -- screenshots
-    ((m, xK_Print),
-      spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png &"),
+   -- screenshots
+  , ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png &")
 
-    -- change wallpaper
-    ((m, xK_d), spawn "wallpaper-unsplash once &")
+   -- change wallpaper
+  , ((m, xK_d), spawn "wallpaper-unsplash once &")
   ]
 
--- SUMMARY
-myConfig = def {
-  terminal = myTerminal,
-  workspaces = myWorkspaces,
-  borderWidth = myBorderWidth,
-  normalBorderColor = myNormalBorderColor,
-  focusedBorderColor = myFocusedBorderColor,
+-- CONFIG
+myConfig = def
+  { terminal = myTerminal
+  , workspaces = myWorkspaces
+  , borderWidth = myBorderWidth
+  , normalBorderColor = myNormalBorderColor
+  , focusedBorderColor = myFocusedBorderColor
 
   -- keys
-  modMask = myModMask,
+  , modMask = myModMask
 
   -- hooks
-  startupHook = myStartupHook,
-  layoutHook = myLayoutHook,
-  handleEventHook = myHandleEventHook,
-  manageHook = myManageHook
-} `additionalKeys` myAdditionalKeys
+  , startupHook = myStartupHook
+  , layoutHook = myLayoutHook
+  , handleEventHook = myHandleEventHook
+  , manageHook = myManageHook
+  } `additionalKeys` myAdditionalKeys
 
 main = xmonad =<< statusBar myBar myPP myToggleStruts myConfig
