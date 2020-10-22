@@ -33,6 +33,7 @@ runDmenu = "dmenu_run" ++
   " -sb " ++ "'" ++ colorRed ++ "' &"
 runNewsboat = term "newsboat --refresh-on-start"
 runMutt     = term "mutt"
+runUpgrade  = term "echo 'Trying to upgrade...' && sudo pacman -Syu; read"
 
 -- workspaces
 ws1 = "1:WWW"
@@ -69,6 +70,7 @@ myStartupHook = do
   spawnOnce "firefox &"
   spawnOnce runNewsboat
   spawnOnce runMutt
+  spawnOnOnce ws2 runUpgrade
   spawnOnOnce ws3 "ripcord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
@@ -98,6 +100,8 @@ myAdditionalKeys =
     ((m, xK_f), spawn "firefox &"),
     -- ranger
     ((m, xK_z), spawn (term "ranger")),
+    -- upgrade
+    ((m .|. shiftMask, xK_y), spawn runUpgrade),
 
     -- play radio
     ((m, xK_r), spawn "nts run &"),
