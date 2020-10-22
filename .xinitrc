@@ -43,10 +43,7 @@ RATE=74.98
 xrandr --output $OUTPUT --mode $MODE --rate $RATE
 
 # wait for network
-nm-online --timeout 15
-
-# autorun
-st -e sh -c 'newsboat --refresh-on-start' &
+nm-online --timeout 10
 
 # run wm
 exec xmonad
