@@ -71,7 +71,7 @@ myStartupHook = do
   spawnOnce       "firefox &"
   spawnOnce       runNewsboat
   spawnOnce       runMutt
-  spawnOnOnce ws2 runUpgrade
+  -- spawnOnOnce ws2 runUpgrade
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
@@ -84,7 +84,7 @@ myHandleEventHook = fullscreenEventHook
 myManageHook = manageSpawn <+> composeAll
   [ className =? "mpv"              --> doFloat
   , className =? "firefox"          --> moveTo ws1
-  , appName   =? "ripcord"          --> moveTo ws3
+  , appName   =? "discord"          --> moveTo ws3
   , appName   =? "telegram-desktop" --> moveTo ws3
   ] where moveTo = doF . W.shift
 

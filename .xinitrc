@@ -23,6 +23,9 @@ fi
 # users path
 export PATH="$HOME/.bin:$PATH"
 
+# clean some garbage
+housekeeping &
+
 # normal pointer
 xsetroot -cursor_name left_ptr &
 # add ru keyboard and alt+shift toggle
@@ -40,7 +43,7 @@ OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
   sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
 MODE=1440x900
 RATE=74.98
-xrandr --output $OUTPUT --mode $MODE --rate $RATE
+xrandr --output $OUTPUT --mode $MODE --rate $RATE &
 
 # wait for network
 nm-online --timeout 10
