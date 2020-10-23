@@ -17,7 +17,7 @@ demoCommand:	xscreensaver-demo
 prefsCommand:
 nice:		10
 memoryLimit:	0
-fade:		True
+fade:		False
 unfade:		False
 fadeSeconds:	0:00:02
 fadeTicks:	20

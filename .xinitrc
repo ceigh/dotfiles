@@ -37,6 +37,7 @@ xinput set-prop 12 285 1 &
 
 # screensaver
 xscreensaver -no-splash &
+lightson -d 4 &
 
 # change freq
 OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
