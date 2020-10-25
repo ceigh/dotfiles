@@ -37,10 +37,10 @@ runMutt     = term "mutt"
 runUpgrade  = term "echo 'Trying to upgrade...' && sudo pacman -Syu; read"
 
 -- workspaces
-ws1 = "1:WWW"
-ws2 = "2:ZSH"
-ws3 = "3:IRC"
-ws4 = "4:VID"
+ws1 = "WWW"
+ws2 = "ZSH"
+ws3 = "IRC"
+ws4 = "VID"
 myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 
 -- bar
