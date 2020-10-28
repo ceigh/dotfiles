@@ -39,6 +39,9 @@ xinput set-prop 12 285 1 &
 xscreensaver -no-splash &
 lightson -d 4 &
 
+# true tone
+redshift &
+
 # change freq
 OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
   sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")

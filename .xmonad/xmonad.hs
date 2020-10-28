@@ -71,7 +71,6 @@ myStartupHook = do
   spawnOnce       "firefox &"
   spawnOnce       runNewsboat
   spawnOnce       runMutt
-  -- spawnOnOnce ws2 runUpgrade
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
