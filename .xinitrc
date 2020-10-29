@@ -46,7 +46,7 @@ redshift &
 OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
   sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
 MODE=1440x900
-RATE=74.98
+RATE=75
 xrandr --output $OUTPUT --mode $MODE --rate $RATE &
 
 # wait for network
