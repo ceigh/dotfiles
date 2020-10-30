@@ -7,6 +7,7 @@ import XMonad.Hooks.DynamicLog        -- bar
 import XMonad.Hooks.EwmhDesktops      -- chromium fullscreen
 import XMonad.Layout.Spacing          -- layout spacing
 import XMonad.Layout.NoBorders        -- hide lonely window border
+import XMonad.Hooks.EwmhDesktops      -- steam games
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
@@ -34,7 +35,6 @@ runDmenu = "dmenu_run" ++
   " -sb " ++ "'" ++ colorRed ++ "' &"
 runNewsboat = term "newsboat --refresh-on-start"
 runMutt     = term "mutt"
-runUpgrade  = term "echo 'Trying to upgrade...' && sudo pacman -Syu; read"
 
 -- workspaces
 ws1 = "WWW"
@@ -93,7 +93,6 @@ myAdditionalKeys =
   , ((m, xK_a),               spawn runNewsboat)     -- newsboat
   , ((m, xK_f),               spawn "firefox &")     -- firefox
   , ((m, xK_z),               spawn (term "ranger")) -- ranger
-  , ((m .|. shiftMask, xK_y), spawn runUpgrade)      -- upgrade
 
   -- radio
   , ((m, xK_r),               spawn "nts run &")
@@ -137,4 +136,4 @@ myConfig = def
   , manageHook = myManageHook
   } `additionalKeys` myAdditionalKeys
 
-main = xmonad =<< statusBar myBar myPP myToggleStruts myConfig
+main = xmonad =<< statusBar myBar myPP myToggleStruts (ewmh myConfig)
