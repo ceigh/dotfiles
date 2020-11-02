@@ -33,7 +33,7 @@ setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' &
 # enable numlock
 numlockx &
 # enable natural scrolling
-xinput set-prop 12 285 1 &
+xinput set-prop 12 287 1 &
 
 # screensaver
 xscreensaver -no-splash &
