@@ -52,6 +52,7 @@ alias cm='config commit -m'
 alias cl='config log --oneline'
 alias ch='config push'
 alias v=nvim
+alias xe='rg -e "\((WW|EE)\)" ~/.local/share/xorg/Xorg.0.log'
 
 # defaults
 export EDITOR=nvim
