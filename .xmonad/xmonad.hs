@@ -82,6 +82,7 @@ myHandleEventHook = fullscreenEventHook
 
 myManageHook = manageSpawn <+> composeAll
   [ className =? "mpv"              --> doFloat
+  , title     =? "Media viewer"     --> doFloat    -- telegram media
   , className =? "firefox"          --> moveTo ws1
   , appName   =? "discord"          --> moveTo ws3
   , appName   =? "telegram-desktop" --> moveTo ws3
