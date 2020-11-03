@@ -71,7 +71,7 @@ myStartupHook = do
   spawnOnce       "firefox &"
   spawnOnce       runNewsboat
   spawnOnce       runMutt
-  spawnOnOnce ws3 "discord &"
+  spawnOnOnce ws3 "discord --disable-smooth-scrolling &"
   spawnOnOnce ws3 "telegram-desktop &"
 
 myLayoutHook = smartBorders $
