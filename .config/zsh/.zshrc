@@ -32,9 +32,15 @@ alias la='ls -a'
 alias swap-clean='sudo swapoff -a && sudo swapon -a'
 alias wifi-monitor='nmcli d wifi'
 alias node-bind='sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``'
-alias page='git --no-pager log --oneline -n 5'
 alias v=nvim
 alias xe='rg -e "\((WW|EE)\)" ~/.local/share/xorg/Xorg.0.log'
+# git
+alias gs='git status'
+alias gf='git diff'
+alias ga='git add'
+alias gm='git commit -m'
+alias gl='git log --oneline'
+alias gh='git push'
 # dotfiles
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cs='config status'
