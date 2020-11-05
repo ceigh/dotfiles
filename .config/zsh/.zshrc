@@ -1,8 +1,3 @@
-# PLUGINS
-# inline suggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#444444'
-
 # COMPLETION
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
@@ -63,3 +58,10 @@ alias ch='config push'
 unsetopt nomatch
 # window title
 print -n '\e]2;Shell\a'
+
+# PLUGINS
+# inline suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#444444'
+# syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
