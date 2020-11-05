@@ -1,3 +1,8 @@
+# PLUGINS
+# inline suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#444444'
+
 # COMPLETION
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
