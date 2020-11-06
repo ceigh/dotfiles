@@ -51,6 +51,8 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'posva/vim-vue'
 " fixed typescript
 Plug 'leafgarland/typescript-vim'
+" graphql
+Plug 'jparise/vim-graphql'
 " pug
 Plug 'digitaltoad/vim-pug'
 " Plug 'evanleck/vim-svelte'
