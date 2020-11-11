@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+comm -23 <(pacman -Qqett | sort | uniq) <(pacman -Qqg base-devel | sort | uniq)

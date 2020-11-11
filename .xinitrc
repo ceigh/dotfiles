@@ -26,6 +26,9 @@ export PATH="$HOME/.bin:$PATH"
 # clean some garbage
 housekeeping &
 
+# keep list of installed packages
+installed >> ~/documents/installed.list.txt
+
 # normal pointer
 xsetroot -cursor_name left_ptr &
 # add ru keyboard and alt+shift toggle
