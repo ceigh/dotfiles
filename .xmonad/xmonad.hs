@@ -11,7 +11,7 @@ import XMonad.Hooks.EwmhDesktops      -- steam games
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
-fontDefault = "'Iosevka Semibold-13'"
+fontDefault = "'Iosevka Medium-12'"
 
 colorWhite  = "#B2B2B2"
 colorBlack  = "#080808"
