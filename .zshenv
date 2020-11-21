@@ -5,7 +5,7 @@ export EDITOR=nvim
 export PAGER=less
 # me
 export EMAIL='me@ceigh.com'
-export NAME='Artjom Löbsack'
+export MY_NAME='Artjom Löbsack'
 
 # PATH
 # npm
