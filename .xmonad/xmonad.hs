@@ -34,7 +34,7 @@ runDmenu = "dmenu_run" ++
   " -nb " ++ "'" ++ colorBlack ++ "'" ++
   " -sb " ++ "'" ++ colorRed ++ "' &"
 runNewsboat = term "newsboat --refresh-on-start"
-runMutt     = term "mutt"
+runMutt     = term "neomutt"
 
 -- workspaces
 ws1 = "WWW"
