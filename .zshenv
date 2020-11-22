@@ -18,6 +18,6 @@ path+=(~/.yarn/bin ~/.config/yarn/global/node_modules/.bin)
 # cargo
 path+=~/.cargo/bin
 # gems
-path+=/.gem/ruby/2.7.0/bin
+path+=~/.gem/ruby/2.7.0/bin
 # current dir
 path+=.
