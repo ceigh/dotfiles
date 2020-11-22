@@ -41,8 +41,8 @@ ws1 = "WWW"
 ws2 = "ZSH"
 ws3 = "IRC"
 ws4 = "VID"
-ws5 = "GAM"
-ws6 = "DOC"
+ws5 = "DOC"
+ws6 = "GAM"
 myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6] ++ map show [7..9]
 
 -- bar
