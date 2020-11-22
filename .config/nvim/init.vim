@@ -4,7 +4,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " c/c++
 Plug 'zchee/deoplete-clang'
 " js
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 " ts
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
@@ -50,7 +50,8 @@ Plug 'bluz71/vim-moonfly-colors'
 " vue
 Plug 'posva/vim-vue'
 " fixed typescript
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'leafgarland/typescript-vim'
 " graphql
 Plug 'jparise/vim-graphql'
 " pug
@@ -105,13 +106,14 @@ set completeopt-=preview
 " NERDTREE
 " hide swap files
 let NERDTreeIgnore = ['\.swp$']
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
+" let g:NERDTreeDirArrowExpandable = '+'
+" let g:NERDTreeDirArrowCollapsible = '-'
 
 " DEOPLETE
 let g:deoplete#enable_at_startup = 1
 " vue ts support
 let g:nvim_typescript#vue_support = 1
+let g:nvim_typescript#diagnostics_enable = 0
 
 " AUTOSAVE
 let g:auto_save = 1
