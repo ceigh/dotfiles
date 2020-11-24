@@ -6,6 +6,8 @@ export PAGER=less
 # me
 export EMAIL='me@ceigh.com'
 export MY_NAME='Artjom Löbsack'
+# wallpaper
+export WALLPAPER_TAGS=arizona
 
 # PATH
 # npm
