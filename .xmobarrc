@@ -35,6 +35,13 @@ Config {
       "--high", "#FF5454"
     ] 50,
 
+    -- network
+    Run DynNetwork [
+      "--template", "<rx>KB/<tx>KB",
+      "--",
+      "--devices", "enp2s0,wlp0s26f7u4"
+    ] 20,
+
     -- keyboard layout
     Run Kbd [
       ("us", "US"),
@@ -66,5 +73,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory% %swap%</action> | %dynnetwork% | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% "
 }

@@ -50,7 +50,7 @@ myBar = "xmobar"
 myPP  = xmobarPP
   { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
   , ppLayout  = xmobarColor colorYellow ""
-  , ppTitle   = xmobarColor colorGreen  "" . shorten 70
+  , ppTitle   = xmobarColor colorGreen  "" . shorten 50
   , ppSep     = " | "
   }
 
