@@ -2,7 +2,7 @@
 # image resolution
 readonly RESOLUTION=1920x1080
 # tags comma-separated
-readonly TAGS=arizona
+readonly TAGS=nature,arizona,desert
 readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
 # echo "Fetching image from $URL"
 
