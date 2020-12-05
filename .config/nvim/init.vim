@@ -90,7 +90,7 @@ highlight Normal guibg=NONE ctermbg=NONE
 highlight Todo ctermbg=DarkYellow ctermfg=Black guibg=DarkYellow guifg=Black
 " line numbers
 set number
-set relativenumber
+" set relativenumber
 " tab to space
 set expandtab
 " tab width
