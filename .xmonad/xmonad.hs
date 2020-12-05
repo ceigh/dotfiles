@@ -107,17 +107,17 @@ myAdditionalKeys =
   , ((m, xK_minus), spawn "pulsemixer --change-volume -10 &")
   , ((m, xK_0),     spawn "pulsemixer --toggle-mute &")
 
-   -- lock screen
-  , ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &")
+  -- lock screen
+  -- , ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &")
 
   -- power
   , ((m, xK_End),               spawn (term "sudo shutdown now"))
   , ((m .|. shiftMask, xK_End), spawn (term "sudo reboot"))
 
-   -- screenshots
+  -- screenshots
   , ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png &")
 
-   -- change wallpaper
+  -- change wallpaper
   , ((m, xK_d), spawn "wallpaper-unsplash once &")
   ]
 

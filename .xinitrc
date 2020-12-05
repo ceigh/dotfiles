@@ -27,7 +27,7 @@ export PATH="$HOME/.bin:$PATH"
 housekeeping &
 
 # keep list of installed packages
-installed >> ~/documents/installed.list.txt
+installed > ~/documents/installed.list.txt &
 
 # normal pointer
 xsetroot -cursor_name left_ptr &
@@ -39,8 +39,8 @@ numlockx &
 xinput set-prop 12 287 1 &
 
 # screensaver
-xscreensaver -no-splash &
-lightson -d 4 &
+# xscreensaver -no-splash &
+# lightson -d 4 &
 
 # true tone
 redshift &
