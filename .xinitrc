@@ -1,4 +1,6 @@
 #!/bin/sh
+# boilerplate section
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 
@@ -19,6 +21,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  done
  unset f
 fi
+
+# my init section
 
 # users path
 export PATH="$HOME/.bin:$PATH"
@@ -45,12 +49,8 @@ xinput set-prop 12 287 1 &
 # true tone
 redshift &
 
-# change freq
-OUTPUT=$(xrandr | grep -E " connected (primary )?[1-9]+" |
-  sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
-MODE=1440x900
-RATE=75
-xrandr --output $OUTPUT --mode $MODE --rate $RATE &
+# change display freq
+xrandr --rate 75 &
 
 # wait for network
 nm-online --timeout 10
