@@ -109,6 +109,7 @@ myAdditionalKeys =
 
   -- lock screen
   -- , ((m .|. shiftMask, xK_l), spawn "xscreensaver-command -lock &")
+  , ((m .|. shiftMask, xK_l), spawn "slock")
 
   -- power
   , ((m, xK_End),               spawn (term "sudo shutdown now"))
