@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+[ -z $1 ] && RATE=750 || RATE=$1
+[ -z $2 ] && FILE="$HOME/documents/hours.txt" || FILE=$2
+# printf "$FILE\nrate: $RATE\n\n"
+
+payed=$(sed '1!d' $FILE | sed 's/\*//')
+
+line2=$(sed '2!d' $FILE)
+before=$(echo $line2 | sed 's/ .*//')
+after=$(echo $line2 | sed 's/.*> //')
+
+sum_today=$(( $RATE * ($after - $before) ))
+sum_total=$(( $RATE * ($after - $payed) ))
+printf "today: $sum_today\ntotal: $sum_total\n"
