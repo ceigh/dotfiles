@@ -6,9 +6,9 @@ show-read-feeds no
 keep-articles-days 7
 
 # colorsheme
-include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
+# include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
 # include /usr/share/doc/newsboat/contrib/colorschemes/plain
-# include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
+include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
 
 # reload multiple
 reload-threads 100
