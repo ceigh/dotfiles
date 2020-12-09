@@ -1,9 +1,10 @@
 #!/usr/bin/env sh
 # image resolution
-readonly RESOLUTION=1920x1080
+# readonly RESOLUTION=
 # tags comma-separated
-readonly TAGS=nature,forest
-readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
+# readonly TAGS=
+# readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
+readonly URL="https://source.unsplash.com/collection/1343739"
 # echo "Fetching image from $URL"
 
 set_bg() {
