@@ -41,6 +41,7 @@ alias ga='git add'
 alias gm='git commit -m'
 alias gl='git log --oneline'
 alias gh='git push'
+alias gc='git checkout'
 # dotfiles
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias cs='config status'
@@ -49,6 +50,9 @@ alias ca='config add'
 alias cm='config commit -m'
 alias cl='config log --oneline'
 alias ch='config push'
+# translate
+alias t='trans'
+alias tr='trans :ru'
 
 # MISC
 # remember directory on new tab
