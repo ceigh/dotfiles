@@ -66,7 +66,8 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce       "picom &"
+  -- spawnOnce       "picom &"
+  spawnOnce       "picom --experimental-backends &"
   spawnOnce       "slock &"
   spawnOnce       "dunst &"
   spawnOnce       "wallpaper-unsplash &"
@@ -74,7 +75,7 @@ myStartupHook = do
   spawnOnce       "firefox &"
   spawnOnce       runNewsboat
   spawnOnce       runMutt
-  spawnOnOnce ws3 "discord --disable-smooth-scrolling &"
+  spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
 myLayoutHook = smartBorders $
