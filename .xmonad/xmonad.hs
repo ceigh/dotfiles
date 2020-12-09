@@ -6,6 +6,8 @@ import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Hooks.DynamicLog        -- bar
 import XMonad.Hooks.EwmhDesktops      -- chromium fullscreen
 import XMonad.Layout.Spacing          -- layout spacing
+import XMonad.Layout.Spiral           -- spiral layout
+import XMonad.Layout.Grid             -- grid layout
 import XMonad.Layout.NoBorders        -- hide lonely window border
 import XMonad.Hooks.EwmhDesktops      -- steam games
 import qualified XMonad.StackSet as W -- attach windows to workspaces
@@ -79,8 +81,12 @@ myStartupHook = do
   spawnOnOnce ws3 "telegram-desktop &"
 
 myLayoutHook = smartBorders $
-  spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True
-    $ layoutHook def
+  spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $
+  layoutTall ||| layoutMirrorTall ||| Grid ||| layoutSpiral ||| Full
+    where
+      layoutTall       = Tall 1 (5 / 100) (2 / 3)
+      layoutMirrorTall = Mirror (Tall 1 (5 / 100) (2 / 3))
+      layoutSpiral     = spiral (6 / 7)
 
 myHandleEventHook = fullscreenEventHook
 
