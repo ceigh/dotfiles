@@ -103,6 +103,7 @@ myAdditionalKeys =
   , ((m, xK_a),               spawn runNewsboat)     -- newsboat
   , ((m, xK_f),               spawn "firefox &")     -- firefox
   , ((m, xK_z),               spawn (term "ranger")) -- ranger
+  , ((m .|. shiftMask, xK_m), spawn runMutt)         -- mutt
 
   -- radio
   , ((m, xK_r),               spawn "nts run &")
