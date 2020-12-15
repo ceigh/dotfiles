@@ -1,14 +1,16 @@
 #!/usr/bin/env sh
-# image resolution
-# readonly RESOLUTION=
 # tags comma-separated
-# readonly TAGS=
-# readonly URL="https://source.unsplash.com/${RESOLUTION}/?${TAGS}"
-readonly URL="https://source.unsplash.com/collection/1343739"
+[ -z $2 ] && TAGS=nature || TAGS=$2
+# image resolution
+[ -z $3 ] && RESOLUTION=3840x2160 || RESOLUTION=$3
+readonly URL="https://source.unsplash.com/featured/${RESOLUTION}/?${TAGS}"
+# directory with local images
+[ -z $4 ] && FALLBACK_DIR=~/pictures/wallpapers || FALLBACK_DIR=$4
+
 # echo "Fetching image from $URL"
 
 set_bg() {
-  feh --bg-fill $URL || feh --bg-fill --randomize ~/pictures/wallpapers
+  feh --bg-fill $URL || feh --bg-fill --randomize $FALLBACK_DIR
 }
 
 # set bg one time
