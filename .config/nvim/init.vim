@@ -102,6 +102,8 @@ set cursorline
 set noshowmode
 " remove autocomplete meta information in new window
 set completeopt-=preview
+" for parcel hot reloading
+set backupcopy=yes
 
 " NERDTREE
 " hide swap files
