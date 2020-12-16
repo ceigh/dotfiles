@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# show sensors every $TIME
+[ -z $1 ] && TIME=1s || TIME=$1
+while true; do
+  clear
+  sensors
+  sleep $TIME
+done
