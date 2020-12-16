@@ -50,7 +50,7 @@ Config {
 
     -- date
     Run Date "%^a %d/%m" "date" 10,
-    Run Date "%I:%M" "date:time" 10,
+    Run Date "%H:%M" "date:time" 10,
 
     -- uptime
     Run Uptime [
