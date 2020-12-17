@@ -124,7 +124,7 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_End), spawn (term "sudo reboot"))
 
   -- screenshots
-  , ((m, xK_Print), spawn "import -window root $HOME/pictures/`date +%d-%m-%H:%M`.png &")
+  , ((m, xK_Print), spawn "import -window root $HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png &")
 
   -- change wallpaper
   , ((m, xK_d), spawn "wallpaper-unsplash once &")
