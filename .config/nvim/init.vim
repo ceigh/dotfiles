@@ -59,6 +59,7 @@ Plug 'digitaltoad/vim-pug'
 " Plug 'evanleck/vim-svelte'
 " Plug 'purescript-contrib/purescript-vim'
 " Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 call plug#end()
 
 " HOT KEYS
