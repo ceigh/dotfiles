@@ -74,8 +74,8 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
 " nnoremap zS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
 " show/hide line numbers
-nnoremap zn :set nonumber norelativenumber<CR>
-nnoremap zN :set number relativenumber<CR>
+nnoremap zn :set nonumber<CR>
+nnoremap zN :set number<CR>
 
 " COMMON
 " enable syntax highlight
