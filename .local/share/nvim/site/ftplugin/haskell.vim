@@ -1,6 +1,6 @@
 " ALE
 " static linking
-let b:ale_linters_static = ['hlint', 'stack_build', 'stack_ghc']
+let b:ale_linters_static = ['hlint', 'stack_build']
 " dynamic
 let b:ale_linters_dynamic = b:ale_linters_static + ['ghc']
 
