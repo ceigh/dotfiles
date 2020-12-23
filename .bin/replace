@@ -5,6 +5,6 @@
 
 EXPR="s${SEP}${IF}${SEP}${OF}${SEP}g"
 
-echo "$1 -> $2\n$EXPR"
+printf "$1 -> $2\n$EXPR"
 
 rg -l $IF | xargs -d '\n' sed -i $EXPR
