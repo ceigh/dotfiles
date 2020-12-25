@@ -56,4 +56,5 @@ xrandr --rate 75 &
 nm-online --timeout 10
 
 # run wm
+xmonad --recompile
 exec xmonad
