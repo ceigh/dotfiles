@@ -68,7 +68,7 @@ nnoremap <F2> :NERDTreeToggle<CR>
 " show full lint message
 nnoremap <F3> :ALEDetail<CR>
 " fix lint issues
-noremap <F4> :ALEFix<CR>
+nnoremap <F4> :ALEFix<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
@@ -76,6 +76,9 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show/hide line numbers
 nnoremap zn :set nonumber<CR>
 nnoremap zN :set number<CR>
+" comment -in/-out
+xnoremap tc :s/^/# /<CR>:noh<CR>
+xnoremap Tc :s/^# //<CR>:noh<CR>
 
 " COMMON
 " enable syntax highlight
