@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 # tags comma-separated
-[ -z $2 ] && TAGS=nature || TAGS=$2
+[ -z $2 ] && TAGS=mojave|| TAGS=$2
 # image resolution
-[ -z $3 ] && RESOLUTION=3840x2160 || RESOLUTION=$3
+[ -z $3 ] && RESOLUTION=1920x1080 || RESOLUTION=$3
 readonly URL="https://source.unsplash.com/featured/${RESOLUTION}/?${TAGS}"
 # directory with local images
 [ -z $4 ] && FALLBACK_DIR=~/pictures/wallpapers || FALLBACK_DIR=$4
