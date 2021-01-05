@@ -4,7 +4,6 @@ import XMonad.Util.SpawnOnce          -- start hook
 import XMonad.Actions.SpawnOn         -- pin windows to workspaces
 import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Hooks.DynamicLog        -- bar
-import XMonad.Hooks.EwmhDesktops      -- chromium fullscreen
 import XMonad.Layout.Spacing          -- layout spacing
 import XMonad.Layout.Spiral           -- spiral layout
 import XMonad.Layout.Grid             -- grid layout
@@ -102,7 +101,7 @@ myAdditionalKeys =
   [ ((m, xK_p),               spawn runDmenu)        -- dmenu
   , ((m, xK_a),               spawn runNewsboat)     -- newsboat
   , ((m, xK_f),               spawn "firefox &")     -- firefox
-  , ((m, xK_z),               spawn (term "ranger")) -- ranger
+  , ((m, xK_z),               spawn $ term "ranger") -- ranger
   , ((m .|. shiftMask, xK_m), spawn runMutt)         -- mutt
 
   -- radio
@@ -120,14 +119,17 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_l), spawn "slock")
 
   -- power
-  , ((m, xK_End),               spawn (term "sudo shutdown now"))
-  , ((m .|. shiftMask, xK_End), spawn (term "sudo reboot"))
+  , ((m, xK_End),               spawn $ term "sudo shutdown now")
+  , ((m .|. shiftMask, xK_End), spawn $ term "sudo reboot")
 
   -- screenshots
   , ((m, xK_Print), spawn "import -window root $HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png &")
 
   -- change wallpaper
   , ((m, xK_d), spawn "wallpaper-unsplash once &")
+
+  -- htop
+  , ((m, xK_F9), spawn $ term "htop")
   ]
 
 -- CONFIG
