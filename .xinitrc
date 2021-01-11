@@ -40,14 +40,14 @@ setxkbmap -layout us,ru -option 'grp:alt_shift_toggle' &
 # enable numlock
 numlockx &
 # enable natural scrolling
-xinput set-prop 12 287 1 &
+xinput set-prop 9 279 1 &
 
 # screensaver
 # xscreensaver -no-splash &
 # lightson -d 4 &
 
 # true tone
-redshift &
+# redshift &
 
 # change display freq
 xrandr --rate 75 &
