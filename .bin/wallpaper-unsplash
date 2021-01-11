@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # tags comma-separated
-[ -z $2 ] && TAGS=mojave|| TAGS=$2
+[ -z $2 ] && TAGS=spider || TAGS=$2
 # image resolution
 [ -z $3 ] && RESOLUTION=1920x1080 || RESOLUTION=$3
 readonly URL="https://source.unsplash.com/featured/${RESOLUTION}/?${TAGS}"
