@@ -19,6 +19,7 @@ cronie
 curlftpfs
 deno
 devour
+dhclient
 dhcpcd
 dialog
 discord_arch_electron
@@ -31,6 +32,7 @@ dunst
 firefox
 gftp
 ghostscript
+gifsicle
 gimp
 git-hours
 gource
@@ -81,6 +83,7 @@ nvidia-340xx-lts-dkms
 ocl-icd
 otf-hasklig
 otf-libertinus
+pavucontrol-qt
 pax-utils
 pcsx2
 perl-cgi
@@ -101,12 +104,14 @@ screen
 skypeforlinux-stable-bin
 sox
 speedtest-cli
+sshpass
 stack
 steam
 svgcleaner
 sysbench
 telegram-desktop
 tex-gyre-fonts
+thunar
 torbrowser-launcher
 translate-shell
 transmission-gtk
@@ -117,13 +122,13 @@ ttf-iosevka
 ttf-iosevka-term
 ttf-roboto
 ttf-symbola
+tumbler
 ufw
 unrar
 update-grub
 v4l2loopback-dkms-git
 valgrind
 vi
-vlc
 vte3
 wireless_tools
 wireshark-qt
