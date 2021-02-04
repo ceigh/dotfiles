@@ -55,6 +55,10 @@ alias cha='config remote | xargs -L1 git --git-dir=$HOME/.dotfiles/ --work-tree=
 # translate
 alias t='trans'
 alias tr='trans :ru'
+# fit size
+alias feh='feh --scale-down --auto-zoom'
+# show diskspace
+alias dfh='df -h | rg /$'
 
 # MISC
 # remember directory on new tab
