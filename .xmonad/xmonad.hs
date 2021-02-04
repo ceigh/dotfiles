@@ -67,14 +67,14 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce       "picom &"
   spawnOnce       "slock &"
+  spawnOnce       "picom &"
   spawnOnce       "dunst &"
   spawnOnce       "wallpaper-unsplash &"
   spawnOnce       "nts run &"
-  spawnOnce       "firefox &"
-  spawnOnce       runNewsboat
-  spawnOnce       runMutt
+  -- spawnOnce       "firefox &"
+  spawnOnOnce ws4 runNewsboat
+  -- spawnOnce       runMutt
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
@@ -90,7 +90,7 @@ myHandleEventHook = fullscreenEventHook
 
 myManageHook = manageSpawn <+> composeAll
   [ className =? "mpv"              --> doFloat
-  , title     =? "Media viewer"     --> doFloat    -- telegram media
+  -- , title     =? "Media viewer"     --> doFloat    -- telegram media
   , className =? "firefox"          --> moveTo ws1
   , appName   =? "discord"          --> moveTo ws3
   , appName   =? "telegram-desktop" --> moveTo ws3
@@ -119,8 +119,8 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_l), spawn "slock")
 
   -- power
-  , ((m, xK_End),               spawn $ term "sudo shutdown now")
-  , ((m .|. shiftMask, xK_End), spawn $ term "sudo reboot")
+  , ((m, xK_End),               spawn $ term "echo 'Shutdown now?'; sudo shutdown now")
+  , ((m .|. shiftMask, xK_End), spawn $ term "echo 'Reboot now?'; sudo reboot")
 
   -- screenshots
   , ((m, xK_Print), spawn "import -window root $HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png &")
