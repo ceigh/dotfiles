@@ -47,14 +47,16 @@ xinput set-prop 9 279 1 &
 # lightson -d 4 &
 
 # true tone
-# redshift &
+redshift &
 
 # change display freq
 xrandr --rate 75 &
+
+# recompile for sure
+xmonad --recompile &
 
 # wait for network
 nm-online --timeout 10
 
 # run wm
-xmonad --recompile
 exec xmonad
