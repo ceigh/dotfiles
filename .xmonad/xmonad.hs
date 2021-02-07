@@ -73,7 +73,7 @@ myStartupHook = do
   spawnOnce       "wallpaper-unsplash &"
   spawnOnce       "nts run &"
   -- spawnOnce       "firefox &"
-  spawnOnOnce ws4 runNewsboat
+  -- spawnOnOnce ws4 runNewsboat
   -- spawnOnce       runMutt
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
