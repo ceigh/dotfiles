@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+cd $HOME
+rm -rf .NERDTreeBookmarks .lesshst .wget-hsts .node_repl_history
