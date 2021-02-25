@@ -3,7 +3,7 @@
 show-read-feeds no
 
 # remove old articles
-keep-articles-days 7
+keep-articles-days 90
 
 # colorsheme
 # include /usr/share/doc/newsboat/contrib/colorschemes/kinda-maia
