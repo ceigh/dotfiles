@@ -26,14 +26,12 @@ dialog
 discord_arch_electron
 dmenu
 dmidecode
-docker-compose
 dos2unix
 downgrade
 droidcam
 dunst
 firefox
 gftp
-ghostscript
 gifsicle
 gimp
 git-hours
@@ -47,6 +45,7 @@ htop
 iftop
 ifuse
 inkscape
+intel-ucode
 joyutils
 jq
 kega-fusion
@@ -71,6 +70,7 @@ mesa-demos
 minecraft-launcher
 mousetweaks
 mpv
+mtr
 mutt-wizard
 neofetch
 neovim
