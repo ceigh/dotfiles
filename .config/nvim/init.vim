@@ -60,6 +60,7 @@ Plug 'digitaltoad/vim-pug'
 " Plug 'purescript-contrib/purescript-vim'
 " Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+Plug 'antonk52/vim-browserslist'
 call plug#end()
 
 " HOT KEYS
