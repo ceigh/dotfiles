@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+xinput set-prop 9 279 1
