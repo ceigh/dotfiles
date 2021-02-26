@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# sets connected display resolution and rate to top values
+
+raw=`xrandr`
+top=`awk 'NR == 4' <<< $raw`
+
+output=`grep ' connected ' <<< $raw | awk '{ print $1 }'`
+mode=`awk '{ print $1 }' <<< $top`
+rate=`awk '{ print $NF }' <<< $top | cut --characters -5`
+
+[ "$1" = -v ] && echo "$output $mode $rate"
+xrandr --output $output --mode $mode --rate $rate
