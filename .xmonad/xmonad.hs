@@ -9,6 +9,7 @@ import XMonad.Layout.Spiral           -- spiral layout
 import XMonad.Layout.Grid             -- grid layout
 import XMonad.Layout.NoBorders        -- hide lonely window border
 import XMonad.Hooks.EwmhDesktops      -- steam games
+import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
@@ -67,9 +68,9 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce       "slock &"
-  spawnOnce       "picom &"
-  spawnOnce       "dunst &"
+  -- spawnOnce       "slock &"
+  -- spawnOnce       "picom &"
+  -- spawnOnce       "dunst &"
   spawnOnce       "wallpaper-unsplash &"
   spawnOnce       "nts run &"
   -- spawnOnce       "firefox &"
@@ -90,7 +91,7 @@ myHandleEventHook = fullscreenEventHook
 
 myManageHook = manageSpawn <+> composeAll
   [ className =? "mpv"              --> doFloat
-  -- , title     =? "Media viewer"     --> doFloat    -- telegram media
+  , title     =? "Media viewer"     --> doFullFloat  -- telegram media
   , className =? "firefox"          --> moveTo ws1
   , appName   =? "discord"          --> moveTo ws3
   , appName   =? "telegram-desktop" --> moveTo ws3
@@ -130,6 +131,12 @@ myAdditionalKeys =
 
   -- htop
   , ((m, xK_F9), spawn $ term "htop")
+
+  -- restore keyboard layout
+  , ((m, xK_F11), spawn "kb-layout")
+
+  -- restore natural scrolling
+  , ((m, xK_F12), spawn "natural-scrolling")
   ]
 
 -- CONFIG
