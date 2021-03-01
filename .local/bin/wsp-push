@@ -2,8 +2,8 @@
 git push --no-verify \
   && git checkout master \
   && git pull \
-  && git push github \
+  && git push --no-verify github \
   && git checkout development \
   && git merge master \
-  && git push \
-  && git push github \
+  && git push --no-verify \
+  && git push --no-verify github \
