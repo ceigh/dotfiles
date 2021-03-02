@@ -103,6 +103,8 @@ set shiftwidth=2
 set tabstop=2
 " highlight current line
 set cursorline
+" highlight max len
+set colorcolumn=70
 " hide mode name under lightline
 set noshowmode
 " remove autocomplete meta information in new window
