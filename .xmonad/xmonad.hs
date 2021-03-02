@@ -38,6 +38,22 @@ runDmenu = "dmenu_run" ++
 runNewsboat = term "newsboat --refresh-on-start"
 runMutt     = term "neomutt"
 
+-- make screenshot
+-- fullscreen: capture root, otherwise select area
+-- save: save image in filesystem, otherwise copy to clipboard
+shot :: Bool -> Bool -> X()
+shot fullscreen save
+  | fullscreen     && save     = spawn $ root ++ file ++ bg
+  | fullscreen     && not save = spawn $ root ++ clip ++ bg
+  | not fullscreen && save     = spawn $ area ++ file ++ bg
+  | not fullscreen && not save = spawn $ area ++ clip ++ bg
+  where
+    root   = "import -window root "
+    area   = "import "
+    file   = "$HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png"
+    clip   = "png:- | xclip -selection clipboard -target image/png"
+    bg     = " &"
+
 -- workspaces
 ws1 = "WWW"
 ws2 = "ZSH"
@@ -124,7 +140,10 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_End), spawn $ term "echo 'Reboot now?'; sudo reboot")
 
   -- screenshots
-  , ((m, xK_Print), spawn "import -window root $HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png &")
+  , ((m, xK_Print),                               shot True False)
+  , ((m .|. controlMask, xK_Print),               shot True True)
+  , ((m .|. shiftMask, xK_Print),                 shot False False)
+  , ((m .|. shiftMask .|. controlMask, xK_Print), shot False True)
 
   -- change wallpaper
   , ((m, xK_d), spawn "wallpaper-unsplash once &")
