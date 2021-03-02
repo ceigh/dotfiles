@@ -95,8 +95,8 @@ myStartupHook = do
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
-myLayoutHook = smartBorders $
-  spacingRaw True (Border 10 10 10 10) True (Border 10 10 10 10) True $
+myLayoutHook = smartBorders $ spacingRaw
+  True (Border 10 10 10 10) True (Border 10 10 10 10) True $
   layoutTall ||| layoutMirrorTall ||| Grid ||| layoutSpiral ||| Full
     where
       layoutTall       = Tall 1 (5 / 100) (2 / 3)
@@ -136,8 +136,10 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_l), spawn "slock")
 
   -- power
-  , ((m, xK_End),               spawn $ term "echo 'Shutdown now?'; sudo shutdown now")
-  , ((m .|. shiftMask, xK_End), spawn $ term "echo 'Reboot now?'; sudo reboot")
+  , ((m, xK_End),               spawn $
+    term "echo 'Shutdown now?'; sudo shutdown now")
+  , ((m .|. shiftMask, xK_End), spawn $
+    term "echo 'Reboot now?'; sudo reboot")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
