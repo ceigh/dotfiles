@@ -30,6 +30,9 @@ picom &
 # notifications
 dunst &
 
+# recompile for sure
+xmonad --recompile &
+
 # wait for network
 nm-online --timeout 10
 
