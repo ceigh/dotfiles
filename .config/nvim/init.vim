@@ -46,6 +46,9 @@ Plug 'ap/vim-css-color'
 " Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'bluz71/vim-moonfly-colors'
 
+" MARKDOWN PREVIEW
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " SYNTAX
 " vue
 Plug 'posva/vim-vue'
