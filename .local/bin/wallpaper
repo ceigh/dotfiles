@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set_bg() {
+  feh --bg-fill --randomize ~/pictures/wallpapers/earth
+}
+
+[ "$1" = once ] && set_bg && exit 0
+
+while true; do
+  set_bg
+  sleep 10m
+done

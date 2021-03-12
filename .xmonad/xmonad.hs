@@ -87,7 +87,7 @@ myStartupHook = do
   -- spawnOnce       "slock &"
   -- spawnOnce       "picom &"
   -- spawnOnce       "dunst &"
-  spawnOnce       "wallpaper-unsplash &"
+  spawnOnce       "wallpaper &"
   spawnOnce       "nts run &"
   -- spawnOnce       "firefox &"
   -- spawnOnOnce ws4 runNewsboat
@@ -148,7 +148,7 @@ myAdditionalKeys =
   , ((m .|. shiftMask .|. controlMask, xK_Print), shot False True)
 
   -- change wallpaper
-  , ((m, xK_d), spawn "wallpaper-unsplash once &")
+  , ((m, xK_d), spawn "wallpaper once &")
 
   -- htop
   , ((m, xK_F9), spawn $ term "htop")
