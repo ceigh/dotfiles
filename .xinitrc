@@ -34,7 +34,7 @@ dunst &
 xmonad --recompile &
 
 # wait for network
-nm-online --timeout 10
+# nm-online --timeout 10
 
 # run wm
 exec xmonad
