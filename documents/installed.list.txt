@@ -112,7 +112,6 @@ sysbench
 telegram-desktop
 termdown
 tex-gyre-fonts
-thunar
 torbrowser-launcher
 translate-shell
 transmission-gtk
@@ -130,7 +129,6 @@ unzip
 update-grub
 valgrind
 vi
-virtualbox
 vte3
 wget
 wireless_tools
