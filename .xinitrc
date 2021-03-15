@@ -30,11 +30,10 @@ picom &
 # notifications
 dunst &
 
-# recompile for sure
-xmonad --recompile &
-
 # wait for network
-# nm-online --timeout 10
+nm-online --timeout 10
 
+# recompile for sure
+xmonad --recompile
 # run wm
 exec xmonad
