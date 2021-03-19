@@ -5,11 +5,24 @@ zstyle ':completion:*' rehash true
 setopt COMPLETE_ALIASES
 _comp_options+=(globdots) # for hidden files
 
+# VI MODE
+bindkey -v
+KEYTIMEOUT=1
+function zle-line-init zle-keymap-select {
+  case $KEYMAP in
+    vicmd) vi_mode=N; echo -ne '\e[1 q';;
+    viins|main) vi_mode=I; echo -ne '\e[5 q';;
+  esac
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # PROMPT
 autoload -Uz vcs_info && precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{3}@%b%f '
 setopt PROMPT_SUBST
-PROMPT='%F{2}%~%f ${vcs_info_msg_0_}$ '
+PROMPT='%F{2}%~%f ${vcs_info_msg_0_}${vi_mode} $ '
 
 # HISTORY
 setopt HIST_IGNORE_DUPS
@@ -18,7 +31,7 @@ HISTFILE=~/.cache/zsh/history
 HISTSIZE=500
 SAVEHIST=500
 
-# KEYS
+# FIX SOME KEYS
 bindkey '\e[H'  beginning-of-line    # Home
 bindkey '\e[4~' end-of-line          # End
 bindkey '\e[4h' overwrite-mode       # Insert
