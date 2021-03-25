@@ -49,6 +49,9 @@ Plug 'bluz71/vim-moonfly-colors'
 " MARKDOWN PREVIEW
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
+" RESTORE CURSOR
+Plug 'farmergreg/vim-lastplace'
+
 " SYNTAX
 " vue
 Plug 'posva/vim-vue'
