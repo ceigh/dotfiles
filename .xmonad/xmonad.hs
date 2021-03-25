@@ -30,7 +30,6 @@ term :: String -> String
 term command = myTerminal ++ " -e sh -c \"" ++ command ++ "\" &"
 
 -- commands
-runRofi = "rofi -show run"
 runNewsboat = term "newsboat --refresh-on-start"
 runMutt     = term "neomutt"
 
@@ -109,11 +108,12 @@ myManageHook = manageSpawn <+> composeAll
 
 -- ADDITIONAL KEYS
 myAdditionalKeys =
-  [ ((m, xK_p),               spawn runRofi)         -- rofi
-  , ((m, xK_a),               spawn runNewsboat)     -- newsboat
-  , ((m, xK_f),               spawn "firefox &")     -- firefox
-  , ((m, xK_z),               spawn $ term "ranger") -- ranger
-  , ((m .|. shiftMask, xK_m), spawn runMutt)         -- mutt
+  [ ((m, xK_p),               spawn "rofi -show run") -- rofi
+  , ((m .|. shiftMask, xK_p), spawn "rofi -show")
+  , ((m, xK_a),               spawn runNewsboat)      -- newsboat
+  , ((m, xK_f),               spawn "firefox &")      -- firefox
+  , ((m, xK_z),               spawn $ term "ranger")  -- ranger
+  , ((m .|. shiftMask, xK_m), spawn runMutt)          -- mutt
 
   -- radio
   , ((m, xK_r),               spawn "nts run &")
