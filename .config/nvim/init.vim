@@ -121,6 +121,7 @@ set completeopt-=preview
 set backupcopy=yes
 " change window title to current filename
 set title
+set titleold=Shell
 
 " NERDTREE
 " hide swap files
