@@ -136,10 +136,12 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_l), spawn "slock")
 
   -- power
-  , ((m, xK_End),               spawn $
-    term "echo 'Shutdown now?'; sudo shutdown now")
+  , ((m, xK_End), spawn $
+      term "echo 'Press enter to suspend' && read && systemctl suspend")
+  , ((m .|. controlMask, xK_End), spawn $
+      term "echo 'Press enter to shutdown' && read && systemctl poweroff")
   , ((m .|. shiftMask, xK_End), spawn $
-    term "echo 'Reboot now?'; sudo reboot")
+      term "echo 'Press enter to reboot' && read && systemctl reboot")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
