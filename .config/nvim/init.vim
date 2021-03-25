@@ -76,6 +76,8 @@ nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :ALEDetail<CR>
 " fix lint issues
 nnoremap <F4> :ALEFix<CR>
+" fix lint issues
+nnoremap <F5> :ALENext<CR>
 " complete by tab
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " show under cursor regions
