@@ -30,11 +30,7 @@ term :: String -> String
 term command = myTerminal ++ " -e sh -c \"" ++ command ++ "\" &"
 
 -- commands
-runDmenu = "dmenu_run" ++
-  " -fn " ++ fontDefault ++
-  " -nf " ++ "'" ++ colorWhite ++ "'" ++
-  " -nb " ++ "'" ++ colorBlack ++ "'" ++
-  " -sb " ++ "'" ++ colorRed ++ "' &"
+runRofi = "rofi -show run"
 runNewsboat = term "newsboat --refresh-on-start"
 runMutt     = term "neomutt"
 
@@ -56,12 +52,10 @@ shot fullscreen save
 
 -- workspaces
 ws1 = "WWW"
-ws2 = "ZSH"
+ws2 = "JOB"
 ws3 = "IRC"
-ws4 = "VID"
-ws5 = "DOC"
-ws6 = "GAM"
-myWorkspaces = [ws1, ws2, ws3, ws4, ws5, ws6] ++ map show [7..9]
+ws4 = "RSS"
+myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 
 -- bar
 myBar = "xmobar"
@@ -115,7 +109,7 @@ myManageHook = manageSpawn <+> composeAll
 
 -- ADDITIONAL KEYS
 myAdditionalKeys =
-  [ ((m, xK_p),               spawn runDmenu)        -- dmenu
+  [ ((m, xK_p),               spawn runRofi)         -- rofi
   , ((m, xK_a),               spawn runNewsboat)     -- newsboat
   , ((m, xK_f),               spawn "firefox &")     -- firefox
   , ((m, xK_z),               spawn $ term "ranger") -- ranger
