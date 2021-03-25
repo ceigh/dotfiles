@@ -119,6 +119,8 @@ set noshowmode
 set completeopt-=preview
 " for parcel hot reloading
 set backupcopy=yes
+" change window title to current filename
+set title
 
 " NERDTREE
 " hide swap files
