@@ -1,6 +1,6 @@
 Config {
   -- appearance
-  font = "xft:Iosevka Medium:size=12:antialias=true:hinting=true",
+  font = "xft:monospace:size=12",
   bgColor = "#080808",
   fgColor = "#B2B2B2",
 
