@@ -25,7 +25,7 @@ Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
 
 " INDENT LINE
-" Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " BOTTOM BAR
 Plug 'itchyny/lightline.vim'
@@ -148,7 +148,7 @@ let g:auto_save_presave_hook = '%s/\s\+$//e'
 
 " INDENTLINE
 " remove color highlight
-" let g:indentLine_setColors = 0
+let g:indentLine_setColors = 0
 
 " LIGHTLINE
 " change colorscheme
