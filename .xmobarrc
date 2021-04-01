@@ -1,7 +1,7 @@
 Config {
   -- appearance
-  font = "xft:monospace:size=12",
-  bgColor = "#080808",
+  font = "xft:monospace:style=bold",
+  bgColor = "#000",
   fgColor = "#B2B2B2",
 
   commands = [
