@@ -118,7 +118,7 @@ set cursorline
 " set colorcolumn=70
 " set textwidth=80
 highlight ExtraChars ctermbg=Magenta ctermfg=White guibg=Magenta guifg=White
-let w:m1=matchadd('ExtraChars', '\%>80v.\+', -1)
+let w:m1=matchadd('ExtraChars', '\%>70v.\+', -1)
 " hide mode name under lightline
 set noshowmode
 " remove autocomplete meta information in new window
