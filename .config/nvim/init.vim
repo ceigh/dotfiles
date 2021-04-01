@@ -10,6 +10,7 @@ Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 " LINTER
 Plug 'dense-analysis/ale'
+Plug 'editorconfig/editorconfig-vim'
 
 " DIRECTORY TREE
 Plug 'scrooloose/nerdtree'
@@ -55,6 +56,8 @@ Plug 'farmergreg/vim-lastplace'
 " SYNTAX
 " vue
 Plug 'posva/vim-vue'
+" scss
+Plug 'cakebaker/scss-syntax.vim'
 " fixed typescript
 Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'leafgarland/typescript-vim'
@@ -112,7 +115,10 @@ set tabstop=2
 " highlight current line
 set cursorline
 " highlight max len
-set colorcolumn=70
+" set colorcolumn=70
+" set textwidth=80
+highlight ExtraChars ctermbg=Magenta ctermfg=White guibg=Magenta guifg=White
+let w:m1=matchadd('ExtraChars', '\%>80v.\+', -1)
 " hide mode name under lightline
 set noshowmode
 " remove autocomplete meta information in new window
