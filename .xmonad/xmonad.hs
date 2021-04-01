@@ -13,10 +13,8 @@ import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
-fontDefault = "'Iosevka Medium-12'"
-
 colorWhite  = "#B2B2B2"
-colorBlack  = "#080808"
+-- colorBlack  = "#080808"
 colorRed    = "#FF5454"
 colorYellow = "#E3C78A"
 colorGreen  = "#8CC85F"
@@ -54,14 +52,15 @@ ws1 = "WWW"
 ws2 = "JOB"
 ws3 = "IRC"
 ws4 = "RSS"
-myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
+-- myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
+myWorkspaces = map show [1..9]
 
 -- bar
 myBar = "xmobar"
 myPP  = xmobarPP
   { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
   , ppLayout  = xmobarColor colorYellow ""
-  , ppTitle   = xmobarColor colorGreen  "" . shorten 50
+  , ppTitle   = xmobarColor colorGreen  "" . shorten 40
   , ppSep     = " | "
   }
 
