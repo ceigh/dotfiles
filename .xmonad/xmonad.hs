@@ -48,12 +48,11 @@ shot fullscreen save
     bg     = " &"
 
 -- workspaces
-ws1 = "WWW"
-ws2 = "JOB"
-ws3 = "IRC"
-ws4 = "RSS"
--- myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
-myWorkspaces = map show [1..9]
+ws1 = "1"
+ws2 = "2"
+ws3 = "3"
+ws4 = "4"
+myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 
 -- bar
 myBar = "xmobar"
