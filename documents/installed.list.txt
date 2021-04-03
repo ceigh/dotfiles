@@ -10,7 +10,6 @@ bitwarden-cli-bin
 bleachbit
 bluez-utils
 btrfs-progs
-chromium
 clang
 cloc
 colorpicker
@@ -29,7 +28,6 @@ downgrade
 droidcam
 dunst
 firefox
-freedoom
 gftp
 gifsicle
 gimp
@@ -54,7 +52,6 @@ lib32-libxslt
 lib32-ocl-icd
 lib32-openal
 lib32-v4l-utils
-libreoffice-fresh
 libretro-fuse-git
 libstdc++5
 lighttpd
@@ -62,6 +59,7 @@ linux-firmware
 linux-lts
 logmein-hamachi
 lshw
+lynx
 mdf2iso
 mesa-demos
 mousetweaks
@@ -70,7 +68,6 @@ mtr
 mutt-wizard
 neofetch
 neovim
-nerd-fonts-iosevka
 net-tools
 netctl
 networkmanager
@@ -80,18 +77,13 @@ numlockx
 nvidia-340xx-lts-dkms
 ocl-icd
 odamex
-openttd
-openttd-opengfx
-openttd-openmsx
-openttd-opensfx
-otf-hasklig
-otf-libertinus
+openoffice-bin
 p7zip
 pavucontrol-qt
 pax-utils
 pcsx2
 perl-cgi
-picom
+picom-git
 postman-bin
 proselint
 pulseaudio-alsa
@@ -123,12 +115,11 @@ ttf-apple-emoji
 ttf-arphic-uming
 ttf-baekmuk
 ttf-fira-code
-ttf-iosevka
-ttf-iosevka-term
 ttf-roboto
 tumbler
 ueberzug
 ufw
+ungoogled-chromium
 unrar
 unzip
 update-grub
@@ -152,6 +143,7 @@ xorg-fonts-cyrillic
 xorg-fonts-misc
 xorg-fonts-type1
 xorg-iceauth
+xorg-mkfontscale
 xorg-server-devel
 xorg-server-xephyr
 xorg-server-xnest
