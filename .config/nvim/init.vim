@@ -1,162 +1,118 @@
 call plug#begin('~/.local/share/nvim/plugged')
-" AUTOCOMPLETION
+" COMPLETION
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" c/c++
 Plug 'zchee/deoplete-clang'
-" js
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-" ts
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 
 " LINTER
 Plug 'dense-analysis/ale'
-Plug 'editorconfig/editorconfig-vim'
 
-" DIRECTORY TREE
-Plug 'scrooloose/nerdtree'
-
-" GIT CHANGES
-Plug 'airblade/vim-gitgutter'
-
-" AUTO SAVE
-Plug '907th/vim-auto-save'
-
-" AUTO PAIRS
-Plug 'jiangmiao/auto-pairs'
-
-" INDENT LINE
-Plug 'Yggdroot/indentLine'
-
-" BOTTOM BAR
+" BAR
 Plug 'itchyny/lightline.vim'
-" linters info
 Plug 'maximbaz/lightline-ale'
-" branch name
 Plug 'itchyny/vim-gitbranch'
 
-" CLOSETAG AUTOCLOSE HTML TAGS
-Plug 'alvan/vim-closetag'
-
-" MATCHING TAGS HIGHLIGHT
-Plug 'gregsexton/MatchTag'
-
-" CSS COLORS
-Plug 'ap/vim-css-color'
-
-" THEME
-" Plug 'dracula/vim', { 'as': 'dracula' }
+" THEMES
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'bluz71/vim-moonfly-colors'
-
-" MARKDOWN PREVIEW
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
-" RESTORE CURSOR
-Plug 'farmergreg/vim-lastplace'
+Plug 'danilo-augusto/vim-afterglow'
 
 " SYNTAX
-" vue
 Plug 'posva/vim-vue'
-" scss
 Plug 'cakebaker/scss-syntax.vim'
-" fixed typescript
 Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'leafgarland/typescript-vim'
-" graphql
 Plug 'jparise/vim-graphql'
-" pug
 Plug 'digitaltoad/vim-pug'
-" Plug 'evanleck/vim-svelte'
-" Plug 'purescript-contrib/purescript-vim'
-" Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'antonk52/vim-browserslist'
+
+" MISC
+Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug '907th/vim-auto-save'
+Plug 'jiangmiao/auto-pairs'
+Plug 'gregsexton/MatchTag'
+Plug 'alvan/vim-closetag'
+Plug 'Yggdroot/indentLine'
+Plug 'ap/vim-css-color'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'farmergreg/vim-lastplace'
 call plug#end()
 
-" HOT KEYS
-" tree
-nnoremap mn :NERDTreeToggle<CR>
-nnoremap Mn :NERDTreeFind<CR>
-" show full lint message
-nnoremap <F3> :ALEDetail<CR>
-" fix lint issues
-nnoremap <F4> :ALEFix<CR>
-" fix lint issues
-nnoremap <F5> :ALENext<CR>
-" complete by tab
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" show under cursor regions
-" nnoremap zS :echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')<CR>
-" show/hide line numbers
-nnoremap zn :set nonumber<CR>
-nnoremap zN :set number<CR>
-" comment -in/-out
-xnoremap tc :s/^/# /<CR>:noh<CR>
-xnoremap Tc :s/^# //<CR>:noh<CR>
 
 " COMMON
-" enable syntax highlight
 syntax on
-" full color pallete
-set termguicolors
-" scheme
-" colorscheme dracula
-colorscheme moonfly
-" transparency
-highlight Normal guibg=NONE ctermbg=NONE
-" todo
-highlight Todo ctermbg=DarkYellow ctermfg=Black guibg=DarkYellow guifg=Black
-" line numbers
+let g:afterglow_italic_comments=1
+let g:afterglow_inherit_background=1
+colorscheme afterglow
 set number
-" set relativenumber
-" tab to space
 set expandtab
-" tab width
 set shiftwidth=2
 set tabstop=2
-" highlight current line
 set cursorline
-" highlight max len
-" set colorcolumn=70
-" set textwidth=80
-highlight ExtraChars ctermbg=Magenta ctermfg=White guibg=Magenta guifg=White
-let w:m1=matchadd('ExtraChars', '\%>70v.\+', -1)
-" hide mode name under lightline
+" Full color pallete
+set termguicolors
+" Hide mode name under bar
 set noshowmode
-" remove autocomplete meta information in new window
+" Remove autocomplete meta information in new window
 set completeopt-=preview
-" for parcel hot reloading
+" For parcel hot reloading
 set backupcopy=yes
-" change window title to current filename
+" Change window title to current filename
 set title
 set titleold=Shell
 
+"HIGHLIGHTS
+" highlight ExtraChars ctermbg=Magenta ctermfg=White guibg=Magenta guifg=White
+" Alpha
+highlight Normal ctermbg=NONE guibg=NONE
+
+" MAXLEN
+" set colorcolumn=70
+" set textwidth=70
+let w:m1=matchadd('Error', '\%>70v.\+', -1)
+
+" MAPPINGS
+" Tree
+nnoremap mn :NERDTreeToggle<CR>
+nnoremap Mn :NERDTreeFind<CR>
+" Show full lint message
+nnoremap <F3> :ALEDetail<CR>
+" Fix lint issues
+nnoremap <F4> :ALEFix<CR>
+" Fix lint issues
+nnoremap <F5> :ALENext<CR>
+" Complete by tab
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" Comment -in/-out
+xnoremap tc :s/^/# /<CR>:noh<CR>
+xnoremap Tc :s/^# //<CR>:noh<CR>
+
 " NERDTREE
-" hide swap files
+" Hide swap files
 let NERDTreeIgnore = ['\.swp$']
-" let g:NERDTreeDirArrowExpandable = '+'
-" let g:NERDTreeDirArrowCollapsible = '-'
 
 " DEOPLETE
 let g:deoplete#enable_at_startup = 1
-" vue ts support
+" Vue ts support
 let g:nvim_typescript#vue_support = 1
 let g:nvim_typescript#diagnostics_enable = 0
 
 " AUTOSAVE
 let g:auto_save = 1
-" remove trailing spaces on save
+" Remove trailing spaces on save
 let g:auto_save_presave_hook = '%s/\s\+$//e'
 
 " INDENTLINE
-" remove color highlight
-let g:indentLine_setColors = 0
+" Remove color highlight
+" let g:indentLine_setColors = 0
 
 " LIGHTLINE
-" change colorscheme
-let g:lightline = { 'colorscheme': 'moonfly' }
-" git branch
+" Change colorscheme
+let g:lightline = { 'colorscheme': 'jellybeans' }
+" Git branch
 let g:lightline.component_function = { 'gitbranch': 'gitbranch#name' }
-" ale warnings and errors
+" Ale warnings and errors
 let g:lightline.component_expand = {
 \  'linter_checking': 'lightline#ale#checking',
 \  'linter_infos': 'lightline#ale#infos',
@@ -172,7 +128,7 @@ let g:lightline.component_type = {
 \  'linter_ok': 'right',
 \}
 let g:lightline#ale#indicator_checking = 'LINTING'
-" placement
+" Placement
 let g:lightline.active = {
 \  'left': [
 \    ['mode', 'paste'],
