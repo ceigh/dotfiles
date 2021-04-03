@@ -13,11 +13,9 @@ import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
-colorWhite  = "#B2B2B2"
-colorBlack  = "#000"
-colorRed    = "#FF5454"
-colorYellow = "#E3C78A"
-colorGreen  = "#8CC85F"
+colorRed    = "#ac4142"
+colorYellow = "#e5b567"
+colorGreen  = "#b4c973"
 
 -- COMMON
 -- terminal
@@ -48,24 +46,30 @@ shot fullscreen save
     bg     = " &"
 
 -- workspaces
-ws1 = "1"
-ws2 = "2"
-ws3 = "3"
-ws4 = "4"
+ws1 = "WWW"
+ws2 = "JOB"
+ws3 = "IRC"
+ws4 = "RSS"
 myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
+
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' .
+  W.stack . W.workspace . W.current . windowset
 
 -- bar
 myBar = "xmobar"
 myPP  = xmobarPP
   { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
-  , ppLayout  = xmobarColor colorYellow ""
   , ppTitle   = xmobarColor colorGreen  "" . shorten 60
   , ppSep     = " | "
+  , ppUrgent  = xmobarColor colorYellow "" . wrap "*" "*"
+  , ppExtras  = [windowCount]
+  , ppLayout  = xmobarColor colorYellow "" . take 128 . drop 8
   }
 
 -- border
 myBorderWidth        = 1
-myNormalBorderColor  = colorBlack
+myNormalBorderColor  = "#000"
 myFocusedBorderColor = "#575657"
 
 -- KEYS
