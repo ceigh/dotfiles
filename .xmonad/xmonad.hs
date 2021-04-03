@@ -14,7 +14,7 @@ import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
 colorWhite  = "#B2B2B2"
--- colorBlack  = "#080808"
+colorBlack  = "#000"
 colorRed    = "#FF5454"
 colorYellow = "#E3C78A"
 colorGreen  = "#8CC85F"
@@ -59,14 +59,14 @@ myBar = "xmobar"
 myPP  = xmobarPP
   { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
   , ppLayout  = xmobarColor colorYellow ""
-  , ppTitle   = xmobarColor colorGreen  "" . shorten 40
+  , ppTitle   = xmobarColor colorGreen  "" . shorten 60
   , ppSep     = " | "
   }
 
 -- border
-myBorderWidth        = 5
-myNormalBorderColor  = colorWhite
-myFocusedBorderColor = colorRed
+myBorderWidth        = 1
+myNormalBorderColor  = colorBlack
+myFocusedBorderColor = "#575657"
 
 -- KEYS
 m = mod4Mask
@@ -75,19 +75,13 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- HOOKS
 myStartupHook = do
-  -- spawnOnce       "slock &"
-  -- spawnOnce       "picom &"
-  -- spawnOnce       "dunst &"
   spawnOnce       "wallpaper &"
   spawnOnce       "nts run &"
-  -- spawnOnce       "firefox &"
-  -- spawnOnOnce ws4 runNewsboat
-  -- spawnOnce       runMutt
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
-myLayoutHook = smartBorders $ spacingRaw
-  True (Border 10 10 10 10) True (Border 10 10 10 10) True $
+myLayoutHook = spacingRaw
+  False (Border 20 20 20 20) True (Border 10 10 10 10) True $
   layoutTall ||| layoutMirrorTall ||| Grid ||| layoutSpiral ||| Full
     where
       layoutTall       = Tall 1 (5 / 100) (2 / 3)
