@@ -1,8 +1,8 @@
 Config {
   -- appearance
-  font = "xft:monospace:size=12",
+  font = "xft:monospace:size=11",
   bgColor = "#000",
-  fgColor = "#B2B2B2",
+  fgColor = "#d6d6d6",
 
   commands = [
     -- xmonad info
@@ -12,17 +12,17 @@ Config {
     Run Cpu [
       "--template", "<total>",
       "--suffix", "true",
-      "--low", "#8CC85F",
-      "--normal", "#E3C78A",
-      "--high", "#FF5454"
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142"
     ] 10,
     -- ram monitor
     Run Memory [
       "--template", "<usedratio>",
       "--suffix", "true",
-      "--low", "#8CC85F",
-      "--normal", "#E3C78A",
-      "--high", "#FF5454"
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142"
     ] 20,
     -- swap monitor
     -- Run Swap [
@@ -30,9 +30,9 @@ Config {
     --   "--suffix", "true",
     --   "--Low", "25",
     --   "--High", "50",
-    --   "--low", "#8CC85F",
-    --   "--normal", "#E3C78A",
-    --   "--high", "#FF5454"
+    --   "--low", "#b4c973",
+    --   "--normal", "#e5b567",
+    --   "--high", "#ac4142"
     -- ] 50,
 
     -- network
@@ -68,10 +68,10 @@ Config {
       "--",
       "--on", "ON",
       "--off", "OFF",
-      "--onc", "#8CC85F",
-      "--offc", "#FF5454"
+      "--onc", "#b4c973",
+      "--offc", "#ac4142"
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#e5b567>%date:time%</fc></action> | %alsa:default:Master% "
 }
