@@ -74,7 +74,8 @@ call plug#end()
 
 " HOT KEYS
 " tree
-nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap mn :NERDTreeToggle<CR>
+nnoremap Mn :NERDTreeFind<CR>
 " show full lint message
 nnoremap <F3> :ALEDetail<CR>
 " fix lint issues
