@@ -1,6 +1,6 @@
 Config {
   -- appearance
-  font = "xft:monospace:style=bold",
+  font = "xft:monospace:size=12",
   bgColor = "#000",
   fgColor = "#B2B2B2",
 
@@ -36,11 +36,11 @@ Config {
     -- ] 50,
 
     -- network
-    Run DynNetwork [
-      "--template", "<rx>KB/<tx>KB",
-      "--",
-      "--devices", "enp2s0,wlp0s26f7u4"
-    ] 20,
+    -- Run DynNetwork [
+    --   "--template", "<rx>KB/<tx>KB",
+    --   "--",
+    --   "--devices", "enp2s0,wlp0s26f7u4"
+    -- ] 20,
 
     -- keyboard layout
     Run Kbd [
@@ -73,5 +73,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory%</action> | %dynnetwork% | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#E3C78A>%date:time%</fc></action> | %alsa:default:Master% "
 }
