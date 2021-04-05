@@ -84,7 +84,7 @@ myStartupHook = do
   spawnOnOnce ws3 "discord &"
   spawnOnOnce ws3 "telegram-desktop &"
 
-myLayoutHook = spacingRaw
+myLayoutHook = smartBorders $ spacingRaw
   False (Border 20 20 20 20) True (Border 10 10 10 10) True $
   layoutTall ||| layoutMirrorTall ||| Grid ||| layoutSpiral ||| Full
     where
