@@ -13,8 +13,8 @@ Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/vim-gitbranch'
 
 " THEMES
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'bluz71/vim-moonfly-colors'
+" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'bluz71/vim-moonfly-colors'
 Plug 'danilo-augusto/vim-afterglow'
 
 " SYNTAX
@@ -37,8 +37,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'farmergreg/vim-lastplace'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
-
 
 " COMMON
 syntax on
