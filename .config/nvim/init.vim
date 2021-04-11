@@ -109,7 +109,11 @@ let g:auto_save_presave_hook = '%s/\s\+$//e'
 
 " LIGHTLINE
 " Change colorscheme
-let g:lightline = { 'colorscheme': 'jellybeans' }
+let g:lightline = {
+\  'colorscheme': 'jellybeans',
+\  'separator': { 'left': '', 'right': '' },
+\  'subseparator': { 'left': '', 'right': '' }
+\}
 " Git branch
 let g:lightline.component_function = { 'gitbranch': 'gitbranch#name' }
 " Ale warnings and errors
