@@ -73,12 +73,7 @@ Config {
 
     -- weather
     Run Weather "USSS" [
-      "--template", "<tempC>°C <windMs>M/S",
-      "--Low", "-5",
-      "--High", "25",
-      "--low", "#b4c973",
-      "--normal", "#e5b567",
-      "--high", "#ac4142"
+      "--template", "<tempC>°C <windMs>M/S"
     ] 36000,
 
     -- volume
