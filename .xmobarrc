@@ -8,32 +8,41 @@ Config {
     -- xmonad info
     Run StdinReader,
 
-    -- cpu activity
-    Run Cpu [
-      "--template", "<total>",
-      "--suffix", "true",
+    -- usage
+    -- cpu
+    Run MultiCpu [
+      "--template", "<total>%",
       "--low", "#b4c973",
       "--normal", "#e5b567",
       "--high", "#ac4142"
     ] 10,
-    -- ram monitor
+    -- ram
     Run Memory [
-      "--template", "<usedratio>",
-      "--suffix", "true",
+      "--template", "<usedratio>% ",
       "--low", "#b4c973",
       "--normal", "#e5b567",
       "--high", "#ac4142"
     ] 20,
-    -- swap monitor
+    -- swap
     -- Run Swap [
-    --   "--template", "<usedratio>",
-    --   "--suffix", "true",
+    --   "--template", "<usedratio>%",
     --   "--Low", "25",
     --   "--High", "50",
     --   "--low", "#b4c973",
     --   "--normal", "#e5b567",
     --   "--high", "#ac4142"
     -- ] 50,
+
+    -- temperature
+    -- cpu
+    Run MultiCoreTemp [
+      "--template", "<avg>°C",
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142"
+    ] 50,
+    -- gpu
+    Run Com "gputemp" [] "gputemp" 50,
 
     -- network
     -- Run DynNetwork [
@@ -54,12 +63,22 @@ Config {
 
     -- uptime
     Run Uptime [
-      "--template", "<hours>H"
+      "--template", "<days>D <hours>H",
+      "--Low", "0",
+      "--High", "1",
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142"
     ] 36000,
 
     -- weather
     Run Weather "USSS" [
-      "--template", "<tempC>°C <windMs>M/S"
+      "--template", "<tempC>°C <windMs>M/S",
+      "--Low", "-5",
+      "--High", "25",
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142"
     ] 36000,
 
     -- volume
@@ -73,5 +92,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%cpu% %memory%</action> | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#e5b567>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#e5b567>%date:time%</fc></action> | %alsa:default:Master% "
 }
