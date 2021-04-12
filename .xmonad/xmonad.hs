@@ -11,6 +11,7 @@ import XMonad.Layout.NoBorders        -- hide lonely window border
 import XMonad.Hooks.EwmhDesktops      -- steam games
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import qualified XMonad.StackSet as W -- attach windows to workspaces
+import Data.Char (toUpper)            -- to uppercase strings
 
 -- CONST
 colorRed    = "#ac4142"
@@ -46,10 +47,10 @@ shot fullscreen save
     bg     = " &"
 
 -- workspaces
-ws1 = "WWW"
-ws2 = "JOB"
-ws3 = "IRC"
-ws4 = "RSS"
+ws1 = "1"
+ws2 = "2"
+ws3 = "3"
+ws4 = "4"
 myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 
 windowCount :: X (Maybe String)
@@ -59,12 +60,13 @@ windowCount = gets $ Just . show . length . W.integrate' .
 -- bar
 myBar = "xmobar"
 myPP  = xmobarPP
-  { ppCurrent = xmobarColor colorRed    "" . wrap "<" ">"
-  , ppTitle   = xmobarColor colorGreen  "" . shorten 60
-  , ppSep     = " | "
-  , ppUrgent  = xmobarColor colorYellow "" . wrap "*" "*"
+  { ppCurrent = xmobarColor colorGreen  "" . wrap "<" ">"
+  , ppUrgent  = xmobarColor colorRed    "" . wrap "*" "*"
+  , ppLayout  = take 128 . drop 8 . map toUpper
+  , ppTitle   = shorten 32 . map toUpper
   , ppExtras  = [windowCount]
-  , ppLayout  = xmobarColor colorYellow "" . take 128 . drop 8
+  , ppSep     = " | "
+  , ppOrder = \(ws:l:t:ex) -> [ws, l] ++ ex ++ [t]
   }
 
 -- border
