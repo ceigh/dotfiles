@@ -1,0 +1,8 @@
+#!/bin/sh
+value=`nvidia-settings --terse --query [gpu:0]/GPUCoreTemp`
+
+color=#b4c973
+[ $value -gt 33 ] && color=#e5b567
+[ $value -gt 66 ] && color=#ac4142
+
+printf "<fc=$color>$value</fc>"
