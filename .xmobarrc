@@ -37,6 +37,8 @@ Config {
     -- cpu
     Run MultiCoreTemp [
       "--template", "<avg>°C",
+      "--Low", "50",
+      "--High", "75",
       "--low", "#b4c973",
       "--normal", "#e5b567",
       "--high", "#ac4142"
@@ -79,6 +81,11 @@ Config {
     -- volume
     Run Alsa "default" "Master" [
       "--template", "<volume>% <status>",
+      "--Low", "100",
+      "--High", "125",
+      "--low", "#b4c973",
+      "--normal", "#e5b567",
+      "--high", "#ac4142",
       "--",
       "--on", "ON",
       "--off", "OFF",
@@ -87,5 +94,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#e5b567>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#b4c973>%date:time%</fc></action> | %alsa:default:Master% "
 }
