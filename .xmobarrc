@@ -1,40 +1,26 @@
 Config {
-  -- appearance
   font = "xft:monospace:size=11",
   bgColor = "#000",
   fgColor = "#d6d6d6",
 
   commands = [
-    -- xmonad info
     Run StdinReader,
 
     -- usage
-    -- cpu
     Run MultiCpu [
       "--template", "<total>%",
       "--low", "#b4c973",
       "--normal", "#e5b567",
       "--high", "#ac4142"
     ] 10,
-    -- ram
     Run Memory [
       "--template", "<usedratio>% ",
       "--low", "#b4c973",
       "--normal", "#e5b567",
       "--high", "#ac4142"
     ] 20,
-    -- swap
-    -- Run Swap [
-    --   "--template", "<usedratio>%",
-    --   "--Low", "25",
-    --   "--High", "50",
-    --   "--low", "#b4c973",
-    --   "--normal", "#e5b567",
-    --   "--high", "#ac4142"
-    -- ] 50,
 
     -- temperature
-    -- cpu
     Run MultiCoreTemp [
       "--template", "<avg>°C",
       "--Low", "50",
@@ -43,7 +29,6 @@ Config {
       "--normal", "#e5b567",
       "--high", "#ac4142"
     ] 50,
-    -- gpu
     Run Com "gputemp" [] "gputemp" 50,
 
     -- network
@@ -53,17 +38,14 @@ Config {
     --   "--devices", "enp2s0,wlp0s26f7u4"
     -- ] 20,
 
-    -- keyboard layout
     Run Kbd [
       ("us", "US"),
       ("ru", "RU")
     ],
 
-    -- date
     Run Date "%^a %d/%m" "date" 10,
     Run Date "%H:%M" "date:time" 10,
 
-    -- uptime
     Run Uptime [
       "--template", "<days>D <hours>H",
       "--Low", "0",
@@ -73,12 +55,10 @@ Config {
       "--high", "#ac4142"
     ] 36000,
 
-    -- weather
     Run Weather "USSS" [
       "--template", "<tempC>°C <windMs>M/S"
     ] 36000,
 
-    -- volume
     Run Alsa "default" "Master" [
       "--template", "<volume>% <status>",
       "--Low", "100",
