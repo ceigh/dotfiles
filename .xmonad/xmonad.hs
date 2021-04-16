@@ -65,10 +65,10 @@ myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 -- bar
 myBar = "xmobar"
 myPP  = xmobarPP
-  { ppCurrent = xmobarColor colorGreen  ""
+  { ppCurrent = xmobarColor colorGreen  "" . wrap "<" ">"
   , ppUrgent  = xmobarColor colorRed    "" . wrap "*" "*"
   , ppLayout  = take 128 . drop 8 . map toUpper
-  , ppTitle   = shorten 32 . map toUpper
+  , ppTitle   = shorten 64 . map toUpper
   , ppExtras  = [windowCount]
   , ppSep     = " | "
   , ppOrder = \(ws:l:t:ex) -> [ws, l] ++ ex ++ [t]
