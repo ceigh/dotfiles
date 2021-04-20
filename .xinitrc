@@ -23,6 +23,7 @@ top-display &
 
 # screen lock
 slock &
+xautolock -locker slock &
 
 # compositor
 picom &
