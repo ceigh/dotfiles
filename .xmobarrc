@@ -57,7 +57,7 @@ Config {
 
     Run Weather "USSS" [
       "--template", "<tempC>°C <windMs>M/S"
-    ] 36000,
+    ] 6000,
 
     Run Alsa "default" "Master" [
       "--template", "<volume>% <status>",
