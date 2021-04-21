@@ -1,21 +1,20 @@
 -- IMPORTS
 import XMonad
-import XMonad.Util.SpawnOnce
 import XMonad.Actions.SpawnOn
+import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig           -- configure keys
-import XMonad.Hooks.DynamicLog        -- bar
 import XMonad.Layout.Spacing
 import XMonad.Layout.Accordion
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
-import XMonad.Hooks.EwmhDesktops      -- games
+import XMonad.Hooks.DynamicLog        -- bar
+import XMonad.Hooks.EwmhDesktops      -- games fullscreen
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
-import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageDocks       -- toggleFull
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 import Data.Char (toUpper)
 
 -- CONST
--- colors
 colorRed    = "#ac4142"
 colorYellow = "#e5b567"
 colorGreen  = "#b4c973"
@@ -31,27 +30,29 @@ windowCount = gets $ Just . show . length . W.integrate' .
 -- save: save image in filesystem, otherwise copy to clipboard
 shot :: Bool -> Bool -> X()
 shot fullscreen save
-  | fullscreen     && save     = spawn $ root ++ file ++ bg
-  | fullscreen     && not save = spawn $ root ++ clip ++ bg
-  | not fullscreen && save     = spawn $ area ++ file ++ bg
-  | not fullscreen && not save = spawn $ area ++ clip ++ bg
+  | fullscreen     && save     = spawn $ root ++ file
+  | fullscreen     && not save = spawn $ root ++ clip
+  | not fullscreen && save     = spawn $ area ++ file
+  | not fullscreen && not save = spawn $ area ++ clip
   where
     root   = "import -window root "
     area   = "import "
     file   = "$HOME/pictures/screenshots/`date +%d-%m-%H:%M`.png"
     clip   = "png:- | xclip -selection clipboard -target image/png"
-    bg     = " &"
+
+-- toggle fullscreen
+toggleFull :: X()
+toggleFull = sequence_[
+  sendMessage ToggleStruts,
+  toggleScreenSpacingEnabled,
+  toggleWindowSpacingEnabled]
 
 -- open terminal and run command
-term :: String -> String
-term command = myTerminal ++ " -e sh -c \"" ++ command ++ "\" &"
-
--- commands
-runNewsboat = term "newsboat --refresh-on-start"
-runMutt     = term "neomutt"
+run :: String -> X()
+run command = spawn $
+  myTerminal ++ " -e sh -c '" ++ command ++ "'"
 
 -- COMMON
--- terminal
 myTerminal = "st"
 
 -- workspaces
@@ -79,17 +80,14 @@ myNormalBorderColor  = "#000"
 myFocusedBorderColor = "#555"
 
 -- HOOKS
--- events
 myHandleEventHook = fullscreenEventHook
 
--- startup
 myStartupHook = do
-  spawnOnce       "wallpaper &"
-  spawnOnce       "nts run &"
-  spawnOnOnce ws3 "discord &"
-  spawnOnOnce ws3 "telegram-desktop &"
+  spawnOnce       "wallpaper"
+  spawnOnce       "nts run"
+  spawnOnOnce ws3 "discord"
+  spawnOnOnce ws3 "telegram-desktop"
 
--- layout
 myLayoutHook = smartBorders $
   spacingRaw False border True border True $
   layoutTall ||| Accordion ||| Grid
@@ -97,7 +95,6 @@ myLayoutHook = smartBorders $
     border     = Border 10 10 10 10
     layoutTall = Tall 1 (5 / 100) (2 / 3)
 
--- manage
 myManageHook = manageSpawn <+> composeAll
   [ className =? "mpv"              --> doFullFloat
   , title     =? "Media viewer"     --> doFullFloat
@@ -114,62 +111,46 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_Pause)
 
 -- additional
 myAdditionalKeys =
-  [
+  [ ((m, xK_v),   run "nvim")
+  , ((m, xK_a),   run "newsboat --refresh-on-start")
+  , ((m, xK_z),   run "ranger")
+  , ((m, xK_F9),  run "htop")
+  , ((m, xK_d),   spawn "wallpaper once")
+  , ((m, xK_f),   spawn "firefox")
+  , ((m, xK_F11), spawn "kb-layout")
+  , ((m, xK_F12), spawn "natural-scrolling")
+
+  , ((m .|. shiftMask, xK_m),       run "neomutt")
+  , ((m .|. shiftMask, xK_l),       spawn "slock")
+  , ((m .|. controlMask, xK_Pause), toggleFull)
+
   -- rofi
-  ((m, xK_p),                 spawn "rofi -show run")
+  , ((m, xK_p),               spawn "rofi -show run")
   , ((m .|. shiftMask, xK_p), spawn "rofi -show")
 
-  , ((m, xK_a),               spawn runNewsboat)
-
-  , ((m, xK_f),               spawn "firefox &")
-
-  , ((m, xK_z),               spawn $ term "ranger")
-
-  , ((m .|. shiftMask, xK_m), spawn runMutt)
-
   -- radio
-  , ((m, xK_r),               spawn "nts run &")
-  , ((m .|. shiftMask, xK_r), spawn "nts run 2 &")
-  , ((m, xK_e),               spawn "nts end &")
+  , ((m, xK_r),               spawn "nts run")
+  , ((m .|. shiftMask, xK_r), spawn "nts run 2")
+  , ((m, xK_e),               spawn "nts end")
 
   -- volume
-  , ((m, xK_equal), spawn "pulsemixer --change-volume +10 &")
-  , ((m, xK_minus), spawn "pulsemixer --change-volume -10 &")
-  , ((m, xK_0),     spawn "pulsemixer --toggle-mute &")
-
-  -- lock screen
-  , ((m .|. shiftMask, xK_l), spawn "slock")
+  , ((m, xK_equal), spawn "pulsemixer --change-volume +10")
+  , ((m, xK_minus), spawn "pulsemixer --change-volume -10")
+  , ((m, xK_0),     spawn "pulsemixer --toggle-mute")
 
   -- power
-  , ((m, xK_End), spawn $
-      term "echo 'Press enter to suspend' && read && systemctl suspend")
-  , ((m .|. controlMask, xK_End), spawn $
-      term "echo 'Press enter to shutdown' && read && systemctl poweroff")
-  , ((m .|. shiftMask, xK_End), spawn $
-      term "echo 'Press enter to reboot' && read && systemctl reboot")
+  , ((m, xK_End),
+    run "echo Suspend? && read && systemctl suspend")
+  , ((m .|. controlMask, xK_End),
+    run "echo Shutdown? && read && systemctl poweroff")
+  , ((m .|. shiftMask, xK_End),
+    run "echo Reboot? && read && systemctl reboot")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
   , ((m .|. controlMask, xK_Print),               shot True True)
   , ((m .|. shiftMask, xK_Print),                 shot False False)
   , ((m .|. shiftMask .|. controlMask, xK_Print), shot False True)
-
-  -- change wallpaper
-  , ((m, xK_d), spawn "wallpaper once &")
-
-  -- htop
-  , ((m, xK_F9), spawn $ term "htop")
-
-  -- restore keyboard layout
-  , ((m, xK_F11), spawn "kb-layout")
-
-  -- restore natural scrolling
-  , ((m, xK_F12), spawn "natural-scrolling")
-
-  -- full
-  , ((m .|. controlMask, xK_Pause), sequence_[
-    sendMessage ToggleStruts,
-    toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
   ]
 
 -- SUMMARY
