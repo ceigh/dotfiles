@@ -1,20 +1,18 @@
 -- IMPORTS
--- xmonad
 import XMonad
-import XMonad.Util.SpawnOnce          -- start hook
-import XMonad.Actions.SpawnOn         -- pin windows to workspaces
+import XMonad.Util.SpawnOnce
+import XMonad.Actions.SpawnOn
 import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Hooks.DynamicLog        -- bar
-import XMonad.Layout.Spacing          -- layout spacing
-import XMonad.Layout.Accordion        -- layout accordion
-import XMonad.Layout.Spiral           -- spiral layout
-import XMonad.Layout.Grid             -- grid layout
+import XMonad.Layout.Spacing
+import XMonad.Layout.Accordion
+import XMonad.Layout.Spiral
+import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders        -- hide lonely window border
-import XMonad.Hooks.EwmhDesktops      -- steam games
+import XMonad.Hooks.EwmhDesktops      -- games
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import qualified XMonad.StackSet as W -- attach windows to workspaces
--- data
-import Data.Char (toUpper)            -- to uppercase strings
+import Data.Char (toUpper)
 
 -- CONST
 -- colors
