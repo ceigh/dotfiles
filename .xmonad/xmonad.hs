@@ -6,11 +6,11 @@ import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Hooks.DynamicLog        -- bar
 import XMonad.Layout.Spacing
 import XMonad.Layout.Accordion
-import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
-import XMonad.Layout.NoBorders        -- hide lonely window border
+import XMonad.Layout.NoBorders
 import XMonad.Hooks.EwmhDesktops      -- games
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
+import XMonad.Hooks.ManageDocks
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 import Data.Char (toUpper)
 
@@ -76,7 +76,7 @@ myPP  = xmobarPP
 -- border
 myBorderWidth        = 1
 myNormalBorderColor  = "#000"
-myFocusedBorderColor = "#575657"
+myFocusedBorderColor = "#555"
 
 -- HOOKS
 -- events
@@ -90,18 +90,17 @@ myStartupHook = do
   spawnOnOnce ws3 "telegram-desktop &"
 
 -- layout
-myLayoutHook = smartBorders $ spacingRaw
-  False (Border 20 20 20 20) True (Border 10 10 10 10) True $
-  layoutTall ||| Accordion ||| Grid ||| Full
-    where
-      layoutTall       = Tall 1 (5 / 100) (2 / 3)
-      -- layoutMirrorTall = Mirror (Tall 1 (5 / 100) (2 / 3))
-      -- layoutSpiral     = spiral (6 / 7)
+myLayoutHook = smartBorders $
+  spacingRaw False border True border True $
+  layoutTall ||| Accordion ||| Grid
+  where
+    border     = Border 10 10 10 10
+    layoutTall = Tall 1 (5 / 100) (2 / 3)
 
 -- manage
 myManageHook = manageSpawn <+> composeAll
-  [ className =? "mpv"              --> doFloat
-  , title     =? "Media viewer"     --> doFullFloat  -- telegram media
+  [ className =? "mpv"              --> doFullFloat
+  , title     =? "Media viewer"     --> doFullFloat
   , className =? "firefox"          --> moveTo ws1
   , appName   =? "discord"          --> moveTo ws3
   , appName   =? "telegram-desktop" --> moveTo ws3
@@ -111,7 +110,7 @@ myManageHook = manageSpawn <+> composeAll
 -- common
 m = mod4Mask
 myModMask = m
-myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
+myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_Pause)
 
 -- additional
 myAdditionalKeys =
@@ -166,6 +165,11 @@ myAdditionalKeys =
 
   -- restore natural scrolling
   , ((m, xK_F12), spawn "natural-scrolling")
+
+  -- full
+  , ((m .|. controlMask, xK_Pause), sequence_[
+    sendMessage ToggleStruts,
+    toggleScreenSpacingEnabled, toggleWindowSpacingEnabled])
   ]
 
 -- SUMMARY
