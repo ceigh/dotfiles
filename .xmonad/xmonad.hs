@@ -8,13 +8,16 @@ import XMonad.Layout.Accordion
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog        -- bar
-import XMonad.Hooks.EwmhDesktops      -- games fullscreen
+import XMonad.Hooks.EwmhDesktops      -- fullscreen
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import XMonad.Hooks.ManageDocks       -- toggleFull
+import XMonad.Prompt
+import XMonad.Prompt.Shell
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 import Data.Char (toUpper)
 
 -- CONST
+colorBlack  = "#000"
 colorRed    = "#ac4142"
 colorYellow = "#e5b567"
 colorGreen  = "#b4c973"
@@ -74,9 +77,21 @@ myPP  = xmobarPP
   , ppOrder = \(ws:l:t:ex) -> [ws, l] ++ ex ++ [t]
   }
 
+-- prompt
+myPrompt = def
+  { position          = Top
+  , promptBorderWidth = 0
+  , defaultText       = ""
+  , alwaysHighlight   = True
+  , height            = 20
+  , font              = "xft:monospace:size=11"
+  , bgColor           = colorBlack
+  , fgColor           = "#d6d6d6"
+  }
+
 -- border
 myBorderWidth        = 1
-myNormalBorderColor  = "#000"
+myNormalBorderColor  = colorBlack
 myFocusedBorderColor = "#555"
 
 -- HOOKS
@@ -107,11 +122,12 @@ myManageHook = manageSpawn <+> composeAll
 -- common
 m = mod4Mask
 myModMask = m
-myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_Pause)
+myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- additional
 myAdditionalKeys =
-  [ ((m, xK_v),   run "nvim")
+  [ ((m, xK_p),   shellPrompt myPrompt)
+  , ((m, xK_v),   run "nvim")
   , ((m, xK_a),   run "newsboat --refresh-on-start")
   , ((m, xK_z),   run "ranger")
   , ((m, xK_F9),  run "htop")
@@ -120,13 +136,9 @@ myAdditionalKeys =
   , ((m, xK_F11), spawn "kb-layout")
   , ((m, xK_F12), spawn "natural-scrolling")
 
-  , ((m .|. shiftMask, xK_m),       run "neomutt")
-  , ((m .|. shiftMask, xK_l),       spawn "slock")
-  , ((m .|. controlMask, xK_Pause), toggleFull)
-
-  -- rofi
-  , ((m, xK_p),               spawn "rofi -show run")
-  , ((m .|. shiftMask, xK_p), spawn "rofi -show")
+  , ((m .|. shiftMask, xK_m), run "neomutt")
+  , ((m .|. shiftMask, xK_l), spawn "slock")
+  , ((m .|. shiftMask, xK_b), toggleFull)
 
   -- radio
   , ((m, xK_r),               spawn "nts run")
