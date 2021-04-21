@@ -6,6 +6,7 @@ import XMonad.Actions.SpawnOn         -- pin windows to workspaces
 import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Hooks.DynamicLog        -- bar
 import XMonad.Layout.Spacing          -- layout spacing
+import XMonad.Layout.Accordion        -- layout accordion
 import XMonad.Layout.Spiral           -- spiral layout
 import XMonad.Layout.Grid             -- grid layout
 import XMonad.Layout.NoBorders        -- hide lonely window border
@@ -93,10 +94,10 @@ myStartupHook = do
 -- layout
 myLayoutHook = smartBorders $ spacingRaw
   False (Border 20 20 20 20) True (Border 10 10 10 10) True $
-  layoutTall ||| layoutMirrorTall ||| Grid ||| Full
+  layoutTall ||| Accordion ||| Grid ||| Full
     where
       layoutTall       = Tall 1 (5 / 100) (2 / 3)
-      layoutMirrorTall = Mirror (Tall 1 (5 / 100) (2 / 3))
+      -- layoutMirrorTall = Mirror (Tall 1 (5 / 100) (2 / 3))
       -- layoutSpiral     = spiral (6 / 7)
 
 -- manage
