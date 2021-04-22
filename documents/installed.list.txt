@@ -10,6 +10,7 @@ bitwarden-cli-bin
 bleachbit
 bluez-utils
 btrfs-progs
+chromium
 clang
 cloc
 colorpicker
@@ -22,6 +23,7 @@ dhclient
 dhcpcd
 dialog
 discord_arch_electron
+dmg2img
 dmidecode
 dos2unix
 downgrade
@@ -52,6 +54,7 @@ lib32-libxslt
 lib32-ocl-icd
 lib32-openal
 lib32-v4l-utils
+libertinus-font
 libretro-fuse-git
 libstdc++5
 lighttpd
@@ -76,7 +79,6 @@ npm
 numlockx
 nvidia-340xx-lts-dkms
 ocl-icd
-odamex
 openoffice-bin
 p7zip
 pavucontrol-qt
@@ -94,7 +96,6 @@ redshift-minimal
 reflector
 retroarch-assets-ozone
 ripgrep
-rofi
 s-tui
 screen
 skypeforlinux-stable-bin
@@ -115,21 +116,23 @@ ttf-apple-emoji
 ttf-arphic-uming
 ttf-baekmuk
 ttf-fira-code
+ttf-nerd-fonts-symbols-mono
 ttf-roboto
 tumbler
 ueberzug
 ufw
-ungoogled-chromium
 unrar
 unzip
 update-grub
 valgrind
 vi
+virtualbox-ext-oracle
 vte3
 wget
 wireless_tools
 wmctrl
 wqy-zenhei
+xautolock
 xdg-user-dirs
 xf86-video-nouveau
 xmobar
@@ -175,6 +178,7 @@ xorg-xwayland
 xorg-xwd
 xorg-xwud
 xscreensaver
+xxd-standalone
 yarn
 yay
 youtube-dl
