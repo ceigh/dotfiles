@@ -7,4 +7,4 @@
 [commit]
   gpgsign = true
 [init]
-	defaultBranch = master
+  defaultBranch = master
