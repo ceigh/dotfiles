@@ -13,6 +13,7 @@ import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import XMonad.Hooks.ManageDocks       -- toggleFull
 import XMonad.Prompt
 import XMonad.Prompt.Shell
+import XMonad.Prompt.ConfirmPrompt
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 import Data.Char (toUpper)
 
@@ -55,6 +56,11 @@ toggleFull = sequence_
 run :: String -> X()
 run command = spawn $
   myTerminal ++ " -e sh -c '" ++ command ++ "'"
+
+-- power manage prompt
+powerPrompt :: String -> X()
+powerPrompt command = confirmPrompt myXPConfig command $
+  spawn $ "systemctl " ++ command
 
 -- COMMON
 myTerminal = "st"
@@ -155,12 +161,9 @@ myAdditionalKeys =
   , ((m, xK_0),     spawn "pulsemixer --toggle-mute")
 
   -- power
-  , ((m, xK_End),
-    run "echo Suspend? && read && systemctl suspend")
-  , ((m .|. controlMask, xK_End),
-    run "echo Shutdown? && read && systemctl poweroff")
-  , ((m .|. shiftMask, xK_End),
-    run "echo Reboot? && read && systemctl reboot")
+  , ((m, xK_End),                 powerPrompt "suspend")
+  , ((m .|. controlMask, xK_End), powerPrompt "poweroff")
+  , ((m .|. shiftMask, xK_End),   powerPrompt "reboot")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
