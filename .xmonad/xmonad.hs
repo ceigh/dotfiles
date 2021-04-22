@@ -78,15 +78,18 @@ myPP  = xmobarPP
   }
 
 -- prompt
-myPrompt = def
-  { position          = Top
-  , promptBorderWidth = 0
-  , defaultText       = ""
-  , alwaysHighlight   = True
-  , height            = 20
-  , font              = "xft:monospace:size=11"
+myXPConfig = def
+  { font              = "xft:monospace:size=11"
   , bgColor           = colorBlack
   , fgColor           = "#d6d6d6"
+  , bgHLight          = colorGreen
+  , promptBorderWidth = 0
+  , position          = Top
+  , alwaysHighlight   = True
+  , height            = 20
+  , maxComplRows      = Just 5
+  , historySize       = 64
+  , autoComplete      = Just 1
   }
 
 -- border
@@ -126,7 +129,7 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 
 -- additional
 myAdditionalKeys =
-  [ ((m, xK_p),   shellPrompt myPrompt)
+  [ ((m, xK_p),   shellPrompt myXPConfig)
   , ((m, xK_v),   run "nvim")
   , ((m, xK_a),   run "newsboat --refresh-on-start")
   , ((m, xK_z),   run "ranger")
