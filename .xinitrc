@@ -19,7 +19,7 @@ numlockx &
 top-display &
 
 # true tone
-# redshift &
+redshift &
 
 # screen lock
 slock &
