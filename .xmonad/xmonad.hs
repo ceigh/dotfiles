@@ -45,10 +45,11 @@ shot fullscreen save
 
 -- toggle fullscreen
 toggleFull :: X()
-toggleFull = sequence_[
-  sendMessage ToggleStruts,
-  toggleScreenSpacingEnabled,
-  toggleWindowSpacingEnabled]
+toggleFull = sequence_
+  [ sendMessage ToggleStruts
+  , toggleScreenSpacingEnabled
+  , toggleWindowSpacingEnabled
+  ]
 
 -- open terminal and run command
 run :: String -> X()
@@ -68,8 +69,8 @@ myWorkspaces = [ws1, ws2, ws3, ws4] ++ map show [5..9]
 -- bar
 myBar = "xmobar"
 myPP  = xmobarPP
-  { ppCurrent = xmobarColor colorGreen  "" . wrap "<" ">"
-  , ppUrgent  = xmobarColor colorRed    "" . wrap "*" "*"
+  { ppCurrent = xmobarColor colorGreen "" . wrap "<" ">"
+  , ppUrgent  = xmobarColor colorRed   "" . wrap "*" "*"
   , ppLayout  = take 128 . drop 8 . map toUpper
   , ppTitle   = shorten 64 . map toUpper
   , ppExtras  = [windowCount]
@@ -89,7 +90,7 @@ myXPConfig = def
   , height            = 20
   , maxComplRows      = Just 5
   , historySize       = 64
-  , autoComplete      = Just 1
+  , autoComplete      = Just 0
   }
 
 -- border
