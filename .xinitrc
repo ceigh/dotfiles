@@ -23,7 +23,8 @@ top-display &
 
 # screen lock
 slock &
-xautolock -locker slock &
+xautolock -notify 10 -locker "slock" \
+  -killtime 120 -killer "systemctl suspend" &
 
 # compositor
 picom &
