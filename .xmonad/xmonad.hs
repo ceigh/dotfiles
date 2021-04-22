@@ -147,7 +147,7 @@ myAdditionalKeys =
   , ((m, xK_F12), spawn "natural-scrolling")
 
   , ((m .|. shiftMask, xK_m), run "neomutt")
-  , ((m .|. shiftMask, xK_l), spawn "slock")
+  , ((m .|. shiftMask, xK_l), spawn "xautolock -locknow")
   , ((m .|. shiftMask, xK_b), toggleFull)
 
   -- radio
