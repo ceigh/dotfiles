@@ -97,6 +97,7 @@ myXPConfig = def
   , maxComplRows      = Just 5
   , historySize       = 64
   , autoComplete      = Just 0
+  , defaultPrompter   = map toUpper
   }
 
 -- border
