@@ -1,9 +1,9 @@
 # COMMON
 # zsh config dir
 export ZDOTDIR=~/.config/zsh
+
 export EDITOR=nvim
 export PAGER=less
-# me
 export EMAIL='me@ceigh.com'
 export MY_NAME='Artjom Löbsack'
 
