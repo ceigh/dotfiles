@@ -23,7 +23,7 @@ redshift &
 
 # screen lock
 slock &
-xautolock -notify 10 -locker "slock" \
+xautolock -notify 10 -detectsleep -locker "slock" \
   -killtime 120 -killer "systemctl suspend" &
 
 # compositor
