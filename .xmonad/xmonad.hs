@@ -2,6 +2,7 @@
 import XMonad
 import XMonad.Actions.SpawnOn
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Run                -- calcPrompt
 import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Layout.Spacing
 import XMonad.Layout.Accordion
@@ -12,10 +13,11 @@ import XMonad.Hooks.EwmhDesktops      -- fullscreen
 import XMonad.Hooks.ManageHelpers     -- doFullFloat and other
 import XMonad.Hooks.ManageDocks       -- toggleFull
 import XMonad.Prompt
-import XMonad.Prompt.Shell
 import XMonad.Prompt.ConfirmPrompt
+import XMonad.Prompt.Input
+import XMonad.Prompt.Shell
 import qualified XMonad.StackSet as W -- attach windows to workspaces
-import Data.Char (toUpper)
+import Data.Char (toUpper, isSpace)
 
 -- CONST
 colorBlack  = "#000"
@@ -56,11 +58,6 @@ toggleFull = sequence_
 run :: String -> X()
 run command = spawn $
   myTerminal ++ " -e sh -c '" ++ command ++ "'"
-
--- power manage prompt
-powerPrompt :: String -> X()
-powerPrompt command = confirmPrompt myXPConfig command $
-  spawn $ "systemctl " ++ command
 
 -- COMMON
 myTerminal = "st"
@@ -129,6 +126,16 @@ myManageHook = manageSpawn <+> composeAll
   , appName   =? "telegram-desktop" --> moveTo ws3
   ] where moveTo = doF . W.shift
 
+-- PROMPTS
+powerPrompt command = confirmPrompt myXPConfig command $
+  spawn $ "systemctl " ++ command
+
+calcPrompt = calcPrompt' "calculate"
+calcPrompt' prompter = inputPrompt myXPConfig (trim prompter) ?+ calc
+  where trim = f . f where f = reverse . dropWhile isSpace
+        calc expr = calcPrompt' =<< liftIO (runProcessWithInput
+          "sh" ["-c", "bc <<< '" ++ expr ++ "'"] "")
+
 -- KEYS
 -- common
 m = mod4Mask
@@ -138,6 +145,7 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 -- additional
 myAdditionalKeys =
   [ ((m, xK_p),   shellPrompt myXPConfig)
+  , ((m, xK_c),   calcPrompt)
   , ((m, xK_v),   run "nvim")
   , ((m, xK_a),   run "newsboat --refresh-on-start")
   , ((m, xK_z),   run "ranger")
