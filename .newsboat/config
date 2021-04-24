@@ -1,6 +1,13 @@
 # COMMON
+# autoreload
+auto-reload yes
+reload-time 10
+
+show-title-bar no
+
 # hide read
 show-read-feeds no
+show-read-articles no
 
 # remove old articles
 keep-articles-days 90
@@ -10,10 +17,11 @@ include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
 
 # reload multiple
 reload-threads 100
+download-retries 5
+download-timeout 5
+
+browser "firefox --new-tab %u > /dev/null &"
 
 # MACROS
-# open in mpv
-macro y set browser "devour mpv '%u'"; open-in-browser; set browser "w3m %u"
-
-# open in firefox
-macro f set browser "firefox --new-tab %u &"; open-in-browser; set browser "w3m %u"
+# open video
+macro v set browser "mpv --really-quiet %u &"; open-in-browser; set browser "firefox --new-tab %u > /dev/null &"
