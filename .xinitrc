@@ -19,12 +19,12 @@ numlockx &
 top-display &
 
 # true tone
-redshift &
+# redshift &
 
 # screen lock
 slock &
-xautolock -notify 10 -detectsleep -locker "slock" \
-  -killtime 120 -killer "systemctl suspend" &
+xautolock -detectsleep -notify 10 -corners '00-0' \
+  -locker "slock" -killtime 120 -killer "systemctl suspend" &
 
 # compositor
 picom &
