@@ -107,7 +107,7 @@ myManageHook = manageSpawn <+> composeAll
   , title     =? "Media viewer"       --> doFullFloat
   -- firefox pip
   , title     =? "Picture-in-Picture" -->
-    doRectFloat (W.RationalRect 0.7 0.7 0.3 0.3)
+    doRectFloat (W.RationalRect 0.7 0.7 0.3 0.3) <+> doIgnore
   , className =? "firefox"            --> moveTo (ws 1)
   , appName   =? "discord"            --> moveTo (ws 3)
   , appName   =? "telegram-desktop"   --> moveTo (ws 3)
