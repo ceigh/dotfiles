@@ -17,8 +17,6 @@ include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
 
 # reload multiple
 reload-threads 100
-download-retries 5
-download-timeout 5
 
 browser "firefox --new-tab %u > /dev/null &"
 
