@@ -53,6 +53,9 @@ toggleFull = sequence_
 
 term = runInTerm ""
 
+-- quick workspaces access
+ws id = myWorkspaces !! (id - 1)
+
 -- COMMON
 myWorkspaces = ["WWW", "DEV", "IRC", "RSS"] ++ map show [5..9]
 
@@ -85,10 +88,10 @@ myXPConfig = def
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "wallpaper"
-  spawnOnce "nts run"
-  spawnOnOnce (myWorkspaces !! 2) "discord"
-  spawnOnOnce (myWorkspaces !! 2) "telegram-desktop"
+  spawnOnce          "wallpaper"
+  spawnOnce          "nts run"
+  spawnOnOnce (ws 3) "discord"
+  spawnOnOnce (ws 3) "telegram-desktop"
 
 myLayoutHook = smartBorders $
   spacingRaw False border True border True $
@@ -98,11 +101,16 @@ myLayoutHook = smartBorders $
     layoutTall = Tall 1 (5 / 100) (2 / 3)
 
 myManageHook = manageSpawn <+> composeAll
-  [ className =? "mpv"              --> doFullFloat
-  , title     =? "Media viewer"     --> doFullFloat
-  , className =? "firefox"          --> moveTo (head myWorkspaces)
-  , appName   =? "discord"          --> moveTo (myWorkspaces !! 2)
-  , appName   =? "telegram-desktop" --> moveTo (myWorkspaces !! 2)
+  [ className =? "mpv"                -->
+    doFullFloat <+> moveTo (ws 4)
+  -- telegram media
+  , title     =? "Media viewer"       --> doFullFloat
+  -- firefox pip
+  , title     =? "Picture-in-Picture" -->
+    doRectFloat (W.RationalRect 0.7 0.7 0.3 0.3)
+  , className =? "firefox"            --> moveTo (ws 1)
+  , appName   =? "discord"            --> moveTo (ws 3)
+  , appName   =? "telegram-desktop"   --> moveTo (ws 3)
   ] where moveTo = doF . W.shift
 
 -- PROMPTS
