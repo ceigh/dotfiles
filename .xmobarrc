@@ -74,5 +74,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal; read'`>%date% <fc=#b4c973>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal -3; read'`>%date% <fc=#b4c973>%date:time%</fc></action> | %alsa:default:Master% "
 }
