@@ -121,7 +121,7 @@ calcPrompt = calcPrompt' "calculate"
 calcPrompt' prompter = inputPrompt myXPConfig (trim prompter) ?+ calc
   where trim = f . f where f = reverse . dropWhile isSpace
         calc expr = calcPrompt' =<< liftIO (runProcessWithInput
-          "sh" ["-c", "bc <<< '" ++ expr ++ "'"] "")
+          "sh" ["-c", "bc <<< 'scale=3; " ++ expr ++ "'"] "")
 
 -- KEYS
 m = mod4Mask
