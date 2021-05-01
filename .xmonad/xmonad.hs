@@ -6,7 +6,6 @@ import XMonad.Util.SpawnOnce
 import XMonad.Util.Run
 import XMonad.Util.EZConfig           -- configure keys
 import XMonad.Layout.Spacing
-import XMonad.Layout.Accordion
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
 import XMonad.Hooks.DynamicLog        -- bar
@@ -95,7 +94,7 @@ myStartupHook = do
 
 myLayoutHook = smartBorders $
   spacingRaw False border True border True $
-  layoutTall ||| Accordion ||| Grid
+  layoutTall ||| Mirror layoutTall ||| Grid
   where
     border     = Border 10 10 10 10
     layoutTall = Tall 1 (5 / 100) (2 / 3)
