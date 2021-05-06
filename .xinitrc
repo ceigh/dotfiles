@@ -23,7 +23,7 @@ top-display &
 
 # screen lock
 slock &
-xautolock -detectsleep -notify 10 -corners '00-0' \
+xautolock -detectsleep -notify 10 -corners '----' -cornersize 50 \
   -locker "slock" -killtime 120 -killer "systemctl suspend" &
 
 # compositor
