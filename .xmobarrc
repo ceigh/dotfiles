@@ -1,0 +1,23 @@
+-- see ~/.local/bin/ for custom commands
+
+Config
+  { font     = "xft:monospace:size=10"
+  , fgColor  = "white"
+
+  , commands =
+      [ Run StdinReader
+      , Run Kbd [("us", "US"), ("ru", "RU")]
+      , Run Com "vol" [] "vol" 5
+      , Run Battery
+          [ "-t", "Bat: <left>"
+          , "--"
+          , "-P", "-a", "notify-send 'Connect charger'"
+          ] 600
+      , Run Com "up" [] "up" 100
+      , Run Date
+          "<action=`xterm -e 'cal -3; read 0'`>%a %b %-d %-H:%M</action>"
+          "date" 10
+      ]
+
+  , template = "%StdinReader%}{%kbd%   %vol%   %battery%   %up%   %date%"
+  }

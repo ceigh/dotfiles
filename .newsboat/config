@@ -1,0 +1,22 @@
+# COMMON
+# autoreload
+auto-reload yes
+reload-time 10
+
+show-title-bar no
+
+# hide read
+show-read-feeds no
+show-read-articles no
+
+# remove old articles
+keep-articles-days 90
+
+# reload multiple
+reload-threads 100
+
+browser "firefox --new-tab %u > /dev/null 2>&1 &"
+
+# MACROS
+# open video
+macro v set browser "mpv %u > /dev/null 2>&1 &"; open-in-browser; set browser "firefox --new-tab %u > /dev/null 2>&1 &"

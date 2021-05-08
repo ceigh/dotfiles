@@ -1,0 +1,36 @@
+! COMMON
+! colors https://jonasjacek.github.io/colors
+*background: black
+*foreground: white
+    *color8: grey7
+! font
+*faceName: monospace
+*faceSize: 10
+
+! CURSOR
+Xcursor*theme: Adwaita
+
+! XTERM
+! font sizes
+XTerm*faceSize1: 6
+XTerm*faceSize2: 8
+XTerm*faceSize3: 10
+XTerm*faceSize4: 12
+XTerm*faceSize5: 14
+XTerm*faceSize6: 16
+XTerm*faceSize7: 18
+XTerm*faceSize8: 20
+! select text only
+XTerm*highlightSelection: true
+XTerm*trimSelection: true
+! mappings
+XTerm*VT100.translations: #override                                \n\
+             Ctrl <Key>-: smaller-vt-font()                        \n\
+             Ctrl <Key>0: set-vt-font(d)                           \n\
+             Ctrl <Key>+: larger-vt-font()                         \n\
+       Ctrl Shift <Key>c: copy-selection(CLIPBOARD)                \n\
+       Ctrl Shift <Key>v: insert-selection(CLIPBOARD)              \n\
+          Shift <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY) \n\
+         Ctrl <Btn1Down>: ignore()                                 \n\
+         Ctrl <Btn2Down>: ignore()                                 \n\
+         Ctrl <Btn3Down>: ignore()                                 \n\
