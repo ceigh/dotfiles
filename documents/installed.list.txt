@@ -164,6 +164,7 @@ xorg-xcursorgen
 xorg-xdriinfo
 xorg-xev
 xorg-xgamma
+xorg-xhost
 xorg-xinit
 xorg-xinput
 xorg-xkbevd
