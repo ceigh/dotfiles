@@ -76,7 +76,6 @@ myXPConfig = def
 -- HOOKS
 myStartupHook = do
   spawnOnce          "epic-bg"
-  spawnOnce          "nts run"
   spawnOnOnce (ws 3) "telegram-desktop"
 
 myLayoutHook = smartBorders $
