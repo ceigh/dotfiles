@@ -1,7 +1,7 @@
 [user]
   email = me@ceigh.com
   name = Artjom Löbsack
-  signingkey = 7AEAD1C36F87BBE6
+  signingkey = C0CF4149
 [pull]
   rebase = false
 [commit]

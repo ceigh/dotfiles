@@ -1,3 +1,6 @@
+# FIX GPG
+export GPG_TTY=$(tty)
+
 # COMPLETION
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
@@ -31,7 +34,6 @@ alias l='ls -a'
 alias ll='l -l'
 alias v=$EDITOR
 alias m=$PAGER
-alias xrdbm='xrdb -merge ~/.Xresources'
 # git
 alias gs='git status'
 alias gf='git diff'
