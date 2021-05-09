@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "Vol: $(mixer -S vol | awk -F ':' '{print $2}')%"

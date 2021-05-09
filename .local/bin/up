@@ -1,0 +1,3 @@
+#!/bin/sh
+
+uptime | sed -E 's/.*(up.*), [[:digit:]]+ user.*/\1/' | sed 's/up/Up:/'
