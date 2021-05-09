@@ -1,0 +1,52 @@
+#!/bin/sh
+
+# you can use this file as daemon template
+
+PID_DIR="$HOME/.run"
+
+# shellcheck disable=SC1094
+. /etc/rc.subr
+
+name=nts
+# shellcheck disable=SC2034
+rcvar="${name}_enable"
+daemon_pidfile="$PID_DIR/${name}_daemon.pid"
+command_pidfile="$PID_DIR/${name}_child.pid"
+
+command=$name
+command_args=$2
+
+# shellcheck disable=SC2034
+start_cmd="${name}_start"
+# shellcheck disable=SC2034
+stop_cmd="${name}_stop"
+# shellcheck disable=SC2034
+status_cmd="${name}_status"
+
+# rename if name changed
+nts_start() {
+  daemon -f -P "$daemon_pidfile" -p "$command_pidfile" "$command" "$command_args"
+}
+
+# rename if name changed
+nts_stop() {
+  if [ -e "$daemon_pidfile" ] || [ -e "$command_pidfile" ]; then
+    kill -s TERM "$(cat "$command_pidfile")"
+    kill -s TERM "$(cat "$daemon_pidfile")"
+  else
+    echo "$name is not running"
+  fi
+}
+
+# rename if name changed
+nts_status() {
+  if [ -e "$daemon_pidfile" ] || [ -e "$command_pidfile" ]; then
+    echo "$name daemon is running as pid $(cat "$daemon_pidfile")"
+    echo "$name child is running as pid $(cat "$command_pidfile")"
+  else
+    echo "$name is not running"
+  fi
+}
+
+load_rc_config "$name"
+run_rc_command "$1"

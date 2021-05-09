@@ -120,9 +120,9 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_l), spawn "xautolock -locknow")
 
   -- radio
-  , ((m, xK_r),               spawn "nts run")
-  , ((m .|. shiftMask, xK_r), spawn "nts run 2")
-  , ((m, xK_e),               spawn "nts end")
+  , ((m, xK_r),               spawn "nts-daemon onestart")
+  , ((m .|. shiftMask, xK_r), spawn "nts-daemon onestart 2")
+  , ((m, xK_e),               spawn "nts-daemon onestop")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)

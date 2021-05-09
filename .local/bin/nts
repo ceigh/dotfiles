@@ -1,0 +1,4 @@
+#!/bin/sh
+
+STREAM_URL=https://stream-relay-geo.ntslive.net/stream
+mpv "$STREAM_URL$1"
