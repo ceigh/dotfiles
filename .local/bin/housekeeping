@@ -1,0 +1,6 @@
+#!/bin/sh
+
+dir="$PWD"
+cd "$HOME" || exit 1
+rm -rf .serverauth* Desktop Downloads newsboat.core .lesshst
+cd "$dir" || exit 1
