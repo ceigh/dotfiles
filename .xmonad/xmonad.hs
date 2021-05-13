@@ -141,7 +141,7 @@ myAdditionalKeys =
   , ((m, xK_c),   calcPrompt)
   , ((m, xK_a),   term "newsboat")
   , ((m, xK_z),   term "ranger")
-  , ((m, xK_F9),  term "htop")
+  , ((m, xK_o),  term "htop")
   , ((m, xK_d),   spawn "wallpaper once")
   , ((m, xK_f),   spawn "firefox")
   , ((m, xK_F11), spawn "kb-layout")
