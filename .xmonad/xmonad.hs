@@ -19,10 +19,11 @@ import XMonad.Prompt.Shell
 import qualified XMonad.StackSet as W -- attach windows to workspaces
 
 -- CONST
-colorBlack  = "#000"
-colorRed    = "#ac4142"
-colorYellow = "#e5b567"
-colorGreen  = "#b4c973"
+colorBlack  = "#000000"
+colorWhite  = "#c5c8c6"
+colorRed    = "#cc6666"
+colorYellow = "#f0c674"
+colorGreen  = "#b5bd68"
 
 -- HELPERS
 -- count windows in workspace
@@ -73,7 +74,7 @@ myPP  = xmobarPP
 myXPConfig = def
   { font              = "xft:monospace:size=11"
   , bgColor           = colorBlack
-  , fgColor           = "#d6d6d6"
+  , fgColor           = colorWhite
   , bgHLight          = colorGreen
   , promptBorderWidth = 0
   , position          = Top
@@ -168,9 +169,9 @@ myAdditionalKeys =
 myConfig = def
   { terminal           = "alacritty"
   , workspaces         = myWorkspaces
-  , borderWidth        = 1
+  , borderWidth        = 2
   , normalBorderColor  = colorBlack
-  , focusedBorderColor = "#777"
+  , focusedBorderColor = colorYellow
   , modMask            = m
   , startupHook        = myStartupHook
   , layoutHook         = myLayoutHook
