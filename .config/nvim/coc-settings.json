@@ -1,4 +1,11 @@
 {
+  "diagnostic.errorSign": "!",
+  "diagnostic.warningSign": "*",
+  "diagnostic.infoSign": "#",
+  "diagnostic.hintSign": "$",
+  "diagnostic.enableHighlightLineNumber": false,
+  // "diagnostic.checkCurrentLine": true,
+
   "coc.preferences.extensionUpdateCheck": "daily",
 
   "yaml.format.enable": true,
