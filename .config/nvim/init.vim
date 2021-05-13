@@ -92,11 +92,6 @@ let g:airline_section_z = '%l:%c/%L %p%%'
 " gitgutter
 set updatetime=100
 
-" hi link LanguageClientErrorSign DiffDelete
-" hi link LanguageClientWarningSign DiffChange
-" hi! link Error airline_error
-" hi! link Todo airline_warning
-
 " coc https://github.com/neoclide/coc.nvim#example-vim-configuration
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-eslint', 'coc-pairs', 'coc-snippets', 'coc-tailwindcss',
@@ -144,3 +139,14 @@ nmap <silent> <leader>o
   " applying codeAction to the selected region
 xmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
+  " change colors
+    " sign
+hi link CocErrorSign DiffDelete
+hi link CocWarningSign DiffChange
+hi link CocInfoSign CocWarningSign
+hi link CocHintSign CocInfoSign
+    " float
+hi link CocErrorFloat NormalFloat
+hi link CocWarningFloat CocErrorFloat
+hi link CocInfoFloat CocWarningFloat
+hi link CocHintFloat CocInfoFloat
