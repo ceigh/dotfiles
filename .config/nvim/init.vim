@@ -1,40 +1,30 @@
 call plug#begin('~/.local/share/nvim/plugged')
-" coc
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
 " nerdtree
 Plug 'scrooloose/nerdtree' |
   \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
   \ Plug 'Xuyuanp/nerdtree-git-plugin' |
   \ Plug 'ryanoasis/vim-devicons'
 
-" line
-Plug 'vim-airline/vim-airline'
-
-" themes
-Plug 'danilo-augusto/vim-afterglow'
-
 " syntax
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
-Plug 'cespare/vim-toml'
-Plug 'antonk52/vim-browserslist'
 Plug 'kevinoid/vim-jsonc'
 
 " other
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'danilo-augusto/vim-afterglow'
+Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug '907th/vim-auto-save'
-Plug 'jiangmiao/auto-pairs'
 Plug 'gregsexton/MatchTag'
 Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
 Plug 'farmergreg/vim-lastplace'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
 " colors
@@ -55,12 +45,12 @@ set cursorline
 set colorcolumn=80
   " use colors from exist highlights
 exec "hi CursorLineNr guibg="
-      \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
+  \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
 exec "hi ColorColumn guibg="
-      \ . synIDattr(synIDtrans(hlID('CursorLineNr')), "fg#")
+  \ . synIDattr(synIDtrans(hlID('CursorLineNr')), "fg#")
   " change split color
 exec "hi VertSplit guibg="
-      \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
+  \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
 
 " indentline
 let g:indentLine_concealcursor = 'nc'
@@ -106,19 +96,20 @@ set updatetime=100
 " hi link LanguageClientWarningSign DiffChange
 " hi! link Error airline_error
 " hi! link Todo airline_warning
-"
+
 " coc https://github.com/neoclide/coc.nvim#example-vim-configuration
+let g:coc_global_extensions = [
+  \ 'coc-json', 'coc-eslint', 'coc-pairs', 'coc-snippets', 'coc-tailwindcss',
+  \ 'coc-css', 'coc-tsserver', 'coc-vetur', 'coc-markdownlint', 'coc-sh',
+  \ 'coc-stylelint', 'coc-vimlsp', 'coc-yaml', 'coc-explorer', 'coc-diagnostic'
+  \ ]
   " textEdit might fail if hidden is not set
 set hidden
   " some servers have issues with backup files
 set nobackup
 set nowritebackup
-  " give more space for displaying messages
-" set cmdheight=2
   " don't pass messages to |ins-completion-menu|
 set shortmess+=c
-  " always show the signcolumn, otherwise it would shift the text each time
-" set signcolumn=yes
   " complete by tab
 inoremap <silent> <expr> <Tab>
   \ pumvisible() ? "\<C-n>" :
@@ -150,3 +141,6 @@ nmap <silent> <leader>f :call CocAction('format') <Return>
   " organize imports of the current buffer on <leader>o
 nmap <silent> <leader>o
   \ :call CocAction('runCommand', 'editor.action.organizeImport') <Return>
+  " applying codeAction to the selected region
+xmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
