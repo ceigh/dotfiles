@@ -51,13 +51,17 @@ toggleFull = sequence_
   , toggleWindowSpacingEnabled
   ]
 
+-- run commands in terminal
 term = runInTerm ""
+term' command = myTerminal ++ " -e " ++ command
 
 -- quick workspaces access
 ws id = myWorkspaces !! (id - 1)
 
 -- COMMON
 myWorkspaces = ["WWW", "DEV", "IRC", "RSS"] ++ map show [5..9]
+
+myTerminal = "alacritty"
 
 -- bar
 myPP  = xmobarPP
@@ -88,10 +92,14 @@ myXPConfig = def
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce          "wallpaper"
-  spawnOnce          "nts run"
-  spawnOnOnce (ws 3) "discord"
-  spawnOnOnce (ws 3) "telegram-desktop"
+  spawnOnce "wallpaper"
+  spawnOnce "nts run"
+  spawnOnce "firefox"
+  spawnOnce "discord"
+  spawnOnce "telegram-desktop"
+  spawnOnOnce (ws 2) (term' "")
+  spawnOnOnce (ws 4) (term' "newsboat")
+  spawnOnOnce (ws 4) (term' "neomutt")
 
 myLayoutHook = smartBorders $
   spacingRaw False border True border True $
@@ -167,7 +175,7 @@ myAdditionalKeys =
 
 -- SUMMARY
 myConfig = def
-  { terminal           = "alacritty"
+  { terminal           = myTerminal
   , workspaces         = myWorkspaces
   , borderWidth        = 2
   , normalBorderColor  = colorBlack
