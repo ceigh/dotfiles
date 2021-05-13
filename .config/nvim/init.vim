@@ -1,23 +1,20 @@
 call plug#begin('~/.local/share/nvim/plugged')
-" COMPLETION
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+" coc
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-" LINTER
-Plug 'dense-analysis/ale'
+" nerdtree
+Plug 'scrooloose/nerdtree' |
+  \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight' |
+  \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+  \ Plug 'ryanoasis/vim-devicons'
 
-" BAR
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/vim-gitbranch'
+" line
+Plug 'vim-airline/vim-airline'
 
-" THEMES
-" Plug 'dracula/vim', { 'as': 'dracula' }
-" Plug 'bluz71/vim-moonfly-colors'
+" themes
 Plug 'danilo-augusto/vim-afterglow'
 
-" SYNTAX
+" syntax
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -25,9 +22,10 @@ Plug 'jparise/vim-graphql'
 Plug 'digitaltoad/vim-pug'
 Plug 'cespare/vim-toml'
 Plug 'antonk52/vim-browserslist'
+Plug 'kevinoid/vim-jsonc'
 
-" MISC
-Plug 'scrooloose/nerdtree'
+" other
+Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug '907th/vim-auto-save'
 Plug 'jiangmiao/auto-pairs'
@@ -35,123 +33,120 @@ Plug 'gregsexton/MatchTag'
 Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'farmergreg/vim-lastplace'
-Plug 'ryanoasis/vim-devicons'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 call plug#end()
 
-" COMMON
-syntax on
-let g:afterglow_italic_comments=1
-let g:afterglow_inherit_background=1
-colorscheme afterglow
-set number
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set cursorline
-" Full color pallete
+" colors
 set termguicolors
-" Hide mode name under bar
-set noshowmode
-" Remove autocomplete meta information in new window
-set completeopt-=preview
-" For parcel hot reloading
-set backupcopy=yes
-" Change window title to current filename
-set title
-set titleold=Shell
+syntax on
+let g:afterglow_italic_comments = 1
+let g:afterglow_inherit_background = 1
+colorscheme afterglow
 
-"HIGHLIGHTS
-" highlight ExtraChars ctermbg=Magenta ctermfg=White guibg=Magenta guifg=White
-" Alpha
-highlight Normal ctermbg=NONE guibg=NONE
+" tab
+set expandtab
+set tabstop=2
+set shiftwidth=0
 
-" MAXLEN
-" set colorcolumn=70
-" set textwidth=70
-let w:m1=matchadd('Error', '\%>70v.\+', -1)
+" lines
+set number
+set cursorline
+set colorcolumn=80
+  " use colors from exist highlights
+exec "hi CursorLineNr guibg="
+      \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
+exec "hi ColorColumn guibg="
+      \ . synIDattr(synIDtrans(hlID('CursorLineNr')), "fg#")
+  " change split color
+exec "hi VertSplit guibg="
+      \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
 
-" MAPPINGS
-" Tree
-nnoremap mn :NERDTreeToggle<CR>
-nnoremap Mn :NERDTreeFind<CR>
-" Show full lint message
-nnoremap <F3> :ALEDetail<CR>
-" Fix lint issues
-nnoremap <F4> :ALEFix<CR>
-" Fix lint issues
-nnoremap <F5> :ALENext<CR>
-" Complete by tab
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" Comment -in/-out
-xnoremap tc :s/^/# /<CR>:noh<CR>
-xnoremap Tc :s/^# //<CR>:noh<CR>
+" indentline
+let g:indentLine_concealcursor = 'nc'
 
-" NERDTREE
-" Hide swap files
-let NERDTreeIgnore = ['\.swp$']
+" nerdtree
+  " start when vim is started without file arguments
+autocmd StdinReadPre * let s:std_in = 1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+  " hide files
+let NERDTreeIgnore = ['\.swp$', 'node_modules']
+  " icons for git plugin
+let g:NERDTreeGitStatusUseNerdFonts = 1
+  " mappings
+nmap <silent> mn :NERDTreeToggle <Return>
+nmap <silent> Mn :NERDTreeFind <Return>
 
-" DEOPLETE
-let g:deoplete#enable_at_startup = 1
-" Vue ts support
-let g:nvim_typescript#vue_support = 1
-let g:nvim_typescript#diagnostics_enable = 0
+" nerdcommenter
+  " https://github.com/preservim/nerdcommenter#default-mappings
+let mapleader = ','
+let g:NERDCreateDefaultMappings = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
 
-" AUTOSAVE
+" autosave
 let g:auto_save = 1
-" Remove trailing spaces on save
+  " remove trailing spaces on save
 let g:auto_save_presave_hook = '%s/\s\+$//e'
 
-" INDENTLINE
-" Remove color highlight
-" let g:indentLine_setColors = 0
+" closetag
+let g:closetag_filetypes = 'vue,html,xml'
+  " remove autoclose outside vue's <template> section
+let g:closetag_regions = { 'vue': 'htmlTag' }
 
-" LIGHTLINE
-" Change colorscheme
-let g:lightline = {
-\  'colorscheme': 'jellybeans',
-\  'separator': { 'left': '', 'right': '' },
-\  'subseparator': { 'left': '', 'right': '' }
-\}
-" Git branch
-let g:lightline.component_function = { 'gitbranch': 'gitbranch#name' }
-" Ale warnings and errors
-let g:lightline.component_expand = {
-\  'linter_checking': 'lightline#ale#checking',
-\  'linter_infos': 'lightline#ale#infos',
-\  'linter_warnings': 'lightline#ale#warnings',
-\  'linter_errors': 'lightline#ale#errors',
-\  'linter_ok': 'lightline#ale#ok',
-\}
-let g:lightline.component_type = {
-\  'linter_checking': 'right',
-\  'linter_infos': 'right',
-\  'linter_warnings': 'warning',
-\  'linter_errors': 'error',
-\  'linter_ok': 'right',
-\}
-let g:lightline#ale#indicator_checking = 'LINTING'
-" Placement
-let g:lightline.active = {
-\  'left': [
-\    ['mode', 'paste'],
-\    ['gitbranch', 'readonly', 'filename', 'modified']
-\  ],
-\  'right': [
-\    ['lineinfo'],
-\    ['percent'],
-\    ['fileformat', 'fileencoding', 'filetype'],
-\    ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok']
-\  ]
-\}
+" airline
+set noshowmode
+let g:airline_section_y = ''
+let g:airline_section_z = '%l:%c/%L %p%%'
 
-" ALE
-" let g:ale_fix_on_save = 1
+" gitgutter
+set updatetime=100
 
-" CLOSETAG
-let g:closetag_filetypes = 'html,vue'
-" remove autoclose outside vue's <template> section
-let g:closetag_regions = {
-\  'vue': 'htmlTag'
-\}
+" hi link LanguageClientErrorSign DiffDelete
+" hi link LanguageClientWarningSign DiffChange
+" hi! link Error airline_error
+" hi! link Todo airline_warning
+"
+" coc https://github.com/neoclide/coc.nvim#example-vim-configuration
+  " textEdit might fail if hidden is not set
+set hidden
+  " some servers have issues with backup files
+set nobackup
+set nowritebackup
+  " give more space for displaying messages
+" set cmdheight=2
+  " don't pass messages to |ins-completion-menu|
+set shortmess+=c
+  " always show the signcolumn, otherwise it would shift the text each time
+" set signcolumn=yes
+  " complete by tab
+inoremap <silent> <expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<Tab>" :
+  \ coc#refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+  " use <C-Space> to trigger completion
+inoremap <silent> <expr> <C-Space> coc#refresh()
+  " make <Return> auto-select the first completion
+inoremap <silent> <expr> <Return> pumvisible() ? coc#_select_confirm()
+    \: "\<C-g>u\<Return>\<C-r>=coc#on_enter()\<Return>"
+  " diagnostic navigation
+nmap <silent> dp <Plug>(coc-diagnostic-prev)
+nmap <silent> dn <Plug>(coc-diagnostic-next)
+nmap <silent> da :CocDiagnostics <Return>
+  " goto navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+  " highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+  " symbol renaming.
+nmap <silent> rn <Plug>(coc-rename)
+  " format current buffer on <leader>f
+nmap <silent> <leader>f :call CocAction('format') <Return>
+  " organize imports of the current buffer on <leader>o
+nmap <silent> <leader>o
+  \ :call CocAction('runCommand', 'editor.action.organizeImport') <Return>
