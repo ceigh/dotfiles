@@ -1,0 +1,40 @@
+{
+  "coc.preferences.extensionUpdateCheck": "daily",
+
+  "yaml.format.enable": true,
+
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "vue",
+    "typescript",
+    "javascript"
+  ],
+  "eslint.format.enable": true,
+
+  "vetur.validation.templateProps": true,
+
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
+
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": ["haskell", "lhaskell"]
+    }
+  }
+}
