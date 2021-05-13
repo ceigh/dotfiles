@@ -130,7 +130,6 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 myAdditionalKeys =
   [ ((m, xK_p),   shellPrompt myXPConfig)
   , ((m, xK_c),   calcPrompt)
-  , ((m, xK_v),   term "nvim")
   , ((m, xK_a),   term "newsboat")
   , ((m, xK_z),   term "ranger")
   , ((m, xK_F9),  term "htop")
@@ -167,9 +166,9 @@ myAdditionalKeys =
 
 -- SUMMARY
 myConfig = def
-  { terminal           = "st"
+  { terminal           = "alacritty"
   , workspaces         = myWorkspaces
-  , borderWidth        = 1
+  , borderWidth        = 0
   , normalBorderColor  = colorBlack
   , focusedBorderColor = "#777"
   , modMask            = m
