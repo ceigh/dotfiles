@@ -21,7 +21,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'airblade/vim-gitgutter'
 Plug '907th/vim-auto-save'
 Plug 'gregsexton/MatchTag'
-Plug 'alvan/vim-closetag'
 Plug 'Yggdroot/indentLine'
 Plug 'ap/vim-css-color'
 Plug 'farmergreg/vim-lastplace'
@@ -96,7 +95,8 @@ set updatetime=100
 let g:coc_global_extensions = [
   \ 'coc-json', 'coc-eslint', 'coc-pairs', 'coc-snippets', 'coc-tailwindcss',
   \ 'coc-css', 'coc-tsserver', 'coc-vetur', 'coc-markdownlint', 'coc-sh',
-  \ 'coc-stylelint', 'coc-vimlsp', 'coc-yaml', 'coc-explorer', 'coc-diagnostic'
+  \ 'coc-stylelintplus', 'coc-stylelint', 'coc-vimlsp',
+  \ 'coc-yaml', 'coc-explorer', 'coc-diagnostic'
   \ ]
   " textEdit might fail if hidden is not set
 set hidden
