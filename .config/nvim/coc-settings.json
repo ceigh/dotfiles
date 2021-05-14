@@ -20,6 +20,7 @@
   "eslint.format.enable": true,
 
   "vetur.validation.templateProps": true,
+  "vetur.validation.style": false,
 
   "diagnostic-languageserver.filetypes": {
     "sh": "shellcheck"
