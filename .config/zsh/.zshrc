@@ -26,6 +26,7 @@ HISTSIZE=500
 SAVEHIST=500
 
 # fix some keys
+bindkey -e
 bindkey '^[[H'  beginning-of-line    # Home
 bindkey '^[[F'  end-of-line          # End
 bindkey '^[[2~' overwrite-mode       # Insert
@@ -62,6 +63,3 @@ alias tr='trans :ru'
   # fit size
 alias feh='feh --scale-down --auto-zoom'
 alias tb='nc termbin.com 9999'
-
-# misc
-bindkey -e
