@@ -1,0 +1,9 @@
+#!/bin/sh
+
+node_bin="$(readlink -f "$(which node)")"
+opts=cap_net_bind_service=+ep
+
+[ "$1" = 'remove' ] && opts=-r
+
+# sudo setcap "$opts $node_bin"
+sudo setcap $opts "$node_bin"
