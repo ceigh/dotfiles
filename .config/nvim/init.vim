@@ -51,6 +51,12 @@ exec "hi ColorColumn guibg="
 exec "hi VertSplit guibg="
   \ . synIDattr(synIDtrans(hlID('CursorLine')), "bg#")
 
+" restore cursor shape on exit
+augroup RestoreCursorShapeOnExit
+  autocmd!
+  autocmd VimLeave * set guicursor=a:ver25-blinkon250
+augroup END
+
 " indentline
 let g:indentLine_concealcursor = 'nc'
 
