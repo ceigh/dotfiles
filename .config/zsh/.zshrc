@@ -1,3 +1,11 @@
+# plugins
+source ~/.zplug/init.zsh
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'zsh-users/zsh-completions', defer:2
+zplug 'zsh-users/zsh-autosuggestions', defer:2
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+if ! zplug check; then zplug install; fi; zplug load
+
 # completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
@@ -66,14 +74,8 @@ alias t='trans'
 alias tr='trans :ru'
   # fit size
 alias feh='feh --scale-down --auto-zoom'
+alias tb='nc termbin.com 9999'
 
 # misc
   # https://github.com/ohmyzsh/ohmyzsh/issues/31
 unsetopt nomatch
-
-# plugins
-  # inline suggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#444444'
-  # syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
