@@ -1,0 +1,4 @@
+#!/bin/sh
+
+vim-keypress-analyzer -f ~/.nvim_keys.log |
+  awk '/per mode/ { print substr($NF, 1, length($NF - 1)) }'
