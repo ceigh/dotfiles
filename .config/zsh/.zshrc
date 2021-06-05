@@ -7,33 +7,20 @@ zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 if ! zplug check; then zplug install; fi; zplug load
 
 # completion
-autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
-setopt COMPLETE_ALIASES
-_comp_options+=(globdots) # for hidden files
-
-# vi mode
-bindkey -v
-KEYTIMEOUT=1
-function zle-line-init zle-keymap-select {
-  case $KEYMAP in
-    vicmd) vi_mode=N; echo -ne '\e[1 q';;
-    viins|main) vi_mode=I; echo -ne '\e[5 q';;
-  esac
-  zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+setopt completealiases
+setopt globdots
+autoload -Uz compinit && compinit
 
 # prompt
-autoload -Uz vcs_info && precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{3}@%b%f '
-setopt PROMPT_SUBST
+setopt promptsubst
 PROMPT='%F{2}%~%f ${vcs_info_msg_0_}$ '
+autoload -Uz vcs_info && precmd() { vcs_info }
 
 # history
-setopt HIST_IGNORE_DUPS
+setopt histignoredups
 HISTFILE=~/.cache/zsh-history
 HISTSIZE=500
 SAVEHIST=500
@@ -77,5 +64,4 @@ alias feh='feh --scale-down --auto-zoom'
 alias tb='nc termbin.com 9999'
 
 # misc
-  # https://github.com/ohmyzsh/ohmyzsh/issues/31
-unsetopt nomatch
+bindkey -e
