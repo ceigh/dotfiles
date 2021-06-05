@@ -65,12 +65,11 @@ myTerminal = "alacritty"
 
 -- bar
 myPP  = xmobarPP
-  { ppCurrent = xmobarColor colorGreen "" . wrap "<" ">"
-  , ppUrgent  = xmobarColor colorRed   "" . wrap "*" "*"
+  { ppCurrent = xmobarColor colorGreen "" . wrap "(" ")"
   , ppLayout  = take 128 . drop 8 . map toUpper
   , ppTitle   = shorten 64 . map toUpper
   , ppExtras  = [windowCount]
-  , ppSep     = " | "
+  , ppSep     = "   "
   , ppOrder = \(ws:l:t:ex) -> [ws, l] ++ ex ++ [t]
   }
 
