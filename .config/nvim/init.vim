@@ -62,6 +62,8 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 let NERDTreeIgnore = ['\.swp$', 'node_modules']
   " icons for git plugin
 let g:NERDTreeGitStatusUseNerdFonts = 1
+  " remove scroll lag
+let g:NERDTreeLimitedSyntax = 1
   " mappings
 nmap <silent> mn :NERDTreeToggle <Return>
 nmap <silent> Mn :NERDTreeFind <Return>
