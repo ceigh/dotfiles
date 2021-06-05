@@ -38,7 +38,8 @@ bindkey '^[[6~' end-of-history       # PageDown
 alias ls='ls --color=auto'
 alias l='ls -a'
 alias ll='l -l'
-alias v=$EDITOR
+  # to track keypresses
+alias v="$EDITOR -w ~/.nvim_keys.log"
   # git
 alias gs='git status'
 alias gf='git diff'

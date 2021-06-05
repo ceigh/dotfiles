@@ -3,6 +3,9 @@
 # keep list of installed packages
 pacman-installed > ~/documents/installed.list.txt &
 
+# reset nvim keys log
+rm --force ~/.nvim_keys.log
+
 # normal pointer
 xsetroot -cursor_name left_ptr &
 

@@ -42,6 +42,8 @@ Config {
       ("us", "US"),
       ("ru", "RU")
     ],
+    -- total session vim keypresses
+    Run Com "vim-keypress-total" [] "vim-keypress-total" 10,
 
     Run Date "%^a %d/%m" "date" 10,
     Run Date "%H:%M" "date:time" 10,
@@ -74,5 +76,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal -3; read'`>%date% <fc=#b5bd68>%date:time%</fc></action> | %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% (%vim-keypress-total%) | <action=`st -e htop`>%multicpu% %memory%</action>| %multicoretemp% %gputemp%°C | %uptime% | %USSS% | <action=`st -e sh -c 'cal -3; read'`>%date% <fc=#b5bd68>%date:time%</fc></action> | %alsa:default:Master% "
 }
