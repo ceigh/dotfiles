@@ -4,7 +4,10 @@
 pacman-installed > ~/documents/installed.list.txt &
 
 # reset nvim keys log
-rm --force ~/.nvim_keys.log
+echo > ~/.nvim_keys.log
+
+# clear trash
+rm -rf ~/.local/share/Trash
 
 # normal pointer
 xsetroot -cursor_name left_ptr &
