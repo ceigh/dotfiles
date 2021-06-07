@@ -49,7 +49,7 @@ Config {
     Run Date "%H:%M" "date:time" 10,
 
     Run Uptime [
-      "--template", "<days>D <hours>H <minutes>M",
+      "--template", "<days>D <hours>H",
       "--Low", "0",
       "--High", "1",
       "--low", "#b5bd68",
@@ -76,5 +76,5 @@ Config {
     ]
   ],
 
-  template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`st -e htop`>%multicpu% %memory%</action>  %multicoretemp% %gputemp%°C   %uptime%   %USSS%   <action=`st -e sh -c 'cal -3; read'`>%date% %date:time%</action>   %alsa:default:Master% "
+  template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`st -e htop`>%multicpu% %memory%</action>  %multicoretemp% %gputemp%°C   %uptime%   %USSS%   <action=`st -e sh -c 'cal -3; read'`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
 }
