@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# keep list of installed packages
-pacman-installed > ~/documents/installed.list.txt &
-
 # reset nvim keys log
 echo > ~/.nvim_keys.log
 
