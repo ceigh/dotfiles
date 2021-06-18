@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# reset nvim keys log
-echo > ~/.nvim_keys.log
-
-# clear trash
-rm -rf ~/.local/share/Trash
-
 # normal pointer
 xsetroot -cursor_name left_ptr &
 
@@ -22,7 +16,7 @@ numlockx &
 top-display &
 
 # true tone
-# redshift &
+redshift &
 
 # screen lock
 slock &

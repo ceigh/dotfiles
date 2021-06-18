@@ -91,7 +91,6 @@ myXPConfig = def
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "wallpaper"
   spawnOnce "nts run"
   spawnOnce "firefox"
   spawnOnce "discord"
