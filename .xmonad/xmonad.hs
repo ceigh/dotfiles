@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -fno-warn-incomplete-patterns #-}
+
 -- IMPORTS
 import Data.Char
 import XMonad
@@ -139,9 +141,10 @@ myAdditionalKeys =
   , ((m, xK_c),   calcPrompt)
   , ((m, xK_a),   term "newsboat")
   , ((m, xK_z),   term "ranger")
-  , ((m, xK_o),  term "htop")
+  , ((m, xK_o),   term "htop")
   , ((m, xK_d),   spawn "wallpaper once")
   , ((m, xK_f),   spawn "firefox")
+  , ((m, xK_k),   spawn "chromium")
   , ((m, xK_F11), spawn "kb-layout")
   , ((m, xK_F12), spawn "natural-scrolling")
 
