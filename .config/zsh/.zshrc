@@ -35,8 +35,8 @@ bindkey '^[[5~' beginning-of-history # PageUp
 bindkey '^[[6~' end-of-history       # PageDown
 
 # aliases
-alias ls='ls --color=auto'
-alias l='ls -a'
+alias ls='ls --color=auto --block-size=M'
+alias l='ls -A'
 alias ll='l -l'
   # to track keypresses
 alias v="$EDITOR -w ~/.nvim_keys.log"
