@@ -45,7 +45,7 @@ Config {
     -- total session vim keypresses
     Run Com "vim-keypress-total" [] "vim-keypress-total" 10,
 
-    Run Date "%^a %d/%m" "date" 10,
+    Run Date "%^a %d/%m/%y" "date" 10,
     Run Date "%H:%M" "date:time" 10,
 
     Run Uptime [
