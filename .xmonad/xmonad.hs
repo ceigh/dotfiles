@@ -102,7 +102,7 @@ myStartupHook = do
   spawnOnOnce (ws 4) "thunderbird"
 
 myLayoutHook = smartBorders $
-  spacingRaw False border True border True $
+  spacingRaw True border True border True $
   layoutTall ||| Mirror layoutTall ||| Grid
   where
     border     = Border 10 10 10 10
