@@ -57,9 +57,20 @@ Config
       , "--high",     "#cc6666"
       ] 600
 
-    , Run Weather "USSS"
-      [ "--template", "<tempC>°C <windMs>M/S"
-      ] 6000
+    , Run WeatherX "USSS"
+      [ ("fair",                    "F")
+      , ("clear",                   "F")
+      , ("mostly clear",            "MF")
+      , ("sunny",                   "S")
+      , ("mostly sunny",            "MS")
+      , ("partly sunny",            "PS")
+      , ("cloudy",                  "C")
+      , ("mostly cloudy",           "MC")
+      , ("partly cloudy",           "PC")
+      , ("considerable cloudiness", "CC")
+      , ("overcast",                "O")
+      ]
+      [ "--template", "<tempC>°C <windMs>M/S <skyConditionS>"] 6000
 
     -- sound monitor
     , Run Alsa "default" "Master"
