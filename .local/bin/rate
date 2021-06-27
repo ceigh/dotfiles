@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -z "$1" ] && cur=eth || cur=$1
+curl --silent "rate.sx/1$cur" | awk -F '.' '{ print $1 }'
