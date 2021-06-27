@@ -77,5 +77,5 @@ Config
       ]
     ]
 
-  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory%</action>   %multicoretemp% %gputemp%°C   %uptime%   %dynnetwork%   %rate%$   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
+  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory% %dynnetwork%</action>   %multicoretemp% %gputemp%°C   %uptime%   %rate%   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
   }
