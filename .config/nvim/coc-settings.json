@@ -43,6 +43,14 @@
         "hie.yaml"
       ],
       "filetypes": ["haskell", "lhaskell"]
+    },
+
+    "solidity": {
+      "command": "solc",
+      "args": [ "--lsp" ],
+      "trace.server": "verbose",
+      "rootPatterns": [".git/"],
+      "filetypes": ["solidity"]
     }
   }
 }

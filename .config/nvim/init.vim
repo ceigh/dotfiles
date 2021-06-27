@@ -11,6 +11,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'kevinoid/vim-jsonc'
+Plug 'tomlion/vim-solidity'
 
 " other
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
