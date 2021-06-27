@@ -1,4 +1,6 @@
 #!/bin/sh
 
 [ -z "$1" ] && cur=eth || cur=$1
-curl --silent "rate.sx/1$cur" | awk -F '.' '{ print $1 }'
+rate=$(curl --silent "rate.sx/1$cur" | awk -F '.' '{ print $1 }')
+cur_up=$(echo "$cur" | tr '[:lower:]' '[:upper:]')
+echo "$cur_up \$$rate"
