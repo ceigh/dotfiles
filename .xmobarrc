@@ -1,83 +1,81 @@
-Config {
-  font = "xft:monospace:size=11",
-  bgColor = "#000000",
-  fgColor = "#c5c8c6",
+Config
+  { font     = "xft:monospace:size=11"
+  , bgColor  = "#000000"
+  , fgColor  = "#c5c8c6"
 
-  commands = [
-    Run StdinReader,
+  , commands =
+    [ Run StdinReader
 
     -- usage
-    Run MultiCpu [
-      "--template", "<total>%",
-      "--low", "#b5bd68",
-      "--normal", "#f0c674",
-      "--high", "#cc6666"
-    ] 10,
-    Run Memory [
-      "--template", "<usedratio>% ",
-      "--low", "#b5bd68",
-      "--normal", "#f0c674",
-      "--high", "#cc6666"
-    ] 20,
+    , Run MultiCpu
+      [ "--template", "<total>%"
+      , "--low",      "#b5bd68"
+      , "--normal",   "#f0c674"
+      , "--high",     "#cc6666"
+      ] 10
+    , Run Memory
+      [ "--template", "<usedratio>%"
+      , "--low",      "#b5bd68"
+      , "--normal",   "#f0c674"
+      , "--high",     "#cc6666"
+      ] 20
+    , Run DynNetwork
+      [ "--template", "<rx>KB/<tx>KB"
+      , "--"
+      , "--devices",  "enp2s0"
+      ] 20
 
     -- temperature
-    Run MultiCoreTemp [
-      "--template", "<avg>°C",
-      "--Low", "50",
-      "--High", "75",
-      "--low", "#b5bd68",
-      "--normal", "#f0c674",
-      "--high", "#cc6666"
-    ] 50,
-    Run Com "gputemp" [] "gputemp" 50,
+    , Run MultiCoreTemp
+      [ "--template", "<avg>°C"
+      , "--Low",      "50"
+      , "--High",     "75"
+      , "--low",      "#b5bd68"
+      , "--normal",   "#f0c674"
+      , "--high",     "#cc6666"
+      ] 50
+    , Run Com "gputemp" [] "gputemp" 50
 
-    -- network
-    Run DynNetwork [
-      "--template", "<rx>KB/<tx>KB",
-      "--",
-      "--devices", "enp2s0"
-    ] 20,
+    -- crypto rate
+    , Run Com "rate" [] "rate" 3000
 
-    -- cryptocurrency rates
-    Run Com "rate" [] "rate" 3000,
-
-    Run Kbd [
-      ("us", "US"),
-      ("ru", "RU")
-    ],
+    -- current kbd layout
+    , Run Kbd [("us", "US"), ("ru", "RU")]
     -- total session vim keypresses
-    Run Com "vim-keypress-total" [] "vim-keypress-total" 10,
+    , Run Com "vim-keypress-total" [] "vim-keypress-total" 10
 
-    Run Date "%^a %d/%m/%y" "date" 10,
-    Run Date "%H:%M" "date:time" 10,
+    -- date and time
+    , Run Date "%^a %d/%m/%y" "date"      10
+    , Run Date "%H:%M"        "date:time" 10
 
-    Run Uptime [
-      "--template", "<days>D <hours>H",
-      "--Low", "0",
-      "--High", "1",
-      "--low", "#b5bd68",
-      "--normal", "#f0c674",
-      "--high", "#cc6666"
-    ] 600,
+    , Run Uptime
+      [ "--template", "<days>D <hours>H"
+      , "--Low",      "0"
+      , "--High",     "1"
+      , "--low",      "#b5bd68"
+      , "--normal",   "#f0c674"
+      , "--high",     "#cc6666"
+      ] 600
 
-    Run Weather "USSS" [
-      "--template", "<tempC>°C <windMs>M/S"
-    ] 6000,
+    , Run Weather "USSS"
+      [ "--template", "<tempC>°C <windMs>M/S"
+      ] 6000
 
-    Run Alsa "default" "Master" [
-      "--template", "<volume>% <status>",
-      "--Low", "100",
-      "--High", "125",
-      "--low", "#b5bd68",
-      "--normal", "#f0c674",
-      "--high", "#cc6666",
-      "--",
-      "--on", "ON",
-      "--off", "OFF",
-      "--onc", "#b5bd68",
-      "--offc", "#cc6666"
+    -- sound monitor
+    , Run Alsa "default" "Master"
+      [ "--template", "<volume>% <status>"
+      , "--Low",      "100"
+      , "--High",     "125"
+      , "--low",      "#b5bd68"
+      , "--normal",   "#f0c674"
+      , "--high",     "#cc6666"
+      , "--"
+      , "--on",   "ON"
+      , "--off",  "OFF"
+      , "--onc",  "#b5bd68"
+      , "--offc", "#cc6666"
+      ]
     ]
-  ],
 
-  template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`st -e htop`>%multicpu% %memory%</action>  %multicoretemp% %gputemp%°C   %uptime%   %dynnetwork%   %rate%$   %USSS%   <action=`st -e sh -c 'cal -3; read'`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
-}
+  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory%</action>   %multicoretemp% %gputemp%°C   %uptime%   %dynnetwork%   %rate%$   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
+  }
