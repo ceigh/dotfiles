@@ -69,7 +69,7 @@ myTerminal = "alacritty"
 myPP  = xmobarPP
   { ppCurrent = xmobarColor colorGreen "" . wrap "(" ")"
   , ppLayout  = take 128 . drop 8 . map toUpper
-  , ppTitle   = shorten 32 . map toUpper
+  , ppTitle   = shorten 25 . map toUpper
   , ppExtras  = [windowCount]
   , ppSep     = "   "
   , ppOrder = \(ws:l:t:ex) -> [ws, l] ++ ex ++ [t]
@@ -95,9 +95,8 @@ myXPConfig = def
 myStartupHook = do
   spawnOnce "nts run"
   spawnOnce "firefox"
-  spawnOnce "discord"
-  spawnOnce "telegram-desktop"
-  spawnOnOnce (ws 2) (term' "")
+  spawnOnOnce (ws 3) "discord"
+  spawnOnOnce (ws 3) "telegram-desktop"
   spawnOnOnce (ws 4) (term' "newsboat")
   spawnOnOnce (ws 4) "thunderbird"
 
@@ -109,8 +108,7 @@ myLayoutHook = smartBorders $
     layoutTall = Tall 1 (5 / 100) (2 / 3)
 
 myManageHook = manageSpawn <+> composeAll
-  [ className =? "mpv"                -->
-    doFullFloat <+> moveTo (ws 4)
+  [ className =? "mpv"                --> doFullFloat -- <+> moveTo (ws 4)
   -- telegram media
   , title     =? "Media viewer"       --> doFullFloat
   -- firefox pip
@@ -118,7 +116,7 @@ myManageHook = manageSpawn <+> composeAll
     doRectFloat (W.RationalRect 0.7 0.7 0.3 0.3) <+> doIgnore
   , className =? "firefox"            --> moveTo (ws 1)
   , appName   =? "discord"            --> moveTo (ws 3)
-  , appName   =? "telegram-desktop"   --> moveTo (ws 3)
+  -- , appName   =? "telegram-desktop"   --> moveTo (ws 3)
   ] where moveTo = doF . W.shift
 
 -- PROMPTS
@@ -139,9 +137,10 @@ myToggleStruts XConfig { XMonad.modMask = m } = (m, xK_b)
 myAdditionalKeys =
   [ ((m, xK_p),   shellPrompt myXPConfig)
   , ((m, xK_c),   calcPrompt)
-  , ((m, xK_a),   term "newsboat")
+  , ((m, xK_n),   term "newsboat")
   , ((m, xK_z),   term "ranger")
   , ((m, xK_o),   term "htop")
+  , ((m, xK_a),   spawn "authy")
   , ((m, xK_d),   spawn "wallpaper once")
   , ((m, xK_f),   spawn "firefox")
   , ((m, xK_k),   spawn "chromium")
