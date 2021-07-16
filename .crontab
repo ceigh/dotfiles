@@ -1,3 +1,10 @@
 # minute hour day_of_month month day_of_week command
 
-  */10   *    *            *     *           'wallpaper once'
+# change wallpaper every 10 minutes
+*/1 * * * * env DISPLAY=:0 /home/ceigh/.local/bin/wallpaper once
+
+# reset nvim keys log
+@reboot     /bin/echo > /home/ceigh/.nvim_keys.log
+
+# clear trash
+@reboot     /bin/rm -rf /home/ceigh/.local/share/Trash
