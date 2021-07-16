@@ -16,12 +16,12 @@ numlockx &
 top-display &
 
 # true tone
-redshift &
+# redshift &
 
 # screen lock
-slock &
-xautolock -detectsleep -notify 10 -corners '----' -cornersize 50 \
-  -locker "slock" -killtime 120 -killer "systemctl suspend" &
+# slock &
+# xautolock -detectsleep -notify 10 -corners '----' -cornersize 50 \
+  # -locker "slock" -killtime 120 -killer "systemctl suspend" &
 
 # compositor
 picom &
@@ -30,7 +30,7 @@ picom &
 dunst &
 
 # wait for network
-nm-online --timeout 10
+nm-online --timeout 20
 
 # recompile for sure
 xmonad --recompile
