@@ -7,13 +7,13 @@ xsetroot -cursor_name left_ptr &
 kb-layout &
 
 # enable natural scrolling
-natural-scrolling &
+# natural-scrolling &
 
 # enable numlock
-numlockx &
+# numlockx &
 
 # set resolution and rate to max
-top-display &
+# top-display &
 
 # true tone
 # redshift &
@@ -30,9 +30,9 @@ picom &
 dunst &
 
 # wait for network
-nm-online --timeout 20
+# nm-online --timeout 20
 
 # recompile for sure
-xmonad --recompile
+# xmonad --recompile
 # run wm
 exec xmonad
