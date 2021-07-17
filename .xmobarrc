@@ -34,7 +34,7 @@ Config
       , "--normal",   "#f0c674"
       , "--high",     "#cc6666"
       ] 50
-    , Run Com "gputemp" [] "gputemp" 50
+    -- , Run Com "gputemp" [] "gputemp" 50
 
     -- crypto rate
     , Run Com "rate" [] "rate" 3000
@@ -88,5 +88,5 @@ Config
       ]
     ]
 
-  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory% %dynnetwork%</action>   %multicoretemp% %gputemp%°C   %uptime%   %rate%   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
+  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory% %dynnetwork%</action>   %multicoretemp%   %uptime%   %rate%   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
   }
