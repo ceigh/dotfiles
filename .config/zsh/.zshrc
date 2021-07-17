@@ -51,7 +51,7 @@ alias gh='git push'
 alias gha='git remote | xargs -L1 git push --all'
   # dotfiles
 alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias cs='config status'
+alias cs='config status --untracked-files=no'
 alias cf='config diff'
 alias ca='config add'
 alias cm='config commit -m'
