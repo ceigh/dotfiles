@@ -45,7 +45,7 @@ Config
       , "--high",     "#b5bd68"
       , "--"
       , "-O", "<fc=#b5bd68>ON</fc>"
-      , "-i", "<fc=#f0c674>ON~</fc>"
+      , "-i", "<fc=#f0c674>ON</fc>"
       , "-o", "<fc=#cc6666>OFF</fc>"
       , "-a", "notify-send 'Low battery' 'Connect charger'"
       , "-A", "15"
