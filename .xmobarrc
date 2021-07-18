@@ -1,5 +1,5 @@
 Config
-  { font     = "xft:monospace:size=11"
+  { font     = "xft:monospace:size=10"
   , bgColor  = "#000000"
   , fgColor  = "#c5c8c6"
 
