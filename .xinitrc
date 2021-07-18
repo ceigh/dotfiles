@@ -1,19 +1,13 @@
 #!/bin/sh
 
+# restore wallpaper
+~/.fehbg &
+
 # normal pointer
 xsetroot -cursor_name left_ptr &
 
 # keyboard layout
 kb-layout &
-
-# enable natural scrolling
-# natural-scrolling &
-
-# enable numlock
-# numlockx &
-
-# set resolution and rate to max
-# top-display &
 
 # true tone
 # redshift &
