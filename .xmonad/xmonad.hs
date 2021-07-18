@@ -77,7 +77,7 @@ myPP  = xmobarPP
 
 -- prompt
 myXPConfig = def
-  { font              = "xft:monospace:size=11"
+  { font              = "xft:monospace:size=10"
   , bgColor           = colorBlack
   , fgColor           = colorWhite
   , bgHLight          = colorGreen
@@ -93,7 +93,6 @@ myXPConfig = def
 
 -- HOOKS
 myStartupHook = do
-  spawnOnce "nts run"
   spawnOnce "firefox"
   spawnOnOnce (ws 3) "discord"
   spawnOnOnce (ws 3) "telegram-desktop"
@@ -120,9 +119,6 @@ myManageHook = manageSpawn <+> composeAll
   ] where moveTo = doF . W.shift
 
 -- PROMPTS
-powerPrompt command = confirmPrompt myXPConfig command $
-  spawn $ "systemctl " ++ command
-
 calcPrompt = calcPrompt' "calculate"
 calcPrompt' prompter = inputPrompt myXPConfig (trim prompter) ?+ calc
   where trim = f . f where f = reverse . dropWhile isSpace
@@ -141,11 +137,8 @@ myAdditionalKeys =
   , ((m, xK_z),   term "ranger")
   , ((m, xK_o),   term "htop")
   , ((m, xK_a),   spawn "authy")
-  , ((m, xK_d),   spawn "wallpaper once")
   , ((m, xK_f),   spawn "firefox")
   , ((m, xK_k),   spawn "chromium")
-  , ((m, xK_F11), spawn "kb-layout")
-  , ((m, xK_F12), spawn "natural-scrolling")
 
   , ((m .|. shiftMask, xK_m), spawn "thunderbird")
   -- , ((m .|. shiftMask, xK_l), spawn "xautolock -locknow")
@@ -157,15 +150,10 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_r), spawn "nts run 2")
   , ((m, xK_e),               spawn "nts end")
 
-  -- volume
-  , ((m, xK_equal), spawn "pulsemixer --change-volume +10")
-  , ((m, xK_minus), spawn "pulsemixer --change-volume -10")
-  , ((m, xK_0),     spawn "pulsemixer --toggle-mute")
-
-  -- power
-  , ((m, xK_End),                 powerPrompt "suspend")
-  , ((m .|. controlMask, xK_End), powerPrompt "poweroff")
-  , ((m .|. shiftMask, xK_End),   powerPrompt "reboot")
+  -- volume with mediakeys
+  , ((0, 0x1008ff13), spawn "pulsemixer --change-volume +10")
+  , ((0, 0x1008ff11), spawn "pulsemixer --change-volume -10")
+  , ((0, 0x1008ff12), spawn "pulsemixer --toggle-mute")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
