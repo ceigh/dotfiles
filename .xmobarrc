@@ -34,10 +34,25 @@ Config
       , "--normal",   "#f0c674"
       , "--high",     "#cc6666"
       ] 50
-    -- , Run Com "gputemp" [] "gputemp" 50
+
+    -- battery
+    , Run Battery
+      [ "--template", " <acstatus> <left>% (<timeleft>)"
+      , "--Low",      "15"
+      , "--High",     "75"
+      , "--low",      "#cc6666"
+      , "--normal",   "#f0c674"
+      , "--high",     "#b5bd68"
+      , "--"
+      , "-O", "<fc=#b5bd68>ON</fc>"
+      , "-i", "<fc=#f0c674>ON~</fc>"
+      , "-o", "<fc=#cc6666>OFF</fc>"
+      , "-a", "notify-send 'Low battery' 'Connect charger'"
+      , "-A", "15"
+      ] 100
 
     -- crypto rate
-    , Run Com "rate" [] "rate" 3000
+    -- , Run Com "rate" [] "rate" 3000
 
     -- current kbd layout
     , Run Kbd [("us", "US"), ("ru", "RU")]
@@ -74,19 +89,14 @@ Config
 
     -- sound monitor
     , Run Alsa "default" "Master"
-      [ "--template", "<volume>% <status>"
+      [ "--template", "<volume>%"
       , "--Low",      "100"
       , "--High",     "125"
       , "--low",      "#b5bd68"
       , "--normal",   "#f0c674"
       , "--high",     "#cc6666"
-      , "--"
-      , "--on",   "ON"
-      , "--off",  "OFF"
-      , "--onc",  "#b5bd68"
-      , "--offc", "#cc6666"
       ]
     ]
 
-  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory% %dynnetwork%</action>   %multicoretemp%   %uptime%   %rate%   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
+  , template = " %StdinReader%}{%kbd% (%vim-keypress-total%)   <action=`alacritty -e htop`>%multicpu% %memory% %dynnetwork%</action>   %multicoretemp%   %battery%   %uptime%   %USSS%   <action=`alacritty -e q`>%date% <fc=#b5bd68>%date:time%</fc></action>   %alsa:default:Master% "
   }
