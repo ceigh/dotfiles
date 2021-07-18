@@ -7,7 +7,6 @@ export DIFFPROG="$EDITOR -d"
 export PAGER=less
 export EMAIL='me@ceigh.com'
 export MY_NAME='Artjom Löbsack'
-export GPG_TTY=$(tty)
 
 # PATH
 # npm
