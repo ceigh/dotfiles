@@ -150,10 +150,12 @@ myAdditionalKeys =
   , ((m .|. shiftMask, xK_r), spawn "nts run 2")
   , ((m, xK_e),               spawn "nts end")
 
-  -- volume with mediakeys
-  , ((0, 0x1008ff13), spawn "pulsemixer --change-volume +10")
-  , ((0, 0x1008ff11), spawn "pulsemixer --change-volume -10")
-  , ((0, 0x1008ff12), spawn "pulsemixer --toggle-mute")
+  -- volume with t420 mediakeys
+  , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
+  , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
+  , ((0, 0x1008ff12), spawn "amixer set Master toggle")
+  -- mic
+  , ((0, 0x1008ffb2), spawn "amixer set Capture toggle")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
