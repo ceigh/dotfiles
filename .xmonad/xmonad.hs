@@ -93,6 +93,8 @@ myXPConfig = def
 
 -- HOOKS
 myStartupHook = do
+  spawnOnce "picom"
+  spawnOnce "dunst"
   spawnOnce "firefox"
   spawnOnOnce (ws 3) "discord"
   spawnOnOnce (ws 3) "telegram-desktop"
@@ -151,11 +153,11 @@ myAdditionalKeys =
   , ((m, xK_e),               spawn "nts end")
 
   -- volume with t420 mediakeys
-  , ((0, 0x1008ff13), spawn "amixer set Master 5%+")
-  , ((0, 0x1008ff11), spawn "amixer set Master 5%-")
-  , ((0, 0x1008ff12), spawn "amixer set Master toggle")
+  , ((0, 0x1008ff13), spawn "amixer -D pulse set Master 5%+")
+  , ((0, 0x1008ff11), spawn "amixer -D pulse set Master 5%-")
+  , ((0, 0x1008ff12), spawn "amixer -D pulse set Master toggle")
   -- mic
-  , ((0, 0x1008ffb2), spawn "amixer set Capture toggle")
+  , ((0, 0x1008ffb2), spawn "amixer -D pulse set Capture toggle")
 
   -- screenshots
   , ((m, xK_Print),                               shot True False)
