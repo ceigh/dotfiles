@@ -83,7 +83,8 @@ Config
       , ("mostly cloudy",           "MC")
       , ("partly cloudy",           "PC")
       , ("considerable cloudiness", "CC")
-      , ("overcast",                "O")
+      , ("overcast",                "OV")
+      , ("obscured",                "OB")
       ]
       [ "--template", "<tempC>°C <windMs>M/S <skyConditionS>"] 6000
 
